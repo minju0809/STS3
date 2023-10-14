@@ -3,12 +3,12 @@ package com.springbook.biz.board;
 import java.sql.Date;
 
 public class BoardVO {
-	private int seq;
-	private String title;
-	private String writer;
-	private String content;
-	private Date regDate;
-	private int cnt;
+    public int seq;
+	public String title;
+	public String writer;
+	public String content;
+	public Date regDate;
+	public int cnt;
 	
 	public int getSeq() {
 		return seq;
@@ -37,8 +37,8 @@ public class BoardVO {
 	public Date getRegDate() {
 		return regDate;
 	}
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+	public void setRegDate(Date regdate) {
+		this.regDate = regdate;
 	}
 	public int getCnt() {
 		return cnt;
@@ -48,8 +48,7 @@ public class BoardVO {
 	}
 	@Override
 	public String toString() {
-		return "BoardVO [seq=" + seq + ", title=" + title + ", writer=" + writer + ", content=" + content + ", regDate="
+		return "BoardVO [seq=" + seq + ", title=" + title + ", writer=" + writer + ", content=" + content + ", regdate="
 				+ regDate + ", cnt=" + cnt + "]";
 	}
 }
-

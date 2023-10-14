@@ -4,13 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Mac</title>
+<title>Insert title here</title>
 </head>
 <body>
-  <table border=1>
-	<tr>
-      <td></td>
-    </tr>
-  </table>
+<div align="center">
+	<a href=board.jsp>글 추가하기</a>
+	<a href=getBoardList.do>글 목록보기</a>
+</div>
 </body>
 </html>

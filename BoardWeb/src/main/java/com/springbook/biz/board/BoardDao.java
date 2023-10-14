@@ -4,9 +4,6 @@ import java.util.List;
 
 public interface BoardDao {
 	void insert(BoardVO vo);
-	void update(BoardVO vo);
-	void delete(int k);
-	BoardVO getBoard(int k);
+	void delete(BoardVO vo);
 	List<BoardVO> getBoardList();
-	List<BoardVO> getBoardList(String ch1, String ch2);
 }

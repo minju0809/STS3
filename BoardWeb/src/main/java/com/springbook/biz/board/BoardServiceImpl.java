@@ -5,10 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service("boardService")
+@Service
 public class BoardServiceImpl implements BoardService {
+	
 	@Autowired
 	private BoardDao dao;
+	
+	public BoardServiceImpl(){
+	  System.out.println(" ===> BoardServiceImpl ");	
+	}
 
 	@Override
 	public void insert(BoardVO vo) {
@@ -16,27 +21,12 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void update(BoardVO vo) {
-		dao.update(vo);
+	public void delete(BoardVO vo) {
+		dao.delete(vo);
 	}
-
-	@Override
-	public void delete(int k) {
-		dao.delete(k);
-	}
-
-	@Override
-	public BoardVO getBoard(int k) {
-		return dao.getBoard(k);
-	}
-
+	
 	@Override
 	public List<BoardVO> getBoardList() {
 		return dao.getBoardList();
-	}
-
-	@Override
-	public List<BoardVO> getBoardList(String ch1, String ch2) {
-		return dao.getBoardList(ch1, ch2);
 	}
 }
