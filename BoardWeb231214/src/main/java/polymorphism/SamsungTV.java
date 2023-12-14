@@ -1,8 +1,16 @@
 package polymorphism;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component("samsungTV")
 public class SamsungTV implements TV {
+	
+	@Autowired
+	@Qualifier("apple")
 	private Speaker speaker;
-	private int price;
+	private int price = 100;
 	
 	public void initMethod() {
 		System.out.println("객체 초기화 작업 처리..");
@@ -13,14 +21,25 @@ public class SamsungTV implements TV {
 	}
 	
 	// 생성자 오버로딩
-	public SamsungTV(Speaker speaker) {
-		System.out.println("===> SansungTV(2) 객체 생성");
+//	public SamsungTV(Speaker speaker) {
+//		System.out.println("===> SansungTV(2) 객체 생성");
+//		this.speaker = speaker;
+//	}
+//	
+//	public SamsungTV(Speaker speaker, int price) {
+//		System.out.println("===> SansungTV(3) 객체 생성");
+//		this.speaker = speaker;
+//		this.price = price;
+//	}
+
+	// Setter 인젝션
+	public void setSpeaker(Speaker speaker) {
+		System.out.println("===> setSpeaker() 호출");
 		this.speaker = speaker;
 	}
 	
-	public SamsungTV(Speaker speaker, int price) {
-		System.out.println("===> SansungTV(3) 객체 생성");
-		this.speaker = speaker;
+	public void setPrice(int price) {
+		System.out.println("===> setPrice() 호출");
 		this.price = price;
 	}
 	

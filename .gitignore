@@ -1,2 +1,7 @@
 .metadata
 .settings
+target/
+
+Servers/
+*.class
+*.classpath

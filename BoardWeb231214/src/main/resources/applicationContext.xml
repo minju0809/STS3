@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<bean id="samsungTV" class="polymorphism.SamsungTV" init-method="initMethod" >
-		<constructor-arg ref="sony"></constructor-arg>
-		<constructor-arg value="2700000"></constructor-arg>
-	</bean>
-	<bean id="lgTV" class="polymorphism.LgTV" destroy-method="destroyMethod" />
-	<bean id="sony" class="polymorphism.SonySpeaker"></bean>
+
+	<!-- <bean id="samsungTV" class="polymorphism.SamsungTV" p:speaker-ref="sony" 
+		p:price="360" init-method="initMethod" > -->
+	<!-- <constructor-arg ref="sony"></constructor-arg> -->
+	<!-- <constructor-arg ref="apple"></constructor-arg> -->
+	<!-- <constructor-arg value="2700000"></constructor-arg> -->
+
+	<!-- sertter 인젝션 시에는 property 사용 -->
+	<!-- p 네임스페이스 사용 시 필요 없음 -->
+	<!-- <property name="speaker" ref="apple"></property> -->
+	<!-- <property name="price" value="2700000"></property> -->
+	<!-- </bean> -->
+	<!-- <bean id="lgTV" class="polymorphism.LgTV" destroy-method="destroyMethod" 
+		/> -->
+
+	<!-- <bean id="sony" class="polymorphism.SonySpeaker"></bean> -->
+	<!-- <bean id="apple" class="polymorphism.AppleSpeaker"></bean> -->
+
+	<!-- 어노테이션 기반 설정 -->
+	<context:component-scan	base-package="polymorphism" />
+	
 </beans>
- 
