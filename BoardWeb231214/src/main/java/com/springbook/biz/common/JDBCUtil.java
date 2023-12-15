@@ -7,11 +7,21 @@ import java.sql.ResultSet;
 
 public class JDBCUtil {
 	public static Connection getConnection() {
-		String url = "jdbc:h2:tcp://localhost/~/test"; // h2에서 적용해놓은 url
-		String id = "sa";
-		String pwd = "";
+		// h2
+//		String url = "jdbc:h2:tcp://localhost/~/test"; // h2에서 적용해놓은 url
+//		String id = "sa";
+//		String pwd = "";
+
+		// oracle
+		String url = "jdbc:oracle:thin:@//localhost:1521/xe";
+		String id = "system";
+		String pwd = "1234";
+		
 		try {
-			Class.forName("org.h2.Driver");
+			// h2
+//			Class.forName("org.h2.Driver");
+			// oracle
+			Class.forName("oracle.jdbc.OracleDriver");
 			return DriverManager.getConnection(url, id, pwd);
 		} catch (Exception e) {
 			e.printStackTrace();

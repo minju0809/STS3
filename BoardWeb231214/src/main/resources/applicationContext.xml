@@ -9,4 +9,24 @@
 	<!-- 어노테이션 기반 설정 -->
 	<context:component-scan	base-package="com.springbook.biz" />
 	
+	<!-- User -->
+	<!-- Setter 인젝션 기반 설정 -->
+<!-- 	<bean id="userService" class="com.springbook.biz.user.UserServiceImpl"> -->
+<!-- 		<property name="dao" ref="userDao"></property> UserServiceImpl의 private UserDao 의 변수 이름과 일치 -->
+<!-- 	</bean> -->
+	
+<!-- 	<bean id="userDao" class="com.springbook.biz.user.UserDaoImpl"></bean> -->
+
+	<!-- 생성자 인젝션 기반 설정 --> 
+<!-- 	<bean id="userService" class="com.springbook.biz.user.UserServiceImpl"> -->
+<!-- 		<constructor-arg name="dao" ref="userDao" /> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="userDao" class="com.springbook.biz.user.UserDaoImpl"></bean> -->
+
+	<!-- Board -->
+	<bean id="boardService" class="com.springbook.biz.board.impl.BoardServiceImpl" p:dao-ref="BoardDaoImpl">
+<!-- 		<property name="dao" ref="BoardDaoImpl"></property> -->
+	</bean>
+	
+	<bean id="BoardDaoImpl" class="com.springbook.biz.board.impl.BoardDaoImpl"></bean>
 </beans>
