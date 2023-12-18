@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<!-- 어노테이션 기반 설정 -->
+	<context:component-scan	base-package="com.springbook.biz" />
+	
+	<!-- DataSource 설정 -->
+	<context:property-placeholder location="classpath:config/database.properties" />
+	
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<!-- 	Spring JDBC 설정 -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+<!-- 	<bean id="log" class="com.springbook.biz.common.LogAdvice"></bean> -->
+<!--	<bean id="log" class="com.springbook.biz.common.Log4jAdvice"></bean> -->
+<!-- 	<bean id="around" class="com.springbook.biz.common.AroundAdvice"></bean> -->
+	
+	<!-- 	어노테이션 기반 AOP -->
+<!-- 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy> -->
+	
+<!-- 	<aop:config>  -->
+<!-- 		<aop:pointcut id="allPointcut" expression="execution(* com.springbook.biz..*DaoImpl.*(..))" /> -->
+<!-- 		<aop:pointcut id="getPointcut" expression="execution(* com.springbook.biz..*Impl.get*(..))" /> -->
+		
+<!-- 		<aop:aspect ref="around"> -->
+<!--   			<aop:before pointcut-ref="allPointcut" method="beforeLog" />  -->
+<!-- 			<aop:before pointcut-ref="allPointcut" method="printLogging" /> -->
+<!-- 			<aop:before pointcut-ref="getPointcut" method="printLog" /> -->
+<!-- 			<aop:after-returning pointcut-ref="allPointcut" method="afterReturningLog" /> -->
+<!-- 			<aop:after pointcut-ref="allPointcut" method="afterLog" /> -->
+<!-- 			<aop:around pointcut-ref="allPointcut" method="aroundLog" /> -->
+<!-- 		</aop:aspect> -->
+<!-- 	</aop:config> -->
+	
+<!-- 	<bean id="boardService" class="com.springbook.biz.board.impl.BoardServiceImpl"> -->
+<!-- 	<constructor-arg ref="dao"></constructor-arg> -->
+<!-- 		<property name="dao" ref="boardDao"></property> -->
+<!-- 	</bean> -->
+
+<!-- 	<bean id="boardDao" class="com.springbook.biz.board.impl.BoardDaoImpl">	</bean> -->
+</beans>
