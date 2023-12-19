@@ -28,6 +28,8 @@ public class BoardDaoImpl implements BoardDao {
 	String select_sql = "select * from board order by seq";
 	String select1_sql = "select * from board where seq=?";
 	String delete_sql = "delete from board where seq=(select min(seq) as seq from board)";
+	String delete1_sql = "delete from board where seq=?";
+	String update_sql = "update board set title=?, writer=?, content=? where seq=?";
 	
 	@Override
 	public void insert(BoardVO vo) {
@@ -130,5 +132,42 @@ public class BoardDaoImpl implements BoardDao {
 		return vo;
 	}
 
+	@Override
+	public void delete(int seq) {
+		try {
+			conn = JDBCUtil.getConnection();
+			pstmt = conn.prepareStatement(delete1_sql);
+			pstmt.setInt(1, seq);
+			pstmt.executeUpdate();
+			System.out.println("삭제완료");
+		} catch (SQLException e) {
+			System.out.println("삭제실패");
+			e.printStackTrace();
+		} finally {
+			System.out.println("delete finally");
+			JDBCUtil.close(pstmt, conn);
+		}	
+	}
+
+	@Override
+	public void update(BoardVO vo) {
+		try {
+			conn = JDBCUtil.getConnection();
+			pstmt = conn.prepareStatement(update_sql);
+			pstmt.setString(1, vo.getTitle());
+			pstmt.setString(2, vo.getWriter());
+			pstmt.setString(3, vo.getContent());
+			pstmt.setInt(4, vo.getSeq());
+			pstmt.executeUpdate();
+			
+			System.out.println("수정완료");
+		} catch (SQLException e) {
+			System.out.println("수정실패");
+			e.printStackTrace();
+		} finally {
+			System.out.println("update finally");
+			JDBCUtil.close(pstmt, conn);
+		}
+	}
 
 }

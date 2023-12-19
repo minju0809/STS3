@@ -1,10 +1,7 @@
 package com.springbook.biz.board.impl;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
-import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,8 +20,10 @@ public class BoardDaoSpring implements BoardDao {
 		System.out.println("==> BoardDaoSpring 객체 생성");
 	}
 
+//	String insert_sql = "insert into board (seq, title, writer, content) "
+//			+ " values ((select max(seq)+1 as seq from board),?,?,?)";
 	String insert_sql = "insert into board (seq, title, writer, content) "
-			+ " values ((select max(seq)+1 as seq from board),?,?,?)";
+			+ " values (?,?,?,?)";
 	String select_sql = "select * from board order by seq";
 	String select1_sql = "select * from board where seq=?";
 	String delete_sql = "delete from board where seq=(select min(seq) as seq from board)";
@@ -36,7 +35,7 @@ public class BoardDaoSpring implements BoardDao {
 
 	@Override
 	public void insert(BoardVO vo) {
-		Object[] args = {vo.getTitle(), vo.getWriter(), vo.getContent()};
+		Object[] args = {vo.getSeq(), vo.getTitle(), vo.getWriter(), vo.getContent()};
 		jdbcTemplate.update(insert_sql, args);
 	}
 
@@ -53,6 +52,18 @@ public class BoardDaoSpring implements BoardDao {
 	@Override
 	public BoardVO getBoard(int seq) {
 		return jdbcTemplate.queryForObject(select1_sql, new BoardRowMapper(), seq);
+	}
+
+	@Override
+	public void delete(int seq) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(BoardVO vo) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	// 1. 상속을 받는 경우
