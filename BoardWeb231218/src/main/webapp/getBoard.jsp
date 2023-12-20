@@ -26,29 +26,29 @@ BoardVO m = (BoardVO) session.getAttribute("m");
 	<hr>
 <!-- 	<form action="update_proc.jsp"> -->
 	<form action="updateBoard.do">
-	<input type=hidden name=seq value="<%=m.getSeq() %>" />
+	<input type=hidden name=seq value="${ m.getSeq() }" />
 		<table border=1>
 			<tr>
 				<td>번호</td>
-				<td><input type="text" name="seq" value="<%=m.getSeq()%>" readonly></td>
+				<td><input type="text" name="seq" value="${ m.getSeq() }" readonly></td>
 			</tr>
 			<tr>
 				<td>제목</td>
-				<td><input type="text" name="title" value="<%=m.getTitle()%>"></td>
+				<td><input type="text" name="title" value="${ m.getTitle() }"></td>
 			</tr>
 			<tr>
 				<td>작성자</td>
-				<td><input type="text" name="writer" value="<%=m.getWriter()%>"></td>
+				<td><input type="text" name="writer" value="${ m.getWriter() }"></td>
 			</tr>
 			<tr>
 				<td>내용</td>
 				<td><input type="text" name="content"
-					value="<%=m.getContent()%>"></td>
+					value="${ m.getContent() }"></td>
 			</tr>
 			<tr>
 				<td>등록일</td>
 				<td><input type="text" name="regdate"
-					value="<%=m.getRegdate()%>" readonly></td>
+					value="${ m.getRegdate() }" readonly></td>
 			</tr>
 			<tr>
 				<td align=center colspan=2><input type=submit value="수정하기">

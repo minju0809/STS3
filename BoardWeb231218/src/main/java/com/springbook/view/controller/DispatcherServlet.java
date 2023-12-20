@@ -15,9 +15,21 @@ import com.springbook.biz.user.*;
 
 public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private HandlerMapping handlerMapping;
+	private ViewResolver viewResolver;
 
 	public DispatcherServlet() {
 		super();
+//		System.out.println("==> DispatcherServlet");
+	}
+	
+	public void init() throws ServletException { // 초기화
+		System.out.println("==> init");
+		
+		handlerMapping = new HandlerMapping();
+		viewResolver = new ViewResolver();
+		viewResolver.setPrefix("./");
+		viewResolver.setSuffix(".jsp");
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -34,108 +46,36 @@ public class DispatcherServlet extends HttpServlet {
 	}
 
 	private void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		// 클라이언트의 요청 path 정보를 추출
 		String uri = request.getRequestURI();
 		String path = uri.substring(uri.lastIndexOf("/"));
 		System.out.println(path);
-
-		if (path.equals("/login.do")) {
-			System.out.println("로그인 처리");
-			
-			String id = request.getParameter("id");
-			String password = request.getParameter("password");
-
-			UserVO vo = new UserVO();
-			vo.setId(id);
-			vo.setPassword(password);
-
-			// UserDao dao = new UserDaoSpring();
-			UserDao dao = new UserDaoImpl();
-			UserVO user = dao.getUser(vo);
-			System.out.println("user: " + user);
-
-			if (user != null) {
-				response.sendRedirect("getBoardList.do");
-			} else {
-				response.sendRedirect("login.jsp");
-			}
-			
-		} else if (path.equals("/logout.do")) {
-			System.out.println("로그아웃 처리");
-			
-		} else if (path.equals("/insertBoard.do")) {
-			System.out.println("글 등록 처리");
-			
-			request.setCharacterEncoding("utf-8");
-
-			String title = request.getParameter("title");
-			String writer = request.getParameter("writer");
-			String content = request.getParameter("content");
-
-			BoardVO vo = new BoardVO();
-			vo.setTitle(title);
-			vo.setWriter(writer);
-			vo.setContent(content);
-
-			BoardService service = new BoardServiceImpl();
-			service.insert(vo);
-
-			response.sendRedirect("getBoardList.do");
-			
-		} else if (path.equals("/updateBoard.do")) {
-			System.out.println("글 수정 처리");
-			
-			int seq = Integer.parseInt(request.getParameter("seq"));
-			String title = request.getParameter("title");
-			String writer = request.getParameter("writer");
-			String content = request.getParameter("content");
-
-			BoardVO vo = new BoardVO();
-			vo.setSeq(seq);
-			vo.setTitle(title);
-			vo.setWriter(writer);
-			vo.setContent(content);
-			System.out.println("vo: "+vo);
-
-			BoardService service = new BoardServiceImpl();
-			service.update(vo);
-
-			response.sendRedirect("getBoardList.do");
-			
-		} else if (path.equals("/deleteBoard.do")) {
-			System.out.println("글 삭제 처리");
-			
-			int seq = Integer.parseInt(request.getParameter("seq"));
-
-			BoardService service = new BoardServiceImpl();
-			service.delete(seq);
-
-			response.sendRedirect("getBoardList.do");
-			
-		} else if (path.equals("/getBoard.do")) {
-			System.out.println("글 상세 조회 처리");
-			
-			request.setCharacterEncoding("utf-8");
-
-			int seq = Integer.parseInt(request.getParameter("seq"));
-
-			BoardService service = new BoardServiceImpl();
-			BoardVO m = service.getBoard(seq);
-			
-			HttpSession session = request.getSession();
-			session.setAttribute("m", m);
-			
-			response.sendRedirect("getBoard.jsp");
-			
-		} else if (path.equals("/getBoardList.do")) {
-			System.out.println("글 목록 검색 처리");
-			
-			BoardService service = new BoardServiceImpl();
-			List<BoardVO> li = service.getBoardList();
-			
-			HttpSession session = request.getSession();
-			session.setAttribute("li", li);
-			
-			response.sendRedirect("getBoardList.jsp");
+		
+		// HandlerMapping을 통해 path에 해당하는 Controller를 검색
+		Controller ctrl = handlerMapping.getController(path);
+		
+		// 검색된 Controller 실행
+		String viewName = ctrl.handleRequest(request, response);
+		
+		// ViewReslover를 통해 viewName에 해당하는 화면을 검색
+		String view = null;
+		if(!viewName.contains(".do")) {
+			view = viewResolver.getView(viewName);
+		} else {
+			view = viewName;
 		}
+		
+		// 검색된 화면으로 이동
+		response.sendRedirect(view);
+		
+		// 각 Controller로 이동
+//		if (path.equals("/login.do")) {
+//		} else if (path.equals("/logout.do")) {
+//		} else if (path.equals("/insertBoard.do")) {
+//		} else if (path.equals("/updateBoard.do")) {
+//		} else if (path.equals("/deleteBoard.do")) {
+//		} else if (path.equals("/getBoard.do")) {
+//		} else if (path.equals("/getBoardList.do")) {
+//		}
 	}
 }

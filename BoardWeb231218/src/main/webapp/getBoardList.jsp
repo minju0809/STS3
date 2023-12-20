@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 
 <%@ page import="com.springbook.biz.board.*"%>
 <%@ page import="com.springbook.biz.board.impl.*"%>
@@ -27,21 +28,22 @@ List<BoardVO> li = (List<BoardVO>) session.getAttribute("li");
 			<td>등록일</td>
 			<td>조회수</td>
 		</tr>
-		<%
-		for (BoardVO m : li) {
-		%>
+<%--  		<%  --%>
+<!--  		for (BoardVO m : li) { -->
+<%--  		%>  --%>
+		<c:forEach items="${ li }" var="m">
+		
 		<tr>
-			<td><%=m.getSeq() %></td>
-			<td><a href=getBoard.do?seq=<%=m.getSeq() %>><%=m.getTitle() %></a></td>
-			<td><%=m.getWriter() %></td>
-			<td><%=m.getRegdate() %></td>
-			<td><a href="deleteBoard.do?seq=<%=m.getSeq() %>"><%=m.getCnt() %></a></td>
-<%-- 			<td><a href="delete_proc.jsp?seq=<%=m.getSeq() %>"><%=m.getCnt() %></a></td> --%>
+			<td>${ m.getSeq() }</td>
+			<td><a href="getBoard.do?seq=${ m.getSeq() }">${ m.getTitle() }</a></td>
+			<td>${ m.getWriter() }</td>
+			<td>${ m.getRegdate() }</td>
+			<td><a href="deleteBoard.do?seq=${ m.getSeq() }">${ m.getCnt() }</a></td>
 		</tr>
-
-		<%
-		}
-		%>
+		</c:forEach>
+<%--  		<%  --%>
+<!-- 		} -->
+<%-- 		%>  --%>
 	</table>
 	<a href="write.jsp">새글등록</a>
 	<hr>
