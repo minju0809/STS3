@@ -3,15 +3,18 @@ package com.springbook.view.board;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
 import com.springbook.biz.board.BoardService;
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.board.impl.BoardServiceImpl;
-import com.springbook.view.controller.Controller;
+//import com.springbook.view.controller.Controller;
 
 public class UpdateBoardController implements Controller {
 
 	@Override
-	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("글 수정 처리");
 		
 		int seq = Integer.parseInt(request.getParameter("seq"));
@@ -29,7 +32,10 @@ public class UpdateBoardController implements Controller {
 		BoardService service = new BoardServiceImpl();
 		service.update(vo);
 
-		return "getBoardList.do";
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:getBoardList.do");
+
+		return mav;
 	}
 	
 }

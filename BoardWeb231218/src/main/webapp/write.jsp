@@ -37,5 +37,6 @@
 		</table>
 	</form>
 	<hr>
+	<a href="getBoardList.do">글 목록으로</a>
 </body>
 </html>

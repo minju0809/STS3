@@ -3,15 +3,18 @@ package com.springbook.view.user;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
 import com.springbook.biz.user.UserDao;
 import com.springbook.biz.user.UserDaoImpl;
 import com.springbook.biz.user.UserVO;
-import com.springbook.view.controller.Controller;
+//import com.springbook.view.controller.Controller;
 
 public class LoginController implements Controller {
 
 	@Override
-	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("로그인 처리");
 
 		String id = request.getParameter("id");
@@ -25,14 +28,14 @@ public class LoginController implements Controller {
 		UserDao dao = new UserDaoImpl();
 		UserVO user = dao.getUser(vo);
 		System.out.println("user: " + user);
-
+		
+		ModelAndView mav = new ModelAndView();
 		if (user != null) {
-//			response.sendRedirect("getBoardList.do");
-			return "getBoardList.do";
+			mav.setViewName("redirect:getBoardList.do");
 		} else {
-//			response.sendRedirect("login.jsp");
-			return "login"; // do가 없을 것에는 ViewResolver에서 jsp 경로를 완성해줌
+			mav.setViewName("redirect:login.jsp");
 		}
+		return mav;
 	}
 
 }

@@ -23,6 +23,7 @@ BoardVO m = (BoardVO) session.getAttribute("m");
 </head>
 <body>
 	<h1>상세보기/수정</h1>
+	<a href="logout.do">Log-out</a>
 	<hr>
 <!-- 	<form action="update_proc.jsp"> -->
 	<form action="updateBoard.do">
@@ -57,5 +58,6 @@ BoardVO m = (BoardVO) session.getAttribute("m");
 		</table>
 	</form>
 	<hr>
+	<a href="getBoardList.do">글 목록</a>
 </body>
 </html>

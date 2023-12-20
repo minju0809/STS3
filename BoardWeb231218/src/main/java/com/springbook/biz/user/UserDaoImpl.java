@@ -16,7 +16,6 @@ public class UserDaoImpl implements UserDao {
 	
 	@Override
 	public UserVO getUser(UserVO vo) {
-		System.out.println("[로그확인] DaoImpl 실행");
 		UserVO m = null;
 		try {
 			conn = JDBCUtil.getConnection();
