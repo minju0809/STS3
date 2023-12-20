@@ -49,13 +49,19 @@ public class BoardDaoSpring implements BoardDao {
 		return jdbcTemplate.query(select_sql, new BoardRowMapper());
 	}
 
-	@Override
-	public BoardVO getBoard(int seq) {
-		return jdbcTemplate.queryForObject(select1_sql, new BoardRowMapper(), seq);
-	}
+//	@Override
+//	public BoardVO getBoard(BoardVO vo) {
+//		return jdbcTemplate.queryForObject(select1_sql, new BoardRowMapper(), seq);
+//	}
 
 	@Override
-	public void delete(int seq) {
+	public BoardVO getBoard(BoardVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public void delete(BoardVO vo) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -65,6 +71,7 @@ public class BoardDaoSpring implements BoardDao {
 		// TODO Auto-generated method stub
 		
 	}
+
 	
 	// 1. 상속을 받는 경우
 	

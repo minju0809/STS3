@@ -69,7 +69,7 @@ public class BoardDaoImpl implements BoardDao {
 				vo.setTitle(rs.getString("title"));
 				vo.setWriter(rs.getString("writer"));
 				vo.setContent(rs.getString("content"));
-				vo.setRegdate(rs.getDate("regDate"));
+				vo.setRegdate(rs.getString("regDate"));
 				vo.setCnt(rs.getInt("cnt"));
 				li.add(vo);
 				if(recordCount >= 8) {
@@ -104,23 +104,23 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
-	public BoardVO getBoard(int seq) {
+	public BoardVO getBoard(BoardVO vo) {
 		System.out.println("[로그확인] DaoImpl getBoard 실행");
-		BoardVO vo = null;
+		BoardVO m = null;
 		try {
 			conn = JDBCUtil.getConnection();
 			pstmt = conn.prepareStatement(select1_sql);
-			pstmt.setInt(1, seq);
+			pstmt.setInt(1, vo.getSeq());
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				vo = new BoardVO();
-				vo.setSeq(rs.getInt("seq"));
-				vo.setTitle(rs.getString("title"));
-				vo.setWriter(rs.getString("writer"));
-				vo.setContent(rs.getString("content"));
-				vo.setRegdate(rs.getDate("regDate"));
-				vo.setCnt(rs.getInt("cnt"));
+				m = new BoardVO();
+				m.setSeq(rs.getInt("seq"));
+				m.setTitle(rs.getString("title"));
+				m.setWriter(rs.getString("writer"));
+				m.setContent(rs.getString("content"));
+				m.setRegdate(rs.getString("regDate"));
+				m.setCnt(rs.getInt("cnt"));
 			}
 			
 		} catch (SQLException e) {
@@ -129,15 +129,15 @@ public class BoardDaoImpl implements BoardDao {
 			System.out.println("getBoard finally");
 			JDBCUtil.close(rs, pstmt, conn);
 		}
-		return vo;
+		return m;
 	}
 
 	@Override
-	public void delete(int seq) {
+	public void delete(BoardVO vo) {
 		try {
 			conn = JDBCUtil.getConnection();
 			pstmt = conn.prepareStatement(delete1_sql);
-			pstmt.setInt(1, seq);
+			pstmt.setInt(1, vo.getSeq());
 			pstmt.executeUpdate();
 			System.out.println("삭제완료");
 		} catch (SQLException e) {

@@ -12,7 +12,7 @@
 // BoardService service = new BoardServiceImpl();
 // BoardVO m = service.getBoard(seq);
 
-BoardVO m = (BoardVO) session.getAttribute("m");
+// BoardVO m = (BoardVO) session.getAttribute("m");
 %>
 
 <!DOCTYPE html>
@@ -27,7 +27,7 @@ BoardVO m = (BoardVO) session.getAttribute("m");
 	<hr>
 <!-- 	<form action="update_proc.jsp"> -->
 	<form action="updateBoard.do">
-	<input type=hidden name=seq value="${ m.getSeq() }" />
+<%-- 	<input type=hidden name=seq value="${ m.getSeq() }" /> --%>
 		<table border=1>
 			<tr>
 				<td>번호</td>
