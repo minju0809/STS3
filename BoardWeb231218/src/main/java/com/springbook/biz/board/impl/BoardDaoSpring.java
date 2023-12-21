@@ -60,7 +60,7 @@ public class BoardDaoSpring implements BoardDao {
 	@Override
 	public void delete(BoardVO vo) {
 		Object[] args = { vo.getSeq() };
-		jdbcTemplate.update(delete1_sql, new BoardRowMapper(), args);
+		jdbcTemplate.update(delete1_sql, args);
 	}
 
 	@Override

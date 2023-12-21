@@ -24,23 +24,23 @@ public class BoardController {
 		return "index.jsp";
 	}
 	
-	@RequestMapping("/write.do")
+	@RequestMapping(value="/write.do")
 	public String write() {
 		System.out.println("==> write 메소드 확인");
-		return "write.jsp";
+		return "/board/write.jsp";
 	}
 	
-	@RequestMapping("/writeOk.do")
+	@RequestMapping(value="/writeOk.do")
 	public String writeOk(BoardVO vo) {
 		System.out.println("==> writeOk 확인");
 		service.insert(vo);
-		return "list.do";
+		return "/list.do";
 	}
 	
-	@RequestMapping("/list.do")
+	@RequestMapping(value="list.do")
 	public String list(Model model) {
 		System.out.println("==> list 메소드 확인");
 		model.addAttribute("li", service.getBoardList(null));
-		return "list.jsp";
+		return "/board/list.jsp";
 	}
 }
