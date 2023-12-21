@@ -20,7 +20,6 @@
 	<!-- DataSource 설정 -->
 	<context:property-placeholder location="classpath:config/database.properties" />
 	
-	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${jdbc.driver}" />
 		<property name="url" value="${jdbc.url}" />
