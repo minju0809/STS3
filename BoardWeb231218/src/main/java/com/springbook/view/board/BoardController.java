@@ -8,18 +8,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.board.impl.BoardServiceImpl;
 
 @Controller
+@SessionAttributes("sessionBoard")
 public class BoardController {
 	
 	// @ModelAttribute 메소드의 실행 결과로 리턴된 객체는 자동으로 Model에 저장
 	@ModelAttribute("map") // @RequestMapping 적용 메소드 보다 몬저 호출
 	public Map<String, String> searchMap() {
-		Map<String, String> map = new HashMap<String, String>();
+		Map<String, String> map = new HashMap<>();
 		map.put("제목", "title");
 		map.put("내용", "content");
 		return map;
@@ -49,7 +51,8 @@ public class BoardController {
 		System.out.println("글 상세 조회 처리");
 
 		model.addAttribute("m", service.getBoard(vo)); // Model 정보 저장
-
+		model.addAttribute("sessionBoard", service.getBoard(vo));
+		
 		return "getBoard.jsp";
 	}
 	
@@ -74,8 +77,10 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/updateBoard.do")
-	public String updateBoard(BoardVO vo, BoardServiceImpl service) {
+	public String updateBoard(@ModelAttribute("sessionBoard") BoardVO vo, BoardServiceImpl service, Model model) {
 		System.out.println("글 수정 처리");
+		System.out.println("번호: " + vo.getSeq());
+		System.out.println("작성자: " + vo.getWriter());
 
 		service.update(vo);
 
