@@ -39,7 +39,7 @@
 			</tr>
 			<tr>
 				<td>작성자</td>
-				<td><input type="text" name="writer" value="${ m.getWriter() }"></td>
+				<td><input type="text" name="writer" value="${ m.getWriter() }" ></td>
 			</tr>
 			<tr>
 				<td>내용</td>

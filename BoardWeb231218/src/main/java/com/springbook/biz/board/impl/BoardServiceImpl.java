@@ -11,13 +11,13 @@ import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.common.Log4jAdvice;
 import com.springbook.biz.common.LogAdvice;
 
-//@Service("boardService")
+@Service("boardService")
 public class BoardServiceImpl implements BoardService {
 
-	private BoardDao dao = null;
+//	private BoardDao dao = null;
 	
-//	@Autowired
-//	private BoardDao dao;
+	@Autowired
+	private BoardDao dao;
 	
 //	@Autowired
 //	private BoardDao dao;
@@ -26,7 +26,7 @@ public class BoardServiceImpl implements BoardService {
 
 	public BoardServiceImpl() {
 		System.out.println("==> BoardServiceImpl 객체 생성(1)");
-		dao = new BoardDaoImpl();
+//		dao = new BoardDaoImpl();
 //		log = new Log4jAdvice();
 	}
 

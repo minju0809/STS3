@@ -33,7 +33,6 @@ public class BoardDaoImpl implements BoardDao {
 	
 	@Override
 	public void insert(BoardVO vo) {
-		System.out.println("[로그확인] DaoImpl insert 실행");
 		try {
 			conn = JDBCUtil.getConnection();
 			pstmt = conn.prepareStatement(insert_sql);
@@ -46,14 +45,12 @@ public class BoardDaoImpl implements BoardDao {
 			System.out.println("저장실패");
 			e.printStackTrace();
 		} finally {
-			System.out.println("insert finally");
 			JDBCUtil.close(pstmt, conn);
 		}
 	}
 
 	@Override
 	public List<BoardVO> getBoardList() {
-		System.out.println("[로그확인] DaoImpl getBoardList 실행");
 		List<BoardVO> li = new ArrayList<>();
 		try {
 			conn = JDBCUtil.getConnection();
@@ -80,7 +77,6 @@ public class BoardDaoImpl implements BoardDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			System.out.println("getBoardList finally");
 			JDBCUtil.close(rs, pstmt, conn);
 		}
 		return li;
@@ -88,7 +84,6 @@ public class BoardDaoImpl implements BoardDao {
 
 	@Override
 	public void delete() {
-		System.out.println("[로그확인] DaoImpl delete 실행");
 		try {
 			conn = JDBCUtil.getConnection();
 			pstmt = conn.prepareStatement(delete_sql);
@@ -98,14 +93,12 @@ public class BoardDaoImpl implements BoardDao {
 			System.out.println("삭제실패");
 			e.printStackTrace();
 		} finally {
-			System.out.println("delete finally");
 			JDBCUtil.close(pstmt, conn);
 		}		
 	}
 
 	@Override
 	public BoardVO getBoard(BoardVO vo) {
-		System.out.println("[로그확인] DaoImpl getBoard 실행");
 		BoardVO m = null;
 		try {
 			conn = JDBCUtil.getConnection();
@@ -126,7 +119,6 @@ public class BoardDaoImpl implements BoardDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			System.out.println("getBoard finally");
 			JDBCUtil.close(rs, pstmt, conn);
 		}
 		return m;
@@ -144,7 +136,6 @@ public class BoardDaoImpl implements BoardDao {
 			System.out.println("삭제실패");
 			e.printStackTrace();
 		} finally {
-			System.out.println("delete finally");
 			JDBCUtil.close(pstmt, conn);
 		}	
 	}
@@ -165,7 +156,6 @@ public class BoardDaoImpl implements BoardDao {
 			System.out.println("수정실패");
 			e.printStackTrace();
 		} finally {
-			System.out.println("update finally");
 			JDBCUtil.close(pstmt, conn);
 		}
 	}
