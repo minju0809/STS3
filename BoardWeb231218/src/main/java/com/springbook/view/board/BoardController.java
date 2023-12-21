@@ -1,6 +1,7 @@
 package com.springbook.view.board;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -11,26 +12,24 @@ import com.springbook.biz.board.impl.BoardServiceImpl;
 public class BoardController {
 	
 	@RequestMapping("/getBoardList.do")
-	public ModelAndView getBoardList(BoardServiceImpl service, ModelAndView mav) {
+	public String getBoardList(BoardServiceImpl service, Model model) {
 		System.out.println("글 목록 검색 처리");
 		
 //		HttpSession session = request.getSession();
 //		session.setAttribute("li", li);
 		
-		mav.addObject("li", service.getBoardList()); // Model 정보 저장
-		mav.setViewName("getBoardList.jsp"); // View 정보 저장
+		model.addAttribute("li", service.getBoardList()); // Model 정보 저장
 		
-		return mav;
+		return "getBoardList.jsp";
 	}
 
 	@RequestMapping("/getBoard.do")
-	public ModelAndView getBoard(BoardVO vo, BoardServiceImpl service, ModelAndView mav) {
+	public String getBoard(BoardVO vo, BoardServiceImpl service, Model model) {
 		System.out.println("글 상세 조회 처리");
 
-		mav.addObject("m", service.getBoard(vo)); // Model 정보 저장
-		mav.setViewName("getBoard.jsp"); // View 정보 저장
+		model.addAttribute("m", service.getBoard(vo)); // Model 정보 저장
 
-		return mav;
+		return "getBoard.jsp";
 	}
 	
 ////////////////////////////////////////////////////////////////////////////////////////

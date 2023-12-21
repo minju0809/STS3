@@ -18,35 +18,39 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>목록보기</h1>
-	<a href="logout.do">Log-out</a>
-	<hr>
-	<table border=1>
-		<tr>
-			<td>번호</td>
-			<td>제목</td>
-			<td>작성자</td>
-			<td>등록일</td>
-			<td>조회수</td>
-		</tr>
-		<%--  		<%  --%>
-		<!--  		for (BoardVO m : li) { -->
-		<%--  		%>  --%>
-		<c:forEach items="${ li }" var="m">
-
+	<div align=center>
+		<h1>목록보기</h1>
+		<h3>${ userName }님 환영합니다!..<a href="logout.do">Log-out</a>
+<!-- 	jsp 였다면 session.getAttribute 로 받아와야 하지만, el 표기법이라 바로 가져올 수 있음 -->
+		</h3>
+		<hr>
+		<table border=1>
 			<tr>
-				<td>${ m.getSeq() }</td>
-				<td><a href="getBoard.do?seq=${ m.getSeq() }">${ m.getTitle() }</a></td>
-				<td>${ m.getWriter() }</td>
-				<td>${ m.getRegdate() }</td>
-				<td><a href="deleteBoard.do?seq=${ m.getSeq() }">${ m.getCnt() }</a></td>
+				<td>번호</td>
+				<td>제목</td>
+				<td>작성자</td>
+				<td>등록일</td>
+				<td>조회수</td>
 			</tr>
-		</c:forEach>
-		<%--  		<%  --%>
-		<!-- 		} -->
-		<%-- 		%>  --%>
-	</table>
-	<a href="write.jsp">새글등록</a>
-	<hr>
+			<%--  		<%  --%>
+			<!--  		for (BoardVO m : li) { -->
+			<%--  		%>  --%>
+			<c:forEach items="${ li }" var="m">
+
+				<tr>
+					<td>${ m.getSeq() }</td>
+					<td><a href="getBoard.do?seq=${ m.getSeq() }">${ m.getTitle() }</a></td>
+					<td>${ m.getWriter() }</td>
+					<td>${ m.getRegdate() }</td>
+					<td><a href="deleteBoard.do?seq=${ m.getSeq() }">${ m.getCnt() }</a></td>
+				</tr>
+			</c:forEach>
+			<%--  		<%  --%>
+			<!-- 		} -->
+			<%-- 		%>  --%>
+		</table>
+		<a href="write.jsp">새글등록</a>
+		<hr>
+	</div>
 </body>
 </html>
