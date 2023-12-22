@@ -18,6 +18,11 @@ nav {
 	text-align: left;
 }
 
+nav a {
+	text-decoration: none;
+	color: #fff;
+}
+
 section {
 	background: #eaeaea;
 	min-height: 500px;

@@ -28,6 +28,15 @@ public class BoardController {
 		return "/board/getBoardList.jsp";
 	}
 	
+	@RequestMapping(value="detail.do")
+	public String getBoard(Model model, BoardVO vo) {
+		System.out.println("==> getBoard");
+		
+		model.addAttribute("m", service.getBoard(vo));
+		
+		return "/board/detail.jsp";
+	}
+	
 	@RequestMapping(value="write.do", method=RequestMethod.GET)
 	public String write() {
 		System.out.println("==> write");

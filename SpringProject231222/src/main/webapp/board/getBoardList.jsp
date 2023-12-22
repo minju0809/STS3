@@ -4,6 +4,12 @@
 
 <c:import url="/include/top.jsp" />
 
+<style>
+tr:first-child {
+	background: skyblue;
+}
+</style>
+
 <section>
 	<br>
 	<div align=center>
@@ -20,7 +26,7 @@
 			<c:forEach items="${ li }" var="m">
 				<tr>
 					<td>${ m.getSeq() }</td>
-					<td>${ m.getTitle() }</td>
+					<td><a href="detail.do?seq=${ m.getSeq() }">${ m.getTitle() }</a></td>
 					<td>${ m.getWriter() }</td>
 					<td>${ m.getRegdate() }</td>
 					<td>${ m.getCnt() }</td>

@@ -13,6 +13,7 @@ public class BoardDaoImpl implements BoardDao {
 	private JdbcTemplate jdbcTemplate;
 	
 	String select_sql = "select * from board order by seq desc";
+	String select1_sql = "select * from board where seq = ?";
 	String insert_sql = "insert into board (seq, title, writer, content) "
 			+ " values ((select max(seq)+1 as seq from board),?,?,?)";
 	
@@ -23,9 +24,16 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
+	public BoardVO getBoard(BoardVO vo) {
+		Object[] args = { vo.getSeq() };
+		return jdbcTemplate.queryForObject(select1_sql, new BoardRowMapper(), args);
+	}
+	
+	@Override
 	public void insert(BoardVO vo) {
 		Object[] args = { vo.getTitle(), vo.getWriter(), vo.getContent() };
 		jdbcTemplate.update(insert_sql, args);
 	}
+
 
 }
