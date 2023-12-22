@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.springbook.biz.board.BoardService;
 import com.springbook.biz.board.BoardVO;
 
 @Controller
+@SessionAttributes("m")
 public class BoardController {
 	
 	@Autowired
@@ -75,6 +77,15 @@ public class BoardController {
 		System.out.println("==> delete");
 		
 		service.delete(vo);
+		
+		return "/getBoardList.do";
+	}
+	
+	@RequestMapping(value="update.do")
+	public String update(@ModelAttribute("m") BoardVO vo) {
+		System.out.println("==> update 확인" + vo);
+		
+		service.update(vo);
 		
 		return "/getBoardList.do";
 	}

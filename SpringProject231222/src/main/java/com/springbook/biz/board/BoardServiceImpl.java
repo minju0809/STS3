@@ -39,4 +39,9 @@ public class BoardServiceImpl implements BoardService {
 	public void cntUpdate(BoardVO vo) {
 		dao.cntUpdate(vo);
 	}
+
+	@Override
+	public void update(BoardVO vo) {
+		dao.update(vo);
+	}
 }

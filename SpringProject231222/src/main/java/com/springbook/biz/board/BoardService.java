@@ -9,4 +9,5 @@ public interface BoardService {
 	void insert(BoardVO vo);
 	void delete(BoardVO vo);
 	void cntUpdate(BoardVO vo);
+	void update(BoardVO vo);
 }

@@ -14,7 +14,7 @@ td:first-child {
 	<br>
 	<div align=center>
 		<h3>상세보기/수정</h3>
-		<form action="">
+		<form action="update.do">
 			<table border=1>
 				<tr>
 					<td>번호</td>
@@ -22,7 +22,7 @@ td:first-child {
 				</tr>
 				<tr>
 					<td>작성자</td>
-					<td><input name=title value="${ m.getWriter() }" /></td>
+					<td><input name=writer value="${ m.getWriter() }" /></td>
 				</tr>
 				<tr>
 					<td>제목</td>
