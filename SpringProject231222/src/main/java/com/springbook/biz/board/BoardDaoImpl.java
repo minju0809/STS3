@@ -23,7 +23,7 @@ public class BoardDaoImpl implements BoardDao {
 
 	@Override
 	public List<BoardVO> getBoardList(String ch1, String ch2) {
-		if (ch1 == null || ch2.equals("")) {
+		if (ch2.equals("")) {
 			return jdbcTemplate.query(select_sql, new BoardRowMapper());
 		} else if (ch1.equals("writer")) {
 			Object[] args = { "%" + ch2 + "%" };

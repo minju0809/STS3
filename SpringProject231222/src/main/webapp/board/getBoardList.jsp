@@ -47,8 +47,9 @@ td:last-child {
 		</table>
 		<form action="getBoardList.do">
 			<select name="ch1">
-				<option value="writer">작성자</option>
-				<option value="title">제목</option>
+				<c:forEach items="${ ch1 }" var="option">
+					<option value="${ option.value }">${ option.key }
+				</c:forEach>
 			</select>
 			<input type=text name="ch2" />
 			<input type= submit value="검색" />
