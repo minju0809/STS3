@@ -19,4 +19,9 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardVO> getBoardList(String ch1, String ch2) {
 		return dao.getBoardList(ch1, ch2);
 	}
+
+	@Override
+	public void insert(BoardVO vo) {
+		dao.insert(vo);
+	}
 }

@@ -27,7 +27,6 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<a href="index.do">시작으로</a> <a href="write.do">새글등록</a>
 	</div>
 	<br>
 </section>
