@@ -23,7 +23,7 @@ public class BoardController {
 		System.out.println("==> index 메소드 확인");
 		return "index.jsp";
 	}
-	
+	 
 	@RequestMapping(value="/write.do")
 	public String write() {
 		System.out.println("==> write 메소드 확인");
