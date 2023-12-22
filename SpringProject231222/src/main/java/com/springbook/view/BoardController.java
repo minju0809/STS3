@@ -20,10 +20,10 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="getBoardList.do")
-	public String getBoardList(Model model) {
+	public String getBoardList(BoardVO vo, Model model) {
 		System.out.println("==> getBoardList");
 		
-		model.addAttribute("li", service.getBoardList(null, null));
+		model.addAttribute("li", service.getBoardList(vo));
 		
 		return "/board/getBoardList.jsp";
 	}

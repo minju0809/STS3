@@ -8,21 +8,32 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class BoardDaoImpl implements BoardDao {
-	
+
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	
+
 	String select_sql = "select * from board order by seq desc";
+	String select_writer_sql = "select * from board where writer like ? order by seq desc";
+	String select_title_sql = "select * from board where title like ? order by seq desc";
 	String select1_sql = "select * from board where seq = ?";
 	String insert_sql = "insert into board (seq, title, writer, content) "
 			+ " values ((select max(seq)+1 as seq from board),?,?,?)";
 	String delete_sql = "delete from board where seq = ?";
 	String cnt_sql = "update board set cnt = (cnt+1) where seq = ?";
-	
+
 	@Override
-	public List<BoardVO> getBoardList(String ch1, String ch2) {
-		// Object[] args = { ch1, ch2 };
-		return jdbcTemplate.query(select_sql, new BoardRowMapper());
+	public List<BoardVO> getBoardList(BoardVO vo) {
+		if (vo.getCh1() == null || vo.getCh2().equals("")) {
+			return jdbcTemplate.query(select_sql, new BoardRowMapper());
+		} else if (vo.getCh1().equals("writer")) {
+			Object[] args = { "%" + vo.getCh2() + "%" };
+			return jdbcTemplate.query(select_writer_sql, new BoardRowMapper(), args);
+		} else if (vo.getCh1().equals("title")) {
+			Object[] args = { "%" + vo.getCh2() + "%" };
+			return jdbcTemplate.query(select_title_sql, new BoardRowMapper(), args);
+		} else {
+			return jdbcTemplate.query(select_sql, new BoardRowMapper());
+		}
 	}
 
 	@Override
@@ -30,7 +41,7 @@ public class BoardDaoImpl implements BoardDao {
 		Object[] args = { vo.getSeq() };
 		return jdbcTemplate.queryForObject(select1_sql, new BoardRowMapper(), args);
 	}
-	
+
 	@Override
 	public void insert(BoardVO vo) {
 		Object[] args = { vo.getTitle(), vo.getWriter(), vo.getContent() };

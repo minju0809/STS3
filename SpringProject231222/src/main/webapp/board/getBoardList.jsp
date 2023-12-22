@@ -8,13 +8,25 @@
 tr:first-child {
 	background: skyblue;
 }
+
+td:nth-child(2) {
+	width: 200px;
+}
+
+td:last-child {
+	text-align: center;
+}
+
 </style>
+
+<script>
+
+</script>
 
 <section>
 	<br>
 	<div align=center>
 		<h3>목록보기</h3>
-		<h5>${ userName }님환영합니다!..</h5>
 		<table border=1>
 			<tr>
 				<td>번호</td>
@@ -26,13 +38,21 @@ tr:first-child {
 			<c:forEach items="${ li }" var="m">
 				<tr>
 					<td>${ m.getSeq() }</td>
-					<td><a href="detail.do?seq=${ m.getSeq() }">${ m.getTitle() }</a></td>
+					<td><a href="detail.do?seq=${ m.getSeq() }" >${ m.getTitle() }</a></td>
 					<td>${ m.getWriter() }</td>
-					<td>${ m.getRegdate() }</td>
+					<td>${ m.getRegdate().substring(0, 10) }</td>
 					<td><a href="delete.do?seq=${ m.getSeq() }">${ m.getCnt() }</a></td>
 				</tr>
 			</c:forEach>
 		</table>
+		<form action="getBoardList.do">
+			<select name="ch1">
+				<option value="writer">작성자</option>
+				<option value="title">제목</option>
+			</select>
+			<input type=text name="ch2" />
+			<input type= submit value="검색" />
+		</form>
 	</div>
 	<br>
 </section>
