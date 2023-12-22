@@ -29,7 +29,7 @@ tr:first-child {
 					<td><a href="detail.do?seq=${ m.getSeq() }">${ m.getTitle() }</a></td>
 					<td>${ m.getWriter() }</td>
 					<td>${ m.getRegdate() }</td>
-					<td>${ m.getCnt() }</td>
+					<td><a href="delete.do?seq=${ m.getSeq() }">${ m.getCnt() }</a></td>
 				</tr>
 			</c:forEach>
 		</table>

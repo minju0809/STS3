@@ -7,4 +7,6 @@ public interface BoardService {
 	BoardVO getBoard(BoardVO vo);
 	
 	void insert(BoardVO vo);
+	void delete(BoardVO vo);
+	void cntUpdate(BoardVO vo);
 }

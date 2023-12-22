@@ -16,6 +16,8 @@ public class BoardDaoImpl implements BoardDao {
 	String select1_sql = "select * from board where seq = ?";
 	String insert_sql = "insert into board (seq, title, writer, content) "
 			+ " values ((select max(seq)+1 as seq from board),?,?,?)";
+	String delete_sql = "delete from board where seq = ?";
+	String cnt_sql = "update board set cnt = (cnt+1) where seq = ?";
 	
 	@Override
 	public List<BoardVO> getBoardList(String ch1, String ch2) {
@@ -35,5 +37,16 @@ public class BoardDaoImpl implements BoardDao {
 		jdbcTemplate.update(insert_sql, args);
 	}
 
+	@Override
+	public void delete(BoardVO vo) {
+		Object[] args = { vo.getSeq() };
+		jdbcTemplate.update(delete_sql, args);
+	}
+
+	@Override
+	public void cntUpdate(BoardVO vo) {
+		Object[] args = { vo.getSeq() };
+		jdbcTemplate.update(cnt_sql, args);
+	}
 
 }

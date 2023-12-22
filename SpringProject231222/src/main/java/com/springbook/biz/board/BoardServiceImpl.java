@@ -29,4 +29,14 @@ public class BoardServiceImpl implements BoardService {
 	public BoardVO getBoard(BoardVO vo) {
 		return dao.getBoard(vo);
 	}
+
+	@Override
+	public void delete(BoardVO vo) {
+		dao.delete(vo);
+	}
+
+	@Override
+	public void cntUpdate(BoardVO vo) {
+		dao.cntUpdate(vo);
+	}
 }

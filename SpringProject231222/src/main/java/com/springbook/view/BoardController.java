@@ -32,6 +32,7 @@ public class BoardController {
 	public String getBoard(Model model, BoardVO vo) {
 		System.out.println("==> getBoard");
 		
+		service.cntUpdate(vo);
 		model.addAttribute("m", service.getBoard(vo));
 		
 		return "/board/detail.jsp";
@@ -49,6 +50,15 @@ public class BoardController {
 		System.out.println("==> write");
 		
 		service.insert(vo);
+		
+		return "/getBoardList.do";
+	}
+	
+	@RequestMapping(value="delete.do")
+	public String delete(BoardVO vo) {
+		System.out.println("==> delete");
+		
+		service.delete(vo);
 		
 		return "/getBoardList.do";
 	}
