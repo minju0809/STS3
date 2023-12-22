@@ -22,14 +22,14 @@ public class BoardDaoImpl implements BoardDao {
 	String cnt_sql = "update board set cnt = (cnt+1) where seq = ?";
 
 	@Override
-	public List<BoardVO> getBoardList(BoardVO vo) {
-		if (vo.getCh1() == null || vo.getCh2().equals("")) {
+	public List<BoardVO> getBoardList(String ch1, String ch2) {
+		if (ch1 == null || ch2.equals("")) {
 			return jdbcTemplate.query(select_sql, new BoardRowMapper());
-		} else if (vo.getCh1().equals("writer")) {
-			Object[] args = { "%" + vo.getCh2() + "%" };
+		} else if (ch1.equals("writer")) {
+			Object[] args = { "%" + ch2 + "%" };
 			return jdbcTemplate.query(select_writer_sql, new BoardRowMapper(), args);
-		} else if (vo.getCh1().equals("title")) {
-			Object[] args = { "%" + vo.getCh2() + "%" };
+		} else if (ch1.equals("title")) {
+			Object[] args = { "%" + ch2 + "%" };
 			return jdbcTemplate.query(select_title_sql, new BoardRowMapper(), args);
 		} else {
 			return jdbcTemplate.query(select_sql, new BoardRowMapper());

@@ -23,7 +23,7 @@ public class BoardController {
 	public String getBoardList(BoardVO vo, Model model) {
 		System.out.println("==> getBoardList");
 		
-		model.addAttribute("li", service.getBoardList(vo));
+		model.addAttribute("li", service.getBoardList(vo.getCh1(), vo.getCh2()));
 		
 		return "/board/getBoardList.jsp";
 	}
