@@ -16,4 +16,9 @@ public class ExamServiceImpl implements ExamService {
 		return dao.getBoardList(vo);
 	}
 
+	@Override
+	public void insert(ExamVO vo) {
+		dao.insert(vo);
+	}
+
 }

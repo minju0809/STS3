@@ -18,4 +18,10 @@ public class ExamDaoImpl implements ExamDao {
 		return mybatis.selectList("ExamDao.select_sql", vo);
 	}
 
+	@Override
+	public void insert(ExamVO vo) {
+		System.out.println("@@@@@@@@@@@@@@===> Mybatis insert" + vo);
+		mybatis.insert("ExamDao.insert_sql", vo);
+	}
+
 }

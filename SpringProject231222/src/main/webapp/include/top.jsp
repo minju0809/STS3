@@ -22,4 +22,5 @@
 		&emsp;<a href="getBoardList.do">게시판</a>
 		&emsp;<a href="write.do">글 등록</a>
 		&emsp;<a href="examList.do">성적처리목록</a>
+		&emsp;<a href="examWrite.do">성적 등록</a>
 	</nav>

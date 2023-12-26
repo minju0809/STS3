@@ -8,9 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.exam.ExamService;
 import com.springbook.biz.exam.ExamVO;
 
@@ -46,5 +48,21 @@ public class ExamController {
 		model.addAttribute("li", service.getBoardList(vo));
 		
 		return "/exam/examList.jsp";
+	}
+	
+	@RequestMapping(value="examWrite.do", method=RequestMethod.GET)
+	public String write() {
+		System.out.println("==> write");
+		
+		return "/exam/examWrite.jsp";
+	}
+	
+	@RequestMapping(value="examWrite.do", method=RequestMethod.POST)
+	public String write(ExamVO vo) {
+		System.out.println("==> write");
+		
+		service.insert(vo);
+		
+		return "/examList.do";
 	}
 }
