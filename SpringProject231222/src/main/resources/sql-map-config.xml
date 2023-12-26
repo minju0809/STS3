@@ -7,11 +7,13 @@
   <typeAliases>
 
     <typeAlias alias="BoardVO"   type="com.springbook.biz.board.BoardVO" />  
+    <typeAlias alias="ExamVO"   type="com.springbook.biz.exam.ExamVO" />  
 
   </typeAliases>
 
   <mappers>
     <mapper resource="mappings/board-mapping.xml"  />
+    <mapper resource="mappings/exam-mapping.xml"  />
 
   </mappers>
 </configuration>

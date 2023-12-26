@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ExamDao">
+
+	<select id="select_sql" parameterType="ExamVO" resultType="ExamVO">
+		select * from examtbl where 1=1
+		<if test="ch1=='sno'">
+			and sno like '%'||#{ch2}||'%'
+		</if>
+		<if test="ch1=='sname'">
+			and sname like '%'||#{ch2}||'%'
+		</if>		
+		order by sno
+	</select>
+
+</mapper>

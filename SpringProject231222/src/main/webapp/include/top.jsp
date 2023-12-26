@@ -21,4 +21,5 @@
 		&emsp;<a href="index.do">홈으로</a>
 		&emsp;<a href="getBoardList.do">게시판</a>
 		&emsp;<a href="write.do">글 등록</a>
+		&emsp;<a href="examList.do">성적처리목록</a>
 	</nav>
