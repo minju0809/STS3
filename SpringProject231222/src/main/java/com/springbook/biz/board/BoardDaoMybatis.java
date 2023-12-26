@@ -20,14 +20,16 @@ public class BoardDaoMybatis implements BoardDao {
 		vo.setCh1(ch1);
 		vo.setCh2(ch2);
 		
-		if (ch2.equals("")) {
-			return mybatis.selectList("BoardDao.select_sql");
-		} else if (ch1.equals("writer")) {
-			return mybatis.selectList("BoardDao.select_writer_sql", vo);
-		} else if (ch1.equals("title")) {
-			return mybatis.selectList("BoardDao.select_title_sql", vo);
-		}
-		return null;
+		
+//		if (ch2.equals("")) {
+//			return mybatis.selectList("BoardDao.select_sql");
+//		} else if (ch1.equals("writer")) {
+//			return mybatis.selectList("BoardDao.select_writer_sql", vo);
+//		} else if (ch1.equals("title")) {
+//			return mybatis.selectList("BoardDao.select_title_sql", vo);
+//		}
+		
+		return mybatis.selectList("BoardDao.select_ch_sql", vo);
 	}
 
 	@Override

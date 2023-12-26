@@ -42,6 +42,7 @@
 		select * from board where seq = #{seq}
 	</select>
 
+	<!-- Dynamis SQL 적용 전 -->
 	<select id="select_sql" parameterType="BoardVO" resultType="BoardVO">
 		select * from board order by seq desc
 	</select>
@@ -52,6 +53,18 @@
 	
 	<select id="select_title_sql" parameterType="BoardVO" resultType="BoardVO">
 		select * from board where title	like '%'||#{ch2}||'%' order by seq desc
+	</select>
+	
+	<!-- Dynamis SQL 적용 후 -->
+	<select id="select_ch_sql" parameterType="BoardVO" resultType="BoardVO">
+		select * from board where 1=1
+		<if test="ch1=='writer'">
+			and writer like '%'||#{ch2}||'%'
+		</if>
+		<if test="ch1=='title'">
+			and title like '%'||#{ch2}||'%'
+		</if>
+		order by seq desc
 	</select>
 
 <!-- 	<select id="GETLISTSHOP_SQL2" parameterType="BoardVO" -->
