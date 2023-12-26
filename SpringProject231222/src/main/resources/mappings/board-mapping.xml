@@ -4,16 +4,17 @@
 
 <mapper namespace="BoardDao">
 
-	<!-- <resultMap id="BoardResult" type="board"> -->
+	<resultMap id="BoardResult" type="BoardVO">
 
-	<!-- property 값은 VO 필드명 , column은 테이블 필드명 -->
-	<!-- <id property="productId" column="PRODUCT_ID" /> -->
-	<!-- <result property="productName" column="product_name" /> -->
-	<!-- <result property="productPrice" column="product_price" /> -->
-	<!-- <result property="productDesc" column="product_desc" /> -->
-	<!-- <result property="productImgStr" column="product_img" /> -->
+<!-- 	property 값은 VO 필드명 , column은 테이블 필드명 -->
+	<id property="seq" column="seq" />
+	<result property="title" column="title" />
+	<result property="writer" column="writer" />
+	<result property="content" column="content" />
+	<result property="regdate" column="regdate" />
+	<result property="cnt" column="cnt" />
 
-	<!-- </resultMap> -->
+	</resultMap>
 
 
 	<insert id="insert_sql" parameterType="BoardVO">
@@ -37,7 +38,7 @@
 		where seq = #{seq}
 	</update>
 
-	<select id="select1_sql" parameterType="BoardVO" resultType="BoardVO">
+	<select id="select1_sql" parameterType="BoardVO" resultMap="BoardResult">
 		select * from board where seq = #{seq}
 	</select>
 
