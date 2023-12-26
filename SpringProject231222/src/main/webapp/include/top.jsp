@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>스프링 게시판</title>
 <link type="text/css" rel="stylesheet" href="${ path }/css/style.css" />
 </head>
 

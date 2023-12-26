@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BoardDao">
+
+	<!-- <resultMap id="BoardResult" type="board"> -->
+
+	<!-- property 값은 VO 필드명 , column은 테이블 필드명 -->
+	<!-- <id property="productId" column="PRODUCT_ID" /> -->
+	<!-- <result property="productName" column="product_name" /> -->
+	<!-- <result property="productPrice" column="product_price" /> -->
+	<!-- <result property="productDesc" column="product_desc" /> -->
+	<!-- <result property="productImgStr" column="product_img" /> -->
+
+	<!-- </resultMap> -->
+
+
+	<insert id="insert_sql" parameterType="BoardVO">
+		insert into board (seq, title, writer, content)
+		values ((select max(seq)+1 as seq from board),#{title},#{writer},#{content})
+	</insert>
+
+	<delete id="delete_sql" parameterType="BoardVO">
+		delete from board where seq = #{seq}
+	</delete>
+
+	<update id="cnt_sql" parameterType="BoardVO">
+		update board set cnt = (cnt+1) where seq = #{seq}
+	</update>
+
+	<update id="update_sql" parameterType="BoardVO">
+		update board set title= #{title}, writer = #{writer}, content = #{content}
+		where seq = #{seq}
+	</update>
+
+	<select id="select1_sql" parameterType="BoardVO" resultType="BoardVO">
+		select * from board where seq = #{seq}
+	</select>
+
+	<select id="select_sql" parameterType="BoardVO" resultType="BoardVO">
+		select * from board order by seq desc
+	</select>
+	
+	<select id="select_writer_sql" parameterType="BoardVO" resultType="BoardVO">
+		select * from board where writer like #{ch2} order by seq desc
+	</select>
+	
+	<select id="select_title_sql" parameterType="BoardVO" resultType="BoardVO">
+		select * from board where title	like #{ch2} order by seq desc
+	</select>
+
+<!-- 	<select id="GETLISTSHOP_SQL2" parameterType="BoardVO" -->
+<!-- 		resultMap="ShopResult"> -->
+		<!-- CDATA: 문자 그대로 출력 (번역X) 크다, 작다 표시해야 할 때 -->
+<!--     <![CDATA[   -->
+<!--       select *  from tbl_product  -->
+<!--       where  ROWNUM <=10 order  by PRODUCT_ID desc -->
+<!--     ]]> -->
+<!-- 	</select> -->
+
+</mapper>
