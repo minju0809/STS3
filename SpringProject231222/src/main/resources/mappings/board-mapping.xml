@@ -17,8 +17,11 @@
 
 
 	<insert id="insert_sql" parameterType="BoardVO">
+		<selectKey keyProperty="seq" resultType="int" order="BEFORE">
+			(select max(seq)+1 as seq from board)
+		</selectKey>
 		insert into board (seq, title, writer, content)
-		values ((select max(seq)+1 as seq from board),#{title},#{writer},#{content})
+		values (#{seq},#{title},#{writer},#{content})
 	</insert>
 
 	<delete id="delete_sql" parameterType="BoardVO">
