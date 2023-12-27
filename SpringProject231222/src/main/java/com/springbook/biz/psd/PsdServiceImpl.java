@@ -31,4 +31,9 @@ public class PsdServiceImpl implements PsdService {
 		return dao.getPsd(vo);
 	}
 
+	@Override
+	public void cnt(PsdVO vo) {
+		dao.cnt(vo);
+	}
+
 }

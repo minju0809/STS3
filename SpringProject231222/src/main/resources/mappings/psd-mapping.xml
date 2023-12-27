@@ -21,4 +21,8 @@
 		delete from psdTbl where seq = #{seq}
 	</delete>
 	
+	<update id="cnt_sql" parameterType="PsdVO">
+		update psdTbl set cnt = cnt + 1 where seq = #{seq}
+	</update>
+	
 </mapper>

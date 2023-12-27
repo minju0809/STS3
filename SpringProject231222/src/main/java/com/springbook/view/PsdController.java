@@ -99,6 +99,7 @@ public class PsdController {
 	public String getPsd(Model model, PsdVO vo) {
 		System.out.println("==> getBoardList");
 		
+		service.cnt(vo);
 		model.addAttribute("m", service.getPsd(vo));
 		
 		return "/psd/psdOne.jsp";
@@ -113,6 +114,5 @@ public class PsdController {
 		
 		return "/psdList.do";
 	}
-	
 	
 }

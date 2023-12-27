@@ -32,4 +32,9 @@ public class PsdDaoImpl implements PsdDao {
 		return mybatis.selectOne("PsdDao.select1_sql", vo);
 	}
 
+	@Override
+	public void cnt(PsdVO vo) {
+		mybatis.update("PsdDao.cnt_sql", vo);
+	}
+
 }

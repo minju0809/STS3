@@ -7,4 +7,5 @@ public interface PsdService {
 	PsdVO getPsd(PsdVO vo);
 	void insert(PsdVO vo);
 	void delete(PsdVO vo);
+	void cnt(PsdVO vo);
 }
