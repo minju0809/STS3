@@ -26,4 +26,9 @@ public class PsdServiceImpl implements PsdService {
 		dao.delete(vo);
 	}
 
+	@Override
+	public PsdVO getPsd(PsdVO vo) {
+		return dao.getPsd(vo);
+	}
+
 }

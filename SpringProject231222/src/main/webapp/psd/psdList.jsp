@@ -39,7 +39,9 @@ td:last-child {
 			<c:forEach items="${ li }" var="m">
 				<tr>
 					<td>${ m.getSeq() }</td>
-					<td>${ m.getTitle() }</td>
+					<td>
+						<a href="psdOne.do?seq=${ m.getSeq() }">${ m.getTitle() }</a>
+					</td>
 					<td>${ m.getUploadFileStr() }</td>
 					<td><img src="${ path }/psd/img/${ m.getUploadFileStr() }" width=50 height=50 /></td>
 					<td>${ m.getRegdate() }</td>

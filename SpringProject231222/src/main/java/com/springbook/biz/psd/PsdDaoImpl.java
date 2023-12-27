@@ -27,4 +27,9 @@ public class PsdDaoImpl implements PsdDao {
 		mybatis.delete("PsdDao.delete_sql", vo);
 	}
 
+	@Override
+	public PsdVO getPsd(PsdVO vo) {
+		return mybatis.selectOne("PsdDao.select1_sql", vo);
+	}
+
 }

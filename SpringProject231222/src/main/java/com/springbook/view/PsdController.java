@@ -71,16 +71,6 @@ public class PsdController {
 		return "psdList.do";
 	}
 	
-	@RequestMapping(value="psdList.do")
-	public String getPsdList(Model model) {
-		System.out.println("==> getBoardList");
-		
-		model.addAttribute("li", service.getPsdList());
-		
-		return "/psd/psdList.jsp";
-	}
-	
-	
 	@RequestMapping(value="psdDelete.do")
 	public String delete(PsdVO vo) {
 		File delF = new File(path + vo.getUploadFileStr());
@@ -91,5 +81,23 @@ public class PsdController {
 		service.delete(vo);
 		
 		return "/psdList.do";
+	}
+	
+	@RequestMapping(value="psdList.do")
+	public String getPsdList(Model model) {
+		System.out.println("==> getBoardList");
+		
+		model.addAttribute("li", service.getPsdList());
+		
+		return "/psd/psdList.jsp";
+	}
+	
+	@RequestMapping(value="psdOne.do")
+	public String getPsd(Model model, PsdVO vo) {
+		System.out.println("==> getBoardList");
+		
+		model.addAttribute("m", service.getPsd(vo));
+		
+		return "/psd/psdOne.jsp";
 	}
 }

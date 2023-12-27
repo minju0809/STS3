@@ -8,6 +8,10 @@
 		select * from psdTbl order by seq
 	</select>
 	
+	<select id="select1_sql" parameterType="PsdVO" resultType="PsdVO">
+		select * from psdTbl where seq = #{seq}
+	</select>
+	
 	<insert id="insert_sql" parameterType="PsdVO">
 		insert into psdTbl (seq, title, uploadFileStr)
 		values (idx.nextval,#{title}, #{uploadFileStr})
