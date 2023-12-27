@@ -14,15 +14,12 @@ td:first-child {
 	<br>
 	<div align=center>
 		<h3>상세보기/수정</h3>
-		<form action="update.do">
+		<form action="psdUpdate.do" method="post" enctype="multipart/form-data">
 			<table border=1>
-				<tr>
-					<td>사진</td>
-					<td><img src="${ path }/psd/img/${ m.getUploadFileStr() }" /></td>
-				</tr>
 				<tr>
 					<td>번호</td>
 					<td>${ m.getSeq() }</td>
+					<td rowspan=3><img src="${ path }/psd/img/${ m.getUploadFileStr() }" /></td>
 				</tr>
 				<tr>
 					<td>제목</td>
@@ -34,14 +31,14 @@ td:first-child {
 				</tr>
 				<tr>
 					<td>날짜</td>
-					<td>${ m.getRegdate() }</td>
+					<td colspan=2>${ m.getRegdate() }</td>
 				</tr>
 				<tr>
 					<td>조회수</td>
-					<td>${ m.getCnt() }</td>
+					<td colspan=2>${ m.getCnt() }</td>
 				</tr>
 				<tr>
-					<td align=center colspan=2><input type=submit value="수정" /></td>
+					<td align=center colspan=3><input type=submit value="수정" /></td>
 				</tr>
 			</table>
 		</form>

@@ -10,8 +10,10 @@ import javax.servlet.ServletContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.springbook.biz.psd.PsdService;
@@ -19,6 +21,7 @@ import com.springbook.biz.psd.PsdVO;
 
 
 @Controller
+@SessionAttributes("m")
 public class PsdController {
 	
 	@Autowired
@@ -100,4 +103,16 @@ public class PsdController {
 		
 		return "/psd/psdOne.jsp";
 	}
+	
+	@RequestMapping(value="psdUpdate.do")
+	public String update(@ModelAttribute("m") PsdVO vo) {
+		
+		System.out.println("################################vo: " + vo);
+		
+//		service.update(vo);
+		
+		return "/psdList.do";
+	}
+	
+	
 }
