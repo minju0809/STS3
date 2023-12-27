@@ -20,4 +20,7 @@
 		values (#{sno},#{sname},#{kor},#{eng},#{math},#{hist})
 	</insert>
 
+	<delete id="delete_sql" parameterType="ExamVO">
+		delete from examtbl where sno = #{sno}
+	</delete>
 </mapper>
