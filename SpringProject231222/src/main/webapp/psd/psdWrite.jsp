@@ -23,7 +23,7 @@ table {
 				</tr>
 				<tr>
 					<td>첨부자료</td>
-					<td><input type="file" name="uploadFileStr"></td>
+					<td><input type="file" name="uploadFile"></td>
 				</tr>
 				<tr>
 					<td align=center colspan=2><input type=submit value="등록하기"></td>
