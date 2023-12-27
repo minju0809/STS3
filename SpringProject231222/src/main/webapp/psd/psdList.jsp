@@ -41,7 +41,7 @@ td:last-child {
 					<td>${ m.getSeq() }</td>
 					<td>${ m.getTitle() }</td>
 					<td>${ m.getUploadFileStr() }</td>
-					<td><img src=./img/${ m.getUploadFileStr() } width=50 height=50 /></td>
+					<td><img src="${ path }/psd/img/${ m.getUploadFileStr() }" width=50 height=50 /></td>
 					<td>${ m.getRegdate() }</td>
 					<td>${ m.getCnt() }</td>
 				</tr>

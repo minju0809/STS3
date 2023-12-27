@@ -38,14 +38,12 @@ public class PsdController {
 
 	@RequestMapping(value="psdWrite.do", method=RequestMethod.GET)
 	public String write() {
-		System.out.println("==> write");
 		
 		return "/psd/psdWrite.jsp";
 	}
 	
 	@RequestMapping(value="psdWrite.do", method=RequestMethod.POST)
 	public String write(PsdVO vo) throws IOException {
-		
 		
 		long time = System.currentTimeMillis();
 		SimpleDateFormat daytime = new SimpleDateFormat("HHmmss");
@@ -67,6 +65,8 @@ public class PsdController {
 		} else {
 			fileName = "space.png";
 		}
+		vo.setUploadFileStr(fileName);
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@" + vo);
 		service.insert(vo);
 		
 		return "psdList.do";
