@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 
+import javax.annotation.PostConstruct;
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,24 +14,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.springbook.biz.psd.PsdService;
 import com.springbook.biz.psd.PsdVO;
 
 
 @Controller
 public class PsdController {
 	
-	@RequestMapping(value="psdList.do")
-	public String getBoardList(Model model) {
-		System.out.println("==> getBoardList");
-		
-//		model.addAttribute("li", service.getBoardList(vo));
-		
-		return "/psd/psdList.jsp";
-	}
+	@Autowired
+	private ServletContext servletContext;
 
 	@Autowired
-//	private PsdService service;
+	private PsdService service;
+
+	String path = "";
 	
+	// @PostConstruct init() 메소드는 WAS(톰캣)가(이) 띄워질 때 실행
+	@PostConstruct
+	public void init() {
+		// D:\eclipse-sts3\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\SpringProject231222\psd\img\
+		path = servletContext.getRealPath("/psd/img/");
+	}
+
 	@RequestMapping(value="psdWrite.do", method=RequestMethod.GET)
 	public String write() {
 		System.out.println("==> write");
@@ -38,7 +45,7 @@ public class PsdController {
 	
 	@RequestMapping(value="psdWrite.do", method=RequestMethod.POST)
 	public String write(PsdVO vo) throws IOException {
-		System.out.println("==> write");
+		
 		
 		long time = System.currentTimeMillis();
 		SimpleDateFormat daytime = new SimpleDateFormat("HHmmss");
@@ -48,7 +55,7 @@ public class PsdController {
 		MultipartFile uploadFile = vo.getUploadFile();
 		
 		String fileName = uploadFile.getOriginalFilename();
-		File f = new File("D:/" + fileName);
+		File f = new File(path + fileName);
 
 		if(!uploadFile.isEmpty()) {
 			if(f.exists()) {
@@ -56,12 +63,21 @@ public class PsdController {
 				String extension = fileName.substring(fileName.lastIndexOf("."));
 				fileName = onlyFileName + "_" + timeStr + extension; 
 			}
-			uploadFile.transferTo(new File("D:/" + fileName));
+			uploadFile.transferTo(new File(path + fileName));
 		} else {
 			fileName = "space.png";
 		}
-//		service.insert(vo);
+		service.insert(vo);
 		
 		return "psdList.do";
+	}
+	
+	@RequestMapping(value="psdList.do")
+	public String getPsdList(Model model) {
+		System.out.println("==> getBoardList");
+		
+		model.addAttribute("li", service.getPsdList());
+		
+		return "/psd/psdList.jsp";
 	}
 }
