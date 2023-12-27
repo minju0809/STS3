@@ -21,4 +21,9 @@ public class PsdServiceImpl implements PsdService {
 		dao.insert(vo);
 	}
 
+	@Override
+	public void delete(PsdVO vo) {
+		dao.delete(vo);
+	}
+
 }

@@ -13,4 +13,8 @@
 		values (idx.nextval,#{title}, #{uploadFileStr})
 	</insert>
 	
+	<delete id="delete_sql" parameterType="PsdVO">
+		delete from psdTbl where seq = #{seq}
+	</delete>
+	
 </mapper>

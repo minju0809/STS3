@@ -43,7 +43,13 @@ td:last-child {
 					<td>${ m.getUploadFileStr() }</td>
 					<td><img src="${ path }/psd/img/${ m.getUploadFileStr() }" width=50 height=50 /></td>
 					<td>${ m.getRegdate() }</td>
-					<td>${ m.getCnt() }</td>
+					<td>
+					<c:url var="url" value="psdDelete.do">
+						<c:param name="seq">${ m.getSeq() }</c:param>
+						<c:param name="uploadFileStr">${ m.getUploadFileStr() }</c:param>
+					</c:url>
+						<a href="${ url }">${ m.getCnt() }</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</table>

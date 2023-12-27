@@ -22,4 +22,9 @@ public class PsdDaoImpl implements PsdDao {
 		mybatis.insert("PsdDao.insert_sql", vo);
 	}
 
+	@Override
+	public void delete(PsdVO vo) {
+		mybatis.delete("PsdDao.delete_sql", vo);
+	}
+
 }

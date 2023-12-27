@@ -66,7 +66,6 @@ public class PsdController {
 			fileName = "space.png";
 		}
 		vo.setUploadFileStr(fileName);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@" + vo);
 		service.insert(vo);
 		
 		return "psdList.do";
@@ -79,5 +78,18 @@ public class PsdController {
 		model.addAttribute("li", service.getPsdList());
 		
 		return "/psd/psdList.jsp";
+	}
+	
+	
+	@RequestMapping(value="psdDelete.do")
+	public String delete(PsdVO vo) {
+		File delF = new File(path + vo.getUploadFileStr());
+		
+		if (!vo.getUploadFileStr().equals("space.png")) {
+			delF.delete(); // 실제 파일 삭제
+		} 
+		service.delete(vo);
+		
+		return "/psdList.do";
 	}
 }
