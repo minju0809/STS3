@@ -116,7 +116,7 @@ public class ProductController {
 			// 첨부파일이 space면 안 삭제
 			vo.getProduct_img(); // 기존 파일명
 			if (!vo.getProduct_img().equals("space.png")) {
-				File delF = new File(path + vo.getProduct_img_file());
+				File delF = new File(path + vo.getProduct_img());
 				delF.delete(); // 실제 파일 삭제
 			}
 			
