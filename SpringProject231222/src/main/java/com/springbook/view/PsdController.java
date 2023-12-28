@@ -31,6 +31,9 @@ public class PsdController {
 	private PsdService service;
 
 	String path = "";
+	long time = System.currentTimeMillis();
+	SimpleDateFormat daytime = new SimpleDateFormat("HHmmss");
+	String timeStr = daytime.format(time);
 	
 	// @PostConstruct init() 메소드는 WAS(톰캣)가(이) 띄워질 때 실행
 	@PostConstruct
@@ -47,11 +50,6 @@ public class PsdController {
 	
 	@RequestMapping(value="psdWrite.do", method=RequestMethod.POST)
 	public String write(PsdVO vo) throws IOException {
-		
-		long time = System.currentTimeMillis();
-		SimpleDateFormat daytime = new SimpleDateFormat("HHmmss");
-		String timeStr = daytime.format(time);
-		System.out.println("timeStr: " + timeStr);
 		
 		MultipartFile uploadFile = vo.getUploadFile();
 		
@@ -106,11 +104,35 @@ public class PsdController {
 	}
 	
 	@RequestMapping(value="psdUpdate.do")
-	public String update(@ModelAttribute("m") PsdVO vo) {
+	public String update(@ModelAttribute("m") PsdVO vo) throws IOException  {
 		
 		System.out.println("################################vo: " + vo);
 		
-//		service.update(vo);
+		MultipartFile uploadFile = vo.getUploadFile();		
+		String fileName = uploadFile.getOriginalFilename();
+		File f = new File(path + fileName);
+
+		if(!uploadFile.isEmpty()) {
+			// 첨부파일이 space면 안 삭제
+			vo.getUploadFileStr(); // 기존 파일명
+			if (!vo.getUploadFileStr().equals("space.png")) {
+				File delF = new File(path + vo.getUploadFileStr());
+				delF.delete(); // 실제 파일 삭제
+			}
+			
+			if(f.exists()) {
+				String onlyFileName = fileName.substring(0, fileName.lastIndexOf("."));
+				String extension = fileName.substring(fileName.lastIndexOf("."));
+				fileName = onlyFileName + "_" + timeStr + extension; 
+			}
+			uploadFile.transferTo(new File(path + fileName));
+		} else {
+			fileName = vo.getUploadFileStr();
+		}
+		vo.setUploadFileStr(fileName);
+//		vo.setRegdate(vo.getRegdate()+"(수정)");
+//		System.out.println("################################vo: " + vo);
+		service.update(vo);
 		
 		return "/psdList.do";
 	}

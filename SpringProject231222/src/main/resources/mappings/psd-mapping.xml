@@ -25,4 +25,8 @@
 		update psdTbl set cnt = cnt + 1 where seq = #{seq}
 	</update>
 	
+	<update id="update_sql" parameterType="PsdVO">
+		update psdTbl set title = #{title}, uploadFileStr = #{uploadFileStr} where seq = #{seq}
+	</update>
+	
 </mapper>

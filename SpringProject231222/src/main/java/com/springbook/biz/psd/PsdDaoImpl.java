@@ -37,4 +37,9 @@ public class PsdDaoImpl implements PsdDao {
 		mybatis.update("PsdDao.cnt_sql", vo);
 	}
 
+	@Override
+	public void update(PsdVO vo) {
+		mybatis.update("PsdDao.update_sql", vo);
+	}	
+
 }

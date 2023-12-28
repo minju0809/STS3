@@ -8,4 +8,5 @@ public interface PsdDao {
 	void insert(PsdVO vo);
 	void delete(PsdVO vo);
 	void cnt(PsdVO vo);
+	void update(PsdVO vo);
 }
