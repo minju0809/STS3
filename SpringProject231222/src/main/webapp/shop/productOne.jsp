@@ -38,7 +38,10 @@ td:first-child {
 					<td colspan=2><input type="file" name="product_img_file"></td>
 				</tr>
 				<tr>
-					<td align=center colspan=3><input type=submit value="수정" /></td>
+					<td align=center colspan=3>
+						<input type=submit value="수정" />
+						<input type=button onClick="location.href='productDelete.do?product_id=${ m.getProduct_id() }&product_img=${ m.getProduct_img() }'" value="삭제" />
+					</td>
 				</tr>
 			</table>
 		</form>

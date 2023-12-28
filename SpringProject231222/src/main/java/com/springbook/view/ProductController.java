@@ -43,7 +43,7 @@ public class ProductController {
 	}
 
 	@RequestMapping(value="productWrite.do", method=RequestMethod.GET)
-	public String write(Model model, ProductVO vo) {
+	public String write(Model model) {
 		
 		model.addAttribute("productId", service.getProductId());
 		
