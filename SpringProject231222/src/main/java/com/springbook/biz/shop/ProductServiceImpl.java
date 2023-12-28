@@ -1,0 +1,44 @@
+package com.springbook.biz.shop;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class ProductServiceImpl implements ProductService {
+
+	@Autowired
+	private ProductDao dao;
+	
+	@Override
+	public List<ProductVO> getProductList(ProductVO vo) {
+		return dao.getProductList(vo);
+	}
+
+	@Override
+	public ProductVO getProduct(ProductVO vo) {
+		return dao.getProduct(vo);
+	}
+	
+	@Override
+	public int getProductId() {
+		return dao.getProductId();
+	}
+
+	@Override
+	public void productInsert(ProductVO vo) {
+		dao.productInsert(vo);
+	}
+
+	@Override
+	public void productDelete(ProductVO vo) {
+		dao.productDelete(vo);
+	}
+
+	@Override
+	public void productUpdate(ProductVO vo) {
+		dao.productUpdate(vo);
+	}
+
+}
