@@ -14,4 +14,7 @@ public class ProductVO {
 	private String product_desc;
 	private MultipartFile product_img_file;
 	private String product_img;
+	
+	private String ch1;
+	private String ch2;
 }

@@ -51,6 +51,14 @@ td:last-child {
 				</tr>
 			</c:forEach>
 		</table>
+		<form action="productList.do">
+			<select name="ch1">
+				<option value=product_name>상품명</option>
+				<option value=product_desc>상세설명</option>
+			</select>
+			<input type=text name="ch2" />
+			<input type=submit value=검색 />
+		</form>
 	</div>
 	<br>
 </section>

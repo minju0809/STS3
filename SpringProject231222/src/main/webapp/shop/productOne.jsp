@@ -19,7 +19,7 @@ td:first-child {
 				<tr>
 					<td>번호</td>
 					<td>${ m.getProduct_id() }</td>
-					<td rowspan=3><img src="${ path }/shop/img/${ m.getProduct_img() }" /></td>
+					<td rowspan=3><img src="${ path }/shop/img/${ m.getProduct_img() }" width=100 /></td>
 				</tr>
 				<tr>
 					<td>상품명</td>

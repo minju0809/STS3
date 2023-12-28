@@ -14,7 +14,7 @@ public class ProductDaoImpl implements ProductDao {
 	
 	@Override
 	public List<ProductVO> getProductList(ProductVO vo) {
-		return mybatis.selectList("ProductDao.select_sql");
+		return mybatis.selectList("ProductDao.select_sql", vo);
 	}
 
 	@Override
