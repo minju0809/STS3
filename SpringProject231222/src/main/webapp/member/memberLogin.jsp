@@ -12,11 +12,11 @@
 			<table border=1>
 				<tr>
 					<td>이름</td>
-					<td><input type="text" name="name"></td>
+					<td><input type="text" name="name" value="관리자"></td>
 				</tr>
 				<tr>
 					<td>암호</td>
-					<td><input type="text" name="pwd"></td>
+					<td><input type="text" name="pwd" value="1234"></td>
 				</tr>
 				<tr>
 					<td align=center colspan=2><input type=submit value="로그인"></td>

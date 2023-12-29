@@ -3,7 +3,6 @@
     
 <%-- <%@ page import="java.util.*"%> --%>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
-<c:set var="path" value="${pageContext.request.contextPath }" scope="session" />
 
 <!DOCTYPE html>
 <html>
@@ -19,16 +18,24 @@
 	</header>
 	<nav>
 		&emsp;<a href="index.do">홈으로</a>
-		&emsp;<a href="getBoardList.do">게시판</a>
-		&emsp;<a href="write.do">글 등록</a>
-		&emsp;<a href="examList.do">성적처리목록</a>
-		&emsp;<a href="examWrite.do">성적 등록</a>
-		&emsp;<a href="psdList.do">자료목록</a>
-		&emsp;<a href="psdWrite.do">자료등록</a>
-		&emsp;<a href="productList.do">상품목록</a>
-		&emsp;<a href="productWrite.do">상품등록</a>
-		&emsp;<a href="memberList.do">회원목록</a>
-		&emsp;<a href="memberWrite.do">회원등록</a>
-		&emsp;<a href="memberLogin.do">로그인</a>
-		&emsp;<a href="memberLogin.do">로그아웃(${ loginVO.getName() })</a>
+		<c:if test="${ not empty login.getName() }">
+			&emsp;<a href="write.do">글 등록</a>
+			&emsp;<a href="getBoardList.do">게시판</a>
+			&emsp;<a href="examList.do">성적처리목록</a>
+			&emsp;<a href="psdList.do">자료목록</a>
+			&emsp;<a href="psdWrite.do">자료등록</a>
+			&emsp;<a href="productList.do">상품목록</a>
+		</c:if>
+		<c:if test="${ '관리자' eq login.getName() }">
+			&emsp;<a href="examWrite.do">성적 등록</a>
+			&emsp;<a href="productWrite.do">상품등록</a>
+			&emsp;<a href="memberList.do">회원목록</a>
+			&emsp;<a href="memberWrite.do">회원등록</a>
+		</c:if>
+		<c:if test="${ empty login.getName() }">
+			&emsp;<a href="memberLogin.do">로그인</a>
+		</c:if>
+		<c:if test="${ not empty login.getName() }">
+			&emsp;<a href="memberLogout.do">${ login.getName() }(로그아웃)</a>
+		</c:if>
 	</nav>

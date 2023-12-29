@@ -2,6 +2,8 @@ package com.springbook.view;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,16 +26,16 @@ public class MemberController {
 	@RequestMapping(value = "memberLogin.do", method = RequestMethod.GET)
 	public String login(Model model) {
 
-//		model.addAttribute("member_id", service.getMemberId());
-
 		return "/member/memberLogin.jsp";
 	}
 
 	@RequestMapping(value = "memberLogin.do", method = RequestMethod.POST)
-	public String login(MemberVO vo, Model model) throws IOException {
+	public String login(MemberVO vo, Model model, HttpSession session) throws IOException {
 
 		MemberVO m = service.getMemberLogin(vo);
 		System.out.println("########## m: " + m);
+
+		session.setAttribute("login", m);
 
 		if (m != null) {
 			if (BCrypt.checkpw(vo.getPwd(), m.getPwd())) {
@@ -45,7 +47,16 @@ public class MemberController {
 				System.out.println("@@@@@@@@@@@불일치");
 				return "/member/memberLogin.jsp";
 			}
-		} return "/member/memberLogin.jsp";
+		}
+		return "/member/memberLogin.jsp";
+	}
+	
+	@RequestMapping(value = "memberLogout.do")
+	public String logout(MemberVO vo, Model model, HttpSession session) throws IOException {
+
+		session.invalidate();
+		
+		return "/member/memberLogin.jsp";
 	}
 
 	@RequestMapping(value = "memberWrite.do", method = RequestMethod.GET)
