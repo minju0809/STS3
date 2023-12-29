@@ -9,7 +9,8 @@
     <typeAlias alias="BoardVO"   type="com.springbook.biz.board.BoardVO" />  
     <typeAlias alias="ExamVO"   type="com.springbook.biz.exam.ExamVO" />
     <typeAlias alias="PsdVO"   type="com.springbook.biz.psd.PsdVO" />  
-    <typeAlias alias="product"   type="com.springbook.biz.shop.ProductVO" />  
+    <typeAlias alias="product"   type="com.springbook.biz.shop.ProductVO" /> 
+    <typeAlias alias="member"   type="com.springbook.biz.member.MemberVO" />  
 
   </typeAliases>
 
@@ -18,6 +19,7 @@
     <mapper resource="mappings/exam-mapping.xml"  />
     <mapper resource="mappings/psd-mapping.xml"  />
     <mapper resource="mappings/product-mapping.xml"  />
+    <mapper resource="mappings/member-mapping.xml"  />
 
   </mappers>
 </configuration>

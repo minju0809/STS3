@@ -18,41 +18,39 @@ td:last-child {
 <section>
 	<br>
 	<div align=center>
-		<h3>상품목록보기</h3>
+		<h3>회원목록보기</h3>
 		<table border=1>
 			<tr>
 				<td>순번</td>
 				<td>번호</td>
 				<td>이름</td>
-				<td>가격</td>
-				<td>상세설명</td>
-				<td>이미지이름</td>
-				<td>이미지</td>
+				<td>연락처</td>
+				<td>지역</td>
+				<td>등급</td>
 				<td>삭제</td>
 			</tr>
 			<c:forEach items="${ li }" var="m" varStatus="status">
 				<tr>
 					<td>${ status.count }</td>
-					<td>${ m.getProduct_id() }</td>
+					<td>${ m.getMemberId() }</td>
 					<td>
-						<a href="productOne.do?product_id=${ m.getProduct_id() }">${ m.getProduct_name() }</a>
+						<a href="memberOne.do?memberId=${ m.getMemberId() }">${ m.getName() }</a>
 					</td>
-					<td>${ m.getProduct_price() }</td>
-					<td>${ m.getProduct_desc() }</td>
-					<td>${ m.getProduct_img() }</td>
-					<td><img src="${ path }/shop/img/${ m.getProduct_img() }" width=50 height=50 /></td>
-					<c:url var="url" value="productDelete.do">
-						<c:param name="product_id">${ m.getProduct_id() }</c:param>
-						<c:param name="product_img">${ m.getProduct_img() }</c:param>
+					<td>${ m.getPhone() }</td>
+					<td>${ m.getAddress().substring(0,2) }</td>
+					<td>${ m.getGrade() }</td>
+					<c:url var="url" value="memberDelete.do">
+						<c:param name="memberId">${ m.getMemberId() }</c:param>
 					</c:url>
 					<td><a href="${ url }">삭제</a></td>
 				</tr>
 			</c:forEach>
 		</table>
-		<form action="productList.do">
+		<form action="memberList.do">
 			<select name="ch1">
-				<option value=product_name>상품명</option>
-				<option value=product_desc>상세설명</option>
+				<option value=name>이름</option>
+				<option value=grade>등급</option>
+				<option value=address>주소</option>
 			</select>
 			<input type=text name="ch2" />
 			<input type=submit value=검색 />

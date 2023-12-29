@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MemberDao">
+
+	<select id="select_sql" parameterType="member" resultType="member">
+		select * from shop_member where 1=1 
+		<if test="ch1=='name'">
+			and name like '%'||#{ch2}||'%'
+		</if>
+		<if test="ch1=='grade'">
+			and grade like '%'||#{ch2}||'%'
+		</if>
+		<if test="ch1=='address'">
+			and address like '%'||#{ch2}||'%'
+		</if>
+		order by memberId
+	</select>
+	
+	<select id="select1_sql" parameterType="member" resultType="member">
+		select * from shop_member where memberId = #{memberId}
+	</select>
+	
+	<select id="selectId_sql" resultType="int">
+	<!--	select memberseq.nextval from dual -->
+	select max(memberId) + 1 from shop_member
+	</select>
+	
+	<insert id="insert_sql" parameterType="member">
+		insert into shop_member (memberId, name, pwd, phone, address, grade, etc)
+		values (#{memberId}, #{name}, #{pwd}, #{phone}, #{address}, #{grade}, #{etc})
+	</insert>
+	
+	<delete id="delete_sql" parameterType="member">
+		delete from shop_member where memberId = #{memberId}
+	</delete>
+	
+	<update id="update_sql" parameterType="member">
+		update shop_member 
+		set name = #{name}, pwd = #{pwd}, phone = #{phone}, 
+		address = #{address}, grade = #{grade}, etc = #{etc}  
+		where memberId = #{memberId}
+	</update>
+	
+</mapper>
