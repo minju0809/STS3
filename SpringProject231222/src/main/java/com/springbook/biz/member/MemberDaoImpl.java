@@ -28,6 +28,11 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
+	public MemberVO getMemberLogin(MemberVO vo) {
+		return mybatis.selectOne("MemberDao.selectLogin_sql", vo);
+	}
+	
+	@Override
 	public void insert(MemberVO vo) {
 		mybatis.insert("MemberDao.insert_sql", vo);
 	}
@@ -41,5 +46,5 @@ public class MemberDaoImpl implements MemberDao {
 	public void update(MemberVO vo) {
 		mybatis.insert("MemberDao.update_sql", vo);
 	}
-	
+
 }

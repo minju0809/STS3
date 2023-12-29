@@ -6,6 +6,7 @@ public interface MemberDao {
 	List<MemberVO> getMemberList(MemberVO vo);
 	MemberVO getMember(MemberVO vo);
 	int getMemberId();
+	MemberVO getMemberLogin(MemberVO vo);
 	
 	void insert(MemberVO vo);
 	void delete(MemberVO vo);

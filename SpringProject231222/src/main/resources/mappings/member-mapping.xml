@@ -23,8 +23,12 @@
 	</select>
 	
 	<select id="selectId_sql" resultType="int">
-	<!--	select memberseq.nextval from dual -->
-	select max(memberId) + 1 from shop_member
+		<!--	select memberseq.nextval from dual -->
+		select max(memberId) + 1 from shop_member
+	</select>
+	
+	<select id="selectLogin_sql" resultType="member">
+		select * from shop_member where name = #{name}
 	</select>
 	
 	<insert id="insert_sql" parameterType="member">
