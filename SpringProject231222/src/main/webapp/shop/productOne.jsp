@@ -10,15 +10,23 @@ td:first-child {
 }
 </style>
 
+<script>
+	function buy(pid, mid) {
+		var amount = f1.amount.value;
+		alert("상품ID: " + pid + ", 상품수량: " + amount + ", 구매자 ID: " + mid)
+		location.href="shopBuy.do?product_id="+ pid + "&amount="+ amount +"&memberId="+ mid
+	}
+</script>
+
 <section>
 	<br>
 	<div align=center>
 		<h3>상세보기/수정</h3>
-		<form action="productUpdate.do" method="post" enctype="multipart/form-data">
+		<form name=f1 action="productUpdate.do" method="post" enctype="multipart/form-data">
 			<table border=1>
 				<tr>
 					<td>번호</td>
-					<td>${ m.getProduct_id() }</td>
+					<td><input value="${ m.getProduct_id() }" readonly /></td>
 					<td rowspan=3><img src="${ path }/shop/img/${ m.getProduct_img() }" width=100 /></td>
 				</tr>
 				<tr>
@@ -28,6 +36,16 @@ td:first-child {
 				<tr>
 					<td>상품가격</td>
 					<td><input name=product_price value="${ m.getProduct_price() }" /></td>
+				</tr>
+				<tr>
+					<td>수량</td>
+					<td>
+						<select name=amount>
+							<option value=1>1개</option>
+							<option value=2>2개</option>
+							<option value=3>3개</option>
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<td>상세설명</td>
@@ -40,6 +58,7 @@ td:first-child {
 				<tr>
 					<td align=center colspan=3>
 						<input type=button onClick="location.href='productList.do'" value="목록" />
+						<input type=button onClick="buy(${ m.getProduct_id() }, ${ login.getMemberId() })" value="구매" />
 						<input type=submit value="수정" />
 						<input type=button onClick="location.href='productDelete.do?product_id=${ m.getProduct_id() }&product_img=${ m.getProduct_img() }'" value="삭제" />
 					</td>

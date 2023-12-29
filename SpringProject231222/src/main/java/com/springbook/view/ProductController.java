@@ -134,5 +134,5 @@ public class ProductController {
 		
 		return "/productList.do";
 	}
-	
+		
 }
