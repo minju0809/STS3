@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.springbook.biz.member.BCrypt;
 import com.springbook.biz.member.MemberService;
 import com.springbook.biz.member.MemberVO;
 
@@ -31,6 +32,8 @@ public class MemberController {
 	@RequestMapping(value="memberWrite.do", method=RequestMethod.POST)
 	public String write(MemberVO vo) throws IOException {
 
+		String Bqwd = BCrypt.hashpw(vo.getPwd(), BCrypt.gensalt());
+		vo.setPwd(Bqwd);
 		service.insert(vo);
 		
 		return "memberList.do";
