@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.springbook.biz.shop.BuyVO;
 import com.springbook.biz.shop.ProductService;
+import com.springbook.biz.shop.ProductVO;
 
 @Controller
 @SessionAttributes("m")
@@ -16,9 +17,12 @@ public class ShopController {
 	private ProductService service;
 
 	@RequestMapping(value="shopBuy.do")
-	public String buy(BuyVO vo){
+	public String buy(BuyVO buyVO, ProductVO productVO){
 		System.out.println("################################구매 확인");
-		System.out.println("################################vo: " + vo);
+		
+		ProductVO pvo = service.getProduct(productVO);
+		buyVO.setProduct_name(pvo.getProduct_name());
+		service.shopInsert(buyVO);
 		
 		return "/productList.do";
 	}

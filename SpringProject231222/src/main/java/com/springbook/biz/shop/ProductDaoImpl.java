@@ -42,4 +42,9 @@ public class ProductDaoImpl implements ProductDao {
 		mybatis.update("ProductDao.update_sql", vo);
 	}
 
+	@Override
+	public void shopInsert(BuyVO vo) {
+		mybatis.insert("ProductDao.shopInsert_sql", vo);
+	}
+
 }

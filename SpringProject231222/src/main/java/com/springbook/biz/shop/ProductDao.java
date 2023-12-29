@@ -10,4 +10,6 @@ public interface ProductDao {
 	void productInsert (ProductVO vo);
 	void productDelete (ProductVO vo);
 	void productUpdate (ProductVO vo);
+	
+	void shopInsert(BuyVO vo);
 }

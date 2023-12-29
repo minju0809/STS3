@@ -41,4 +41,10 @@ public class ProductServiceImpl implements ProductService {
 		dao.productUpdate(vo);
 	}
 
+	
+	@Override
+	public void shopInsert(BuyVO vo) {
+		dao.shopInsert(vo);
+	}
+
 }

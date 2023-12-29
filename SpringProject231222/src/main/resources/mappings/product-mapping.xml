@@ -40,4 +40,9 @@
 		where product_id = #{product_id}
 	</update>
 	
+	<insert id="shopInsert_sql" parameterType="shop">
+		insert into tbl_cart (cart_id, memberId, product_id, product_name, amount)
+		values ((select max(cart_id) + 1 as cart_id from tbl_cart), #{memberId}, #{product_id}, #{product_name}, #{amount})
+	</insert>
+	
 </mapper>
