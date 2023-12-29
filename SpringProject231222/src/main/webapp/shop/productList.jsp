@@ -25,6 +25,7 @@ td:last-child {
 		<h3>상품목록보기</h3>
 		<table border=1>
 			<tr>
+				<td>순번</td>
 				<td>번호</td>
 				<td>이름</td>
 				<td>가격</td>
@@ -33,8 +34,9 @@ td:last-child {
 				<td>이미지</td>
 				<td>삭제</td>
 			</tr>
-			<c:forEach items="${ li }" var="m">
+			<c:forEach items="${ li }" var="m" varStatus="status">
 				<tr>
+					<td>${ status.count }</td>
 					<td>${ m.getProduct_id() }</td>
 					<td>
 						<a href="productOne.do?product_id=${ m.getProduct_id() }">${ m.getProduct_name() }</a>

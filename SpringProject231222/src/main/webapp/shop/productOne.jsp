@@ -39,6 +39,7 @@ td:first-child {
 				</tr>
 				<tr>
 					<td align=center colspan=3>
+						<input type=button onClick="location.href='productList.do'" value="목록" />
 						<input type=submit value="수정" />
 						<input type=button onClick="location.href='productDelete.do?product_id=${ m.getProduct_id() }&product_img=${ m.getProduct_img() }'" value="삭제" />
 					</td>
