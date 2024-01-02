@@ -46,10 +46,13 @@
 	</insert>
 	
 	<select id="shopBuyList_sql" resultType="shop">
-<!-- 		select * from tbl_cart where memberId = #{memberId} -->		
-	select cart_id, memberId, c.product_id, c.product_name, c.amount, p.product_price, p.product_img
-    from tbl_cart c join tbl_product p on c.product_id=p.product_id
-    where c.memberId=#{memberId} order by c.cart_id desc
+		select cart_id, memberId, c.product_id, c.product_name, c.amount, p.product_price, p.product_img
+  	 	from tbl_cart c join tbl_product p on c.product_id=p.product_id
+ 	   	where c.memberId=#{memberId} order by c.cart_id desc
 	</select>
+	
+	<delete id="shopDelete_sql" parameterType="shop">
+		delete from tbl_cart where cart_id = #{cart_id}
+	</delete>
 	
 </mapper>

@@ -46,6 +46,11 @@ public class ProductDaoImpl implements ProductDao {
 	public void shopInsert(BuyVO vo) {
 		mybatis.insert("ProductDao.shopInsert_sql", vo);
 	}
+	
+	@Override
+	public void shopDelete(BuyVO vo) {
+		mybatis.delete("ProductDao.shopDelete_sql", vo);
+	}
 
 	@Override
 	public List<BuyVO> shopBuyList(BuyVO vo) {

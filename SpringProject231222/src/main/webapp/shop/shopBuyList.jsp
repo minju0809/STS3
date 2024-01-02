@@ -31,6 +31,7 @@ td:last-child {
 				<td>price</td>
 				<td>amount</td>
 				<td>total</td>
+				<td>삭제</td>
 			</tr>
 			<c:forEach items="${ li }" var="m" varStatus="status">
 				<tr>
@@ -43,11 +44,12 @@ td:last-child {
 					<td>${ m.getProduct_price() }</td>
 					<td>${ m.getAmount() }</td>
 					<td>${ m.getAmount() * m.getProduct_price() }</td>
+					<td><a href="shopRecordDelete.do?cart_id=${ m.getCart_id() }&memberId=${login.getMemberId()}">삭제</a></td>
 				</tr>
 				<c:set var="total" value="${ total = total + m.getAmount() * m.getProduct_price() }"></c:set>
 			</c:forEach>
 			<tr>
-				<td colspan="9" align="right">전체 구매 금액: 
+				<td colspan="10" align="right">전체 구매 금액: 
 				<fmt:formatNumber pattern="0,000" value="${total}" /></td>
 			</tr>
 		</table>

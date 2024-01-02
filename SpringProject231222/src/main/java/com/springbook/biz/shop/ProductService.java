@@ -12,5 +12,6 @@ public interface ProductService {
 	void productUpdate (ProductVO vo);
 	
 	void shopInsert(BuyVO vo);
+	void shopDelete(BuyVO vo);
 	List<BuyVO> shopBuyList(BuyVO vo);
 }

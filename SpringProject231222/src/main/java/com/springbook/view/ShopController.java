@@ -28,6 +28,14 @@ public class ShopController {
 		return "/productList.do";
 	}
 	
+	@RequestMapping(value="shopRecordDelete.do")
+	public String buyRecordDelete(BuyVO buyVO){
+		
+		service.shopDelete(buyVO);
+		
+		return "/shopBuyList.do";
+	}
+	
 	@RequestMapping(value="shopBuyList.do")
 	public String buyList(Model model, BuyVO buyVO){
 		
