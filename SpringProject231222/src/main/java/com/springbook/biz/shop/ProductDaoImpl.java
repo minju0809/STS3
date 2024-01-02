@@ -48,6 +48,11 @@ public class ProductDaoImpl implements ProductDao {
 	}
 	
 	@Override
+	public void shopUpdate(BuyVO vo) {
+		mybatis.update("ProductDao.shopUpdate_sql", vo);
+	}
+	
+	@Override
 	public void shopDelete(BuyVO vo) {
 		mybatis.delete("ProductDao.shopDelete_sql", vo);
 	}
@@ -55,6 +60,11 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public List<BuyVO> shopBuyList(BuyVO vo) {
 		return mybatis.selectList("ProductDao.shopBuyList_sql", vo);
+	}
+
+	@Override
+	public BuyVO shopBuyCheck(BuyVO vo) {
+		return mybatis.selectOne("ProductDao.shopBuyCK_sql", vo);
 	}
 
 }

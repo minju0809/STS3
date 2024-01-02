@@ -45,6 +45,15 @@
 		values ((select max(cart_id) + 1 as cart_id from tbl_cart), #{memberId}, #{product_id}, #{product_name}, #{amount})
 	</insert>
 	
+	<update id="shopUpdate_sql" parameterType="shop">
+		update tbl_cart set amount = amount + #{amount}
+		where memberId = #{memberId} and product_id = #{product_id}
+	</update>
+	
+	<select id="shopBuyCK_sql" parameterType="shop" resultType="shop">
+		select * from tbl_cart where memberId=#{memberId} and product_id=#{product_id}
+	</select>
+
 	<select id="shopBuyList_sql" resultType="shop">
 		select cart_id, memberId, c.product_id, c.product_name, c.amount, p.product_price, p.product_img
   	 	from tbl_cart c join tbl_product p on c.product_id=p.product_id

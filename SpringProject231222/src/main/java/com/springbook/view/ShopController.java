@@ -1,5 +1,9 @@
 package com.springbook.view;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,14 +20,22 @@ public class ShopController {
 
 	@Autowired
 	private ProductService service;
-
+	
 	@RequestMapping(value="shopBuy.do")
 	public String buy(BuyVO buyVO, ProductVO productVO){
 		System.out.println("################################구매 확인");
 		
 		ProductVO pvo = service.getProduct(productVO);
-		buyVO.setProduct_name(pvo.getProduct_name());
-		service.shopInsert(buyVO);
+		String product_name = pvo.getProduct_name();
+		buyVO.setProduct_name(product_name);
+		
+		BuyVO checkVO = service.shopBuyCheck(buyVO);
+		
+		if(checkVO == null) {
+			service.shopInsert(buyVO);
+		} else {
+			service.shopUpdate(buyVO);
+		}
 		
 		return "/productList.do";
 	}

@@ -48,6 +48,11 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	@Override
+	public void shopUpdate(BuyVO vo) {
+		dao.shopUpdate(vo);
+	}
+	
+	@Override
 	public void shopDelete(BuyVO vo) {
 		dao.shopDelete(vo);
 	}
@@ -55,6 +60,11 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<BuyVO> shopBuyList(BuyVO vo) {
 		return dao.shopBuyList(vo);
+	}
+
+	@Override
+	public BuyVO shopBuyCheck(BuyVO vo) {
+		return dao.shopBuyCheck(vo);
 	}
 
 }
