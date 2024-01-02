@@ -81,6 +81,11 @@ td:last-child {
 				<fmt:formatNumber pattern="0,000" value="${total}" />원</td>
 			</tr>
 		</table>
+		<br>
+		<input type=button value="전체삭제" onclick="location.href='shopTotalDelete.do?memberId=${login.getMemberId()}'" />
+		<input type=button value="전체수정" onclick="location.href='shopBuyList.do'" />
+		<input type=button value="선택주문" onclick="location.href='shopBuyList.do'" />
+		<input type=button value="상품목록" onclick="location.href='productList.do'" />
 	</div>
 	<br>
 </section>

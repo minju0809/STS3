@@ -56,6 +56,11 @@ public class ProductServiceImpl implements ProductService {
 	public void shopDelete(BuyVO vo) {
 		dao.shopDelete(vo);
 	}
+	
+	@Override
+	public void shopTotalDelete(BuyVO vo) {
+		dao.shopTotalDelete(vo);
+	}
 
 	@Override
 	public List<BuyVO> shopBuyList(BuyVO vo) {

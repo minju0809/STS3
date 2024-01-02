@@ -64,4 +64,8 @@
 		delete from tbl_cart where cart_id = #{cart_id}
 	</delete>
 	
+	<delete id="shopTotalDelete_sql" parameterType="shop">
+		delete from tbl_cart where memberId = #{memberId}
+	</delete>
+	
 </mapper>

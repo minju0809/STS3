@@ -43,7 +43,16 @@ public class ShopController {
 	@RequestMapping(value="shopRecordDelete.do")
 	public String buyRecordDelete(BuyVO buyVO){
 		
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!buyVO" + buyVO);
 		service.shopDelete(buyVO);
+		
+		return "/shopBuyList.do";
+	}
+	
+	@RequestMapping(value="shopTotalDelete.do")
+	public String buyTotalDelete(BuyVO buyVO){
+		
+		service.shopTotalDelete(buyVO);
 		
 		return "/shopBuyList.do";
 	}
@@ -55,4 +64,6 @@ public class ShopController {
 		
 		return "/shop/shopBuyList.jsp";
 	}
+	
+	
 }

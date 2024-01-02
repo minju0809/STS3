@@ -56,6 +56,11 @@ public class ProductDaoImpl implements ProductDao {
 	public void shopDelete(BuyVO vo) {
 		mybatis.delete("ProductDao.shopDelete_sql", vo);
 	}
+	
+	@Override
+	public void shopTotalDelete(BuyVO vo) {
+		mybatis.delete("ProductDao.shopTotalDelete_sql", vo);
+	}
 
 	@Override
 	public List<BuyVO> shopBuyList(BuyVO vo) {
@@ -66,5 +71,5 @@ public class ProductDaoImpl implements ProductDao {
 	public BuyVO shopBuyCheck(BuyVO vo) {
 		return mybatis.selectOne("ProductDao.shopBuyCK_sql", vo);
 	}
-
+	
 }
