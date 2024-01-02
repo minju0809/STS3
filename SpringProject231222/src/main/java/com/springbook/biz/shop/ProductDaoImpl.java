@@ -53,6 +53,11 @@ public class ProductDaoImpl implements ProductDao {
 	}
 	
 	@Override
+	public void shopTotalUpdate(BuyVO vo) {
+		mybatis.update("ProductDao.shopTotalUpdate_sql", vo);
+	}
+	
+	@Override
 	public void shopDelete(BuyVO vo) {
 		mybatis.delete("ProductDao.shopDelete_sql", vo);
 	}
