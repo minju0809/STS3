@@ -47,4 +47,9 @@ public class ProductDaoImpl implements ProductDao {
 		mybatis.insert("ProductDao.shopInsert_sql", vo);
 	}
 
+	@Override
+	public List<BuyVO> shopBuyList(BuyVO vo) {
+		return mybatis.selectList("ProductDao.shopBuyList_sql", vo);
+	}
+
 }

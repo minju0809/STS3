@@ -47,4 +47,9 @@ public class ProductServiceImpl implements ProductService {
 		dao.shopInsert(vo);
 	}
 
+	@Override
+	public List<BuyVO> shopBuyList(BuyVO vo) {
+		return dao.shopBuyList(vo);
+	}
+
 }

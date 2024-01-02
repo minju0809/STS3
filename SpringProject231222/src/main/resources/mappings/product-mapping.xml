@@ -45,4 +45,8 @@
 		values ((select max(cart_id) + 1 as cart_id from tbl_cart), #{memberId}, #{product_id}, #{product_name}, #{amount})
 	</insert>
 	
+	<select id="shopBuyList_sql" resultType="shop">
+		select * from tbl_cart where memberId = #{memberId}
+	</select>
+	
 </mapper>

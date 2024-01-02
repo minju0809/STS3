@@ -12,4 +12,5 @@ public interface ProductService {
 	void productUpdate (ProductVO vo);
 	
 	void shopInsert(BuyVO vo);
+	List<BuyVO> shopBuyList(BuyVO vo);
 }

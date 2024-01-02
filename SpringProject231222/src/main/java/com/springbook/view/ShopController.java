@@ -2,6 +2,7 @@ package com.springbook.view;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -27,5 +28,11 @@ public class ShopController {
 		return "/productList.do";
 	}
 	
+	@RequestMapping(value="shopBuyList.do")
+	public String buyList(Model model, BuyVO buyVO){
 		
+		model.addAttribute("li", service.shopBuyList(buyVO));
+		
+		return "/shop/shopBuyList.jsp";
+	}
 }

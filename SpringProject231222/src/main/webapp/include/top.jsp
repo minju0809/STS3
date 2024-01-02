@@ -3,6 +3,7 @@
     
 <%-- <%@ page import="java.util.*"%> --%>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<c:set var="path" value="${pageContext.request.contextPath }" scope="session" />
 
 <!DOCTYPE html>
 <html>
@@ -37,5 +38,6 @@
 		</c:if>
 		<c:if test="${ not empty login.getName() }">
 			&emsp;<a href="memberLogout.do">${ login.getName() }(로그아웃)</a>
+			&emsp;<a href="shopBuyList.do?memberId=${login.getMemberId()}">장바구니</a>
 		</c:if>
 	</nav>
