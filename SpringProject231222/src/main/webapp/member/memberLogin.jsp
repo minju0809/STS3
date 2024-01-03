@@ -27,4 +27,4 @@
 	<br>
 </section>
 
-<c:import url="/include/bottom.jsp" />
+<c:import url="/include/bottom.jsp" /> 

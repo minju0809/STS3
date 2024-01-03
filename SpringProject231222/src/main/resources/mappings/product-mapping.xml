@@ -4,6 +4,8 @@
 
 <mapper namespace="ProductDao">
 
+	<!-- Product_Table -->
+	
 	<select id="select_sql" parameterType="product" resultType="product">
 		select * from tbl_product where 1=1 
 		<if test="ch1=='product_name'">
@@ -39,6 +41,8 @@
 		product_desc = #{product_desc}, product_img = #{product_img} 
 		where product_id = #{product_id}
 	</update>
+	
+	<!-- Shop_Table -->
 	
 	<insert id="shopInsert_sql" parameterType="shop">
 		insert into tbl_cart (cart_id, memberId, product_id, product_name, amount)

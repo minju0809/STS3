@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="GuestbookDao">
+
+	<select id="select_sql" parameterType="guestbook" resultType="guestbook">
+		select * from tbl_guestbook where 1=1 
+		<if test="ch1=='guestbook_name'">
+			and guestbook_name like '%'||#{ch2}||'%'
+		</if>
+		<if test="ch1=='guestbook_memo'">
+			and guestbook_memo like '%'||#{ch2}||'%'
+		</if>
+		<if test="ch1=='guestbook_today'">
+			and guestbook_today like '%'||#{ch2}||'%'
+		</if>
+		order by guestbook_idx
+	</select>
+	
+</mapper>

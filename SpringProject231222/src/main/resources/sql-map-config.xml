@@ -13,6 +13,7 @@
     <typeAlias alias="member"   type="com.springbook.biz.member.MemberVO" />
     <typeAlias alias="shop"   type="com.springbook.biz.shop.BuyVO" /> 
     <typeAlias alias="order"   type="com.springbook.biz.shop.OrderVO" />  
+    <typeAlias alias="guestbook"   type="com.springbook.biz.guestbook.GuestbookVO" />  
 
   </typeAliases>
 
@@ -22,6 +23,7 @@
     <mapper resource="mappings/psd-mapping.xml"  />
     <mapper resource="mappings/product-mapping.xml"  />
     <mapper resource="mappings/member-mapping.xml"  />
+    <mapper resource="mappings/guestbook-mapping.xml"  />
 
   </mappers>
 </configuration>

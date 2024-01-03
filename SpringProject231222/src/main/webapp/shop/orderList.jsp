@@ -18,7 +18,7 @@ th {
 <section>
 	<br>
 	<div align=center>
-		<h3>주문 목록 보기</h3>
+		<h3>주문서</h3>
 		<table border=1 width=600>
 			<tr>
 	      		<th width=80>회원번호</th><td>${ orderMember.memberId }</td>
