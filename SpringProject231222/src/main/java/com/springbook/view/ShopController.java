@@ -1,9 +1,5 @@
 package com.springbook.view;
 
-import java.io.IOException;
-
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.springbook.biz.member.MemberService;
+import com.springbook.biz.member.MemberVO;
 import com.springbook.biz.shop.BuyVO;
+import com.springbook.biz.shop.OrderVO;
 import com.springbook.biz.shop.ProductService;
 import com.springbook.biz.shop.ProductVO;
 
@@ -21,6 +20,9 @@ public class ShopController {
 
 	@Autowired
 	private ProductService service;
+	
+	@Autowired
+	private MemberService memberService;
 
 	@RequestMapping(value = "shopBuy.do")
 	public String buy(BuyVO buyVO, ProductVO productVO) {
@@ -81,6 +83,50 @@ public class ShopController {
 		model.addAttribute("li", service.shopBuyList(buyVO));
 
 		return "/shop/shopBuyList.jsp";
+	}
+	
+	@RequestMapping(value = "shopOrderAll.do")
+	public String shopOrderAll(
+			@RequestParam String[] memberId, 
+			@RequestParam String[] cart_id, 
+			@RequestParam String[] amount,
+			@RequestParam String[] product_id,
+			@RequestParam String[] product_name) {
+		
+		String memberIdStr = "";
+		
+		int orderIdx = service.orderIdx();
+		
+		for (int i = 0; i < cart_id.length; i++) {
+			OrderVO vo = new OrderVO();
+			memberIdStr = memberId[0];
+			vo.setMemberId(memberId[i]);
+			vo.setCart_id(Integer.parseInt(cart_id[i]));
+			vo.setAmount(Integer.parseInt(amount[i]));
+			vo.setProduct_id(product_id[i]);
+			vo.setProduct_name(product_name[i]);
+			vo.setOrderId(orderIdx);
+			
+			service.orderInsert(vo);
+		}
+		
+		MemberVO memberVO = new MemberVO();
+		memberVO.setMemberId(memberIdStr);
+		
+		memberVO = memberService.getMember(memberVO);
+		
+		OrderVO orderVO = new OrderVO();
+		orderVO.setOrderId(orderIdx);
+		orderVO.setName(memberVO.getName());
+		orderVO.setPhone(memberVO.getPhone());
+		orderVO.setEtc(" ");
+		service.orderMemberInsert(orderVO);
+		
+		BuyVO buyVO = new BuyVO();
+		buyVO.setMemberId(memberIdStr);
+		service.shopTotalDelete(buyVO);
+		
+		return "redirect:index.do";
 	}
 
 }

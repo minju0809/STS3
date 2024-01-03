@@ -18,4 +18,8 @@ public interface ProductDao {
 	void shopTotalDelete (BuyVO vo);
 	List<BuyVO> shopBuyList(BuyVO vo);
 	BuyVO shopBuyCheck(BuyVO vo);
+	
+	int orderIdx();
+	void orderMemberInsert(OrderVO vo);
+	void orderInsert(OrderVO vo);
 }

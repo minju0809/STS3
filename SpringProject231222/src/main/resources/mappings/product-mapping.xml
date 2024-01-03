@@ -73,4 +73,19 @@
 		delete from tbl_cart where memberId = #{memberId}
 	</delete>
 	
+	
+	<select id="orderIdx_sql" resultType="int">
+		select orderIdx.nextval from dual
+	</select>
+	
+	<insert id="orderMemberInsert_sql" parameterType="order">
+		insert into orderMemberList (orderId, name, phone, etc)
+		values (#{orderId}, #{name}, #{phone}, #{etc})
+	</insert>
+	
+	<insert id="orderInsert_sql" parameterType="order">
+		insert into orderList (orderId, cart_id, memberId, product_id, product_name, amount)
+		values (#{orderId}, #{cart_id}, #{memberId}, #{product_id}, #{product_name}, #{amount})
+	</insert>
+	
 </mapper>

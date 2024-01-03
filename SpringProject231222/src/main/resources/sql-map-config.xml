@@ -11,7 +11,8 @@
     <typeAlias alias="PsdVO"   type="com.springbook.biz.psd.PsdVO" />  
     <typeAlias alias="product"   type="com.springbook.biz.shop.ProductVO" /> 
     <typeAlias alias="member"   type="com.springbook.biz.member.MemberVO" />
-    <typeAlias alias="shop"   type="com.springbook.biz.shop.BuyVO" />  
+    <typeAlias alias="shop"   type="com.springbook.biz.shop.BuyVO" /> 
+    <typeAlias alias="order"   type="com.springbook.biz.shop.OrderVO" />  
 
   </typeAliases>
 

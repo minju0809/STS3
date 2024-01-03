@@ -77,4 +77,19 @@ public class ProductServiceImpl implements ProductService {
 		return dao.shopBuyCheck(vo);
 	}
 
+	@Override
+	public int orderIdx() {
+		return dao.orderIdx();
+	}
+
+	@Override
+	public void orderMemberInsert(OrderVO vo) {
+		dao.orderMemberInsert(vo);
+	}
+
+	@Override
+	public void orderInsert(OrderVO vo) {
+		dao.orderInsert(vo);
+	}
+
 }

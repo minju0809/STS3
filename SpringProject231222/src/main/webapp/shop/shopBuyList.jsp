@@ -24,7 +24,7 @@ td:last-child {
 	
 	function orderAll() {
 		alert("전체주문");
-		
+		f1.action="shopOrderAll.do"
 	}
 </script>
 
@@ -50,6 +50,8 @@ td:last-child {
 				<c:forEach items="${ li }" var="m" varStatus="status">
 					<input type=hidden name="memberId" value="${ m.getMemberId() }" />
 					<input type=hidden name="cart_id" value="${ m.getCart_id() }" />
+					<input type=hidden name="product_id" value="${ m.getProduct_id() }" />
+					<input type=hidden name="product_name" value="${ m.getProduct_name() }" />
 					<tr>
 						<td>${ status.count }</td>
 						<td><img src="${ path }/shop/img/${ m.getProduct_img() }" width=50 height=50 /></td>
@@ -99,7 +101,7 @@ td:last-child {
 			<br>
 			<input type=button value="전체삭제" onclick="location.href='shopTotalDelete.do?memberId=${login.getMemberId()}'" />
 			<input type=submit value="전체수정" onclick="updateAll()" />
-			<input type=submit value="선택주문" onclick="orderAll()" />
+			<input type=submit value="전체주문" onclick="orderAll()" />
 			<input type=button value="상품목록" onclick="location.href='productList.do'" />
 		</form>
 	</div>

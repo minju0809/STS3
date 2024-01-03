@@ -76,5 +76,20 @@ public class ProductDaoImpl implements ProductDao {
 	public BuyVO shopBuyCheck(BuyVO vo) {
 		return mybatis.selectOne("ProductDao.shopBuyCK_sql", vo);
 	}
+
+	@Override
+	public int orderIdx() {
+		return mybatis.selectOne("ProductDao.orderIdx_sql");
+	}
+
+	@Override
+	public void orderMemberInsert(OrderVO vo) {
+		mybatis.insert("ProductDao.orderMemberInsert_sql", vo);
+	}
+
+	@Override
+	public void orderInsert(OrderVO vo) {
+		mybatis.insert("ProductDao.orderInsert_sql", vo);
+	}
 	
 }

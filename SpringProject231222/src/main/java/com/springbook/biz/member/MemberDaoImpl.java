@@ -39,12 +39,12 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public void delete(MemberVO vo) {
-		mybatis.insert("MemberDao.delete_sql", vo);
+		mybatis.delete("MemberDao.delete_sql", vo);
 	}
 
 	@Override
 	public void update(MemberVO vo) {
-		mybatis.insert("MemberDao.update_sql", vo);
+		mybatis.update("MemberDao.update_sql", vo);
 	}
 
 }
