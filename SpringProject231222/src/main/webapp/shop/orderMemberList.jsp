@@ -32,7 +32,7 @@ td:last-child {
 			<c:forEach items="${ li }" var="m" varStatus="status">
 				<tr>
 					<td>${ status.count }</td>
-					<td>${ m.orderId }</td>
+					<td><a href="orderList.do?orderId=${ m.orderId }">${ m.orderId }</a></td>
 					<td>${ m.name }</td>
 					<td>${ m.phone }</td>
 					<td>${ m.etc }</td>

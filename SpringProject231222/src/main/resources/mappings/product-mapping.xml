@@ -92,4 +92,21 @@
 		select * from orderMemberList order by orderId
 	</select>
 	
+	<select id="orderList_sql" parameterType="order" resultType="order">
+<!-- 		select * from orderList where orderId = #{orderId} -->
+		select o.orderId, o.cart_id, o.memberId, o.product_id, o.product_name, o.amount,
+		p.product_price, o.amount*p.product_price as price
+		from orderList o join tbl_product p
+		on o.product_id = p.product_id
+		where o.orderId = #{orderId}
+	</select>
+	
+	<select id="orderMember_sql" parameterType="order" resultType="member">
+		select distinct s.memberId, s.name, s.phone, s.etc, s.address, s.grade, o.orderId, m.today 
+		from shop_member s 
+		join orderList o on s.memberId = o.memberId
+		join orderMemberList m on o.orderId = m.orderId
+		where o.orderId = #{orderId}
+	</select>
+	
 </mapper>

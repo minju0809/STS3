@@ -2,6 +2,8 @@ package com.springbook.biz.shop;
 
 import java.util.List;
 
+import com.springbook.biz.member.MemberVO;
+
 public interface ProductDao {
 	List<ProductVO> getProductList(ProductVO vo);
 	ProductVO getProduct(ProductVO vo);
@@ -23,5 +25,8 @@ public interface ProductDao {
 	void orderMemberInsert(OrderVO vo);
 	void orderInsert(OrderVO vo);
 	
-	List<OrderVO> orderMemberLlist(OrderVO vo);
+	List<OrderVO> orderMemberList(OrderVO vo);
+	List<OrderVO> orderList(OrderVO vo);
+	MemberVO orderMember(OrderVO vo);
+	
 }

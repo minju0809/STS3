@@ -13,6 +13,9 @@ public class OrderVO {
 	private String product_name;
 	private int amount;
 	
+	private int product_price;
+	private int price;
+	
 	private String name;
 	private String phone;
 	private String etc;

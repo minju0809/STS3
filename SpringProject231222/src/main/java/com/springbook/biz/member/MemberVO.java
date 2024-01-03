@@ -14,6 +14,9 @@ public class MemberVO {
 	private String grade;
 	private String etc;
 	
+	private String orderId;
+	private String today;
+		
 	private String ch1;
 	private String ch2;
 }

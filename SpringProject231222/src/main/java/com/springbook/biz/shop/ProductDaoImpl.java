@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.springbook.biz.member.MemberVO;
+
 @Repository
 public class ProductDaoImpl implements ProductDao {
 
@@ -93,8 +95,18 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	@Override
-	public List<OrderVO> orderMemberLlist(OrderVO vo) {
+	public List<OrderVO> orderMemberList(OrderVO vo) {
 		return mybatis.selectList("ProductDao.orderMemeberList_sql", vo);
+	}
+
+	@Override
+	public List<OrderVO> orderList(OrderVO vo) {
+		return mybatis.selectList("ProductDao.orderList_sql", vo);
+	}
+
+	@Override
+	public MemberVO orderMember(OrderVO vo) {
+		return mybatis.selectOne("ProductDao.orderMember_sql", vo);
 	}
 	
 }

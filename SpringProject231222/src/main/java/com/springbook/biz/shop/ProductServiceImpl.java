@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.springbook.biz.member.MemberVO;
+
 @Service
 public class ProductServiceImpl implements ProductService {
 
@@ -93,8 +95,18 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<OrderVO> orderMemberLlist(OrderVO vo) {
-		return dao.orderMemberLlist(vo);
+	public List<OrderVO> orderMemberList(OrderVO vo) {
+		return dao.orderMemberList(vo);
+	}
+
+	@Override
+	public List<OrderVO> orderList(OrderVO vo) {
+		return dao.orderList(vo);
+	}
+
+	@Override
+	public MemberVO orderMember(OrderVO vo) {
+		return dao.orderMember(vo);
 	}
 
 }

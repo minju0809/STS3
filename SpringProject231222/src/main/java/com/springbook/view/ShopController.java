@@ -1,5 +1,7 @@
 package com.springbook.view;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -136,9 +138,20 @@ public class ShopController {
 	@RequestMapping(value = "orderMemberList.do")
 	public String orderMemberList(Model model, OrderVO orderVO) {
 
-		model.addAttribute("li", service.orderMemberLlist(orderVO));
+		model.addAttribute("li", service.orderMemberList(orderVO));
 
 		return "/shop/orderMemberList.jsp";
+	}
+	
+	@RequestMapping(value = "orderList.do")
+	public String orderList(Model model, OrderVO orderVO) {
+		
+		model.addAttribute("li", service.orderList(orderVO));
+		model.addAttribute("orderMember", service.orderMember(orderVO));
+		
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!orderVO: " + service.orderMember(orderVO));
+		
+		return "/shop/orderList.jsp";
 	}
 
 }
