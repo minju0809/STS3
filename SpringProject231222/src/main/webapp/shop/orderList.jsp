@@ -6,29 +6,45 @@
 <c:import url="/include/top.jsp" />
 
 <style>
-tr:first-child {
+.orderTable tr:first-child {
 	background: skyblue;
 }
 
-td:last-child {
-/* 	text-align: center; */
+th {
+	background: skyblue;
 }
-
 </style>
 
 <section>
 	<br>
 	<div align=center>
 		<h3>주문 목록 보기</h3>
-			회원번호: ${ orderMember.memberId }<br>
-			이름: ${ orderMember.name }<br>
-			연락처: ${ orderMember.phone }<br>
-			등급: ${ orderMember.grade }<br>
-			주소: ${ orderMember.address }<br>
-			주문날짜: ${ orderMember.today }<br>
-			특이사항: ${ orderMember.etc }<br>
-		
-		<table border=1>
+		<table border=1 width=600>
+			<tr>
+	      		<th width=80>회원번호</th><td>${ orderMember.memberId }</td>
+	      		<th width=80>이름</th><td>${ orderMember.name }</td>
+			</tr>
+			<tr>
+	      		<th>연락처</th>
+	      		<td>${ orderMember.phone }</td>
+	      		<th>등급</th>
+	      		<td>${ orderMember.grade }</td>
+	   		</tr>
+	        <tr>
+	        	<th>주소</th>
+	        	<td colspan=3>${ orderMember.address }</td>
+	       	</tr>
+	        <tr>
+	        	<th>주문날짜</th>
+	       		<td colspan=3>${ orderMember.today }</td>
+	   		</tr>
+	        <tr>
+	        	<th>특이사항</th>
+	        	<td colspan=3>${ orderMember.etc }</td>
+	       	</tr>
+	   </table>
+
+		<table class="orderTable" border=1 width=600>
 			<tr>
 				<td>순번</td>
 				<td>주문번호</td>

@@ -8,11 +8,11 @@
 	<br>
 	<div align=center>
 		<h1>${ loginVO.getName() }님 환영합니다</h1>
-		${ login.getMemberId() }
+		회원번호: ${ login.getMemberId() }
 		<br>
-		${ login.getName() }
+		회원이름: ${ login.getName() }
 		<br>
-		${ login.getPwd() }
+		비밀번호: ${ login.getPwd() }
 	</div>
 	<br>
 </section>
