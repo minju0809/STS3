@@ -92,4 +92,9 @@ public class ProductServiceImpl implements ProductService {
 		dao.orderInsert(vo);
 	}
 
+	@Override
+	public List<OrderVO> orderMemberLlist(OrderVO vo) {
+		return dao.orderMemberLlist(vo);
+	}
+
 }

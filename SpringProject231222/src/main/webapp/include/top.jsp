@@ -32,6 +32,7 @@
 			&emsp;<a href="productWrite.do">상품등록</a>
 			&emsp;<a href="memberList.do">회원목록</a>
 			&emsp;<a href="memberWrite.do">회원등록</a>
+			&emsp;<a href="orderMemberList.do">주문회원목록</a>
 		</c:if>
 		<c:if test="${ empty login.getName() }">
 			&emsp;<a href="memberLogin.do">로그인</a>

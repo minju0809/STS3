@@ -91,5 +91,10 @@ public class ProductDaoImpl implements ProductDao {
 	public void orderInsert(OrderVO vo) {
 		mybatis.insert("ProductDao.orderInsert_sql", vo);
 	}
+
+	@Override
+	public List<OrderVO> orderMemberLlist(OrderVO vo) {
+		return mybatis.selectList("ProductDao.orderMemeberList_sql", vo);
+	}
 	
 }

@@ -88,4 +88,8 @@
 		values (#{orderId}, #{cart_id}, #{memberId}, #{product_id}, #{product_name}, #{amount})
 	</insert>
 	
+	<select id="orderMemeberList_sql" parameterType="order" resultType="order">
+		select * from orderMemberList order by orderId
+	</select>
+	
 </mapper>

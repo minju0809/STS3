@@ -22,4 +22,5 @@ public interface ProductService {
 	int orderIdx();
 	void orderMemberInsert(OrderVO vo);
 	void orderInsert(OrderVO vo);
+	List<OrderVO> orderMemberLlist(OrderVO vo);
 }

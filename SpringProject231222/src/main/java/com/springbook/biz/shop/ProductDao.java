@@ -22,4 +22,6 @@ public interface ProductDao {
 	int orderIdx();
 	void orderMemberInsert(OrderVO vo);
 	void orderInsert(OrderVO vo);
+	
+	List<OrderVO> orderMemberLlist(OrderVO vo);
 }

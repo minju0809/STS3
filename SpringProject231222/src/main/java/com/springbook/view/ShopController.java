@@ -118,7 +118,11 @@ public class ShopController {
 		OrderVO orderVO = new OrderVO();
 		orderVO.setOrderId(orderIdx);
 		orderVO.setName(memberVO.getName());
-		orderVO.setPhone(memberVO.getPhone());
+		if (memberVO.getPhone() == null) {
+			orderVO.setPhone(" ");
+		} else {
+			orderVO.setPhone(memberVO.getPhone());
+		}
 		orderVO.setEtc(" ");
 		service.orderMemberInsert(orderVO);
 		
@@ -127,6 +131,14 @@ public class ShopController {
 		service.shopTotalDelete(buyVO);
 		
 		return "redirect:index.do";
+	}
+
+	@RequestMapping(value = "orderMemberList.do")
+	public String orderMemberList(Model model, OrderVO orderVO) {
+
+		model.addAttribute("li", service.orderMemberLlist(orderVO));
+
+		return "/shop/orderMemberList.jsp";
 	}
 
 }
