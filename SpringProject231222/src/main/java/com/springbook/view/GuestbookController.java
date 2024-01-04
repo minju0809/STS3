@@ -1,5 +1,6 @@
 package com.springbook.view;
 
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,8 @@ public class GuestbookController {
 	@RequestMapping(value = "guestbookList.do", method=RequestMethod.GET)
 	public String guestbookList(Model model, GuestbookVO vo) {
 
-		System.out.println("########################" + service.getGuestbookList(vo));
-		model.addAttribute("li", service.getGuestbookList(vo));
+		List<GuestbookVO> li = service.getGuestbookList(vo);
+		model.addAttribute("li", li);
 
 		return "/guestbook/guestbookList.jsp";
 	}

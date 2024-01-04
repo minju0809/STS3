@@ -19,6 +19,15 @@ td:last-child {
 	<br>
 	<div align=center>
 		<h3>방명록</h3>
+		<form action=guestbookList.do>
+			<select name="ch1">
+				<option value="guestbook_name">이름</option>
+				<option value="guestbook_memo">메모</option>
+				<option value="guestbook_today">날짜</option>
+			</select>
+			<input type=text name="ch2"/>
+			<input type=submit value="검색" />
+		</form>
 		<table border=1>
 			<tr>
 				<td>순번</td>
@@ -35,15 +44,6 @@ td:last-child {
 				</tr>
 			</c:forEach>
 		</table>
-		<form>
-			<select name="ch1">
-				<option value="guestbook_name">이름</option>
-				<option value="guestbook_memo">메모</option>
-				<option value="guestbook_today">날짜</option>
-			</select>
-			<input type=text name="ch2"/>
-			<input type=submit value="검색" />
-		</form>
 	</div>
 	<br>
 </section>
