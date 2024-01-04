@@ -19,6 +19,8 @@ td:last-child {
 	<br>
 	<div align=center>
 		<h3>방명록  (레코드 수: ${totalCount})</h3>
+		현재페이지: ${ currentPage } / 전체페이지 ${ totalPage }
+		
 		<table border=1>
 			<tr>
 				<td>rownum</td>
@@ -27,6 +29,7 @@ td:last-child {
 				<td>이름</td>
 				<td>메모</td>
 				<td>날짜</td>
+				<td>삭제</td>
 			</tr>
 			<c:forEach items="${ li }" var="m">
 				<tr>
@@ -36,6 +39,7 @@ td:last-child {
 					<td>${ m.guestbook_name }</td>
 					<td width=300>${ m.guestbook_memo }</td>
 					<td>${ m.guestbook_today }</td>
+					<td><a href="guestbookDelete.do?guestbook_idx=${ m.guestbook_idx }&start=${ start }&ch1=${ch1}&ch2=${ch2}">삭제</a></td>
 				</tr>
 			</c:forEach>
 		</table>

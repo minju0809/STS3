@@ -60,6 +60,10 @@
 		insert into tbl_guestbook (guestbook_idx, guestbook_name, guestbook_memo)
 		values (guestIdx.nextval, #{guestbook_name}, #{guestbook_memo})
 	</insert>
+	
+	<delete id="delete_sql" parameterType="guestbook">
+		delete from tbl_guestbook where guestbook_idx = #{guestbook_idx}
+	</delete>
 
 
 </mapper>

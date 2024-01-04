@@ -7,4 +7,5 @@ public interface GuestbookDao {
 	int getTotalCount(GuestbookVO vo);
 	
 	void guestbookInsert(GuestbookVO vo);
+	void guestbookDelete(GuestbookVO vo);
 }

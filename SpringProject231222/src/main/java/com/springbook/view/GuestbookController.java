@@ -1,6 +1,5 @@
 package com.springbook.view;
 
-import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,6 +82,14 @@ public class GuestbookController {
             vo.setGuestbook_memo(ran);
             service.guestbookInsert(vo);
 		}
+		return "/guestbookList.do";
+	}
+	
+	@RequestMapping(value="guestbookDelete.do")
+	public String guestbookDelete(GuestbookVO vo) {
+		
+		service.guestbookDelete(vo);
+		
 		return "/guestbookList.do";
 	}
 	
