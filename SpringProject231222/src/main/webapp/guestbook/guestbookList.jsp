@@ -19,6 +19,7 @@ td:last-child {
 	<br>
 	<div align=center>
 		<h3>방명록</h3>
+		전체 레코드 수: ${totalCount}
 		<form action=guestbookList.do>
 			<select name="ch1">
 				<option value="guestbook_name">이름</option>

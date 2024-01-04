@@ -15,6 +15,11 @@ public class GuestbookServiceImpl implements GuestbookService {
 	public List<GuestbookVO> getGuestbookList(GuestbookVO vo) {
 		return dao.getGuestbookList(vo);
 	}
+	
+	@Override
+	public int getTotalCount(GuestbookVO vo) {
+		return dao.getTotalCount(vo);
+	}
 
 	@Override
 	public void guestbookInsert(GuestbookVO vo) {

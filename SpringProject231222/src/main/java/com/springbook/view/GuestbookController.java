@@ -21,9 +21,9 @@ public class GuestbookController {
 
 	@RequestMapping(value = "guestbookList.do", method=RequestMethod.GET)
 	public String guestbookList(Model model, GuestbookVO vo) {
-
-		List<GuestbookVO> li = service.getGuestbookList(vo);
-		model.addAttribute("li", li);
+		
+		model.addAttribute("totalCount", service.getTotalCount(vo));
+		model.addAttribute("li", service.getGuestbookList(vo));
 
 		return "/guestbook/guestbookList.jsp";
 	}
@@ -46,8 +46,6 @@ public class GuestbookController {
             vo.setGuestbook_memo(ran);
             service.guestbookInsert(vo);
 		}
-		
-		
 		return "/guestbookList.do";
 	}
 	

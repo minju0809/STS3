@@ -16,6 +16,11 @@ public class GuestbookDaoImpl implements GuestbookDao {
 	public List<GuestbookVO> getGuestbookList(GuestbookVO vo) {
 		return mybatis.selectList("GuestbookDao.select_sql", vo);
 	}
+	
+	@Override
+	public int getTotalCount(GuestbookVO vo) {
+		return mybatis.selectOne("GuestbookDao.selectCount_sql", vo);
+	}
 
 	@Override
 	public void guestbookInsert(GuestbookVO vo) {
