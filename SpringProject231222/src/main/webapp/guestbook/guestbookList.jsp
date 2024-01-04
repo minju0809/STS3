@@ -30,7 +30,7 @@ td:last-child {
 				<tr>
 					<td>${ m.guestbook_idx }</td>
 					<td>${ m.guestbook_name }</td>
-					<td>${ m.guestbook_memo }</td>
+					<td width=300>${ m.guestbook_memo }</td>
 					<td>${ m.guestbook_today }</td>
 				</tr>
 			</c:forEach>

@@ -18,4 +18,9 @@
 		order by guestbook_idx
 	</select>
 	
+	<insert id="insert_sql" parameterType="guestbook">
+		insert into tbl_guestbook (guestbook_idx, guestbook_name, guestbook_memo)
+		values (guestIdx.nextval, #{guestbook_name}, #{guestbook_memo})
+	</insert>
+
 </mapper>

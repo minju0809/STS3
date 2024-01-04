@@ -16,4 +16,9 @@ public class GuestbookServiceImpl implements GuestbookService {
 		return dao.getGuestbookList(vo);
 	}
 
+	@Override
+	public void guestbookInsert(GuestbookVO vo) {
+		dao.guestbookInsert(vo);
+	}
+
 }
