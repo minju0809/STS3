@@ -22,8 +22,23 @@ public class GuestbookController {
 	@RequestMapping(value = "guestbookList.do", method=RequestMethod.GET)
 	public String guestbookList(Model model, GuestbookVO vo) {
 		
-		model.addAttribute("totalCount", service.getTotalCount(vo));
+		int start = 1;
+		int pageSize = 0;
+		
+		if(vo.getCh2() == null || vo.getCh2() == "") {
+			pageSize = 15;
+		} else {
+			pageSize = 10;
+		}
+		
+		int end = start + pageSize - 1;
+		
+		vo.setStart(start);
+		vo.setPageSize(pageSize);
+		vo.setEnd(end);
+		
 		model.addAttribute("li", service.getGuestbookList(vo));
+		model.addAttribute("totalCount", service.getTotalCount(vo));
 
 		return "/guestbook/guestbookList.jsp";
 	}

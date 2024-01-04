@@ -6,7 +6,9 @@
 
 	<select id="select_sql" parameterType="guestbook" resultType="guestbook">
 		<![CDATA[
-		select * from tbl_guestbook where 1=1 
+		select rownum, q.* from 
+			(select rownum as rnum, k.* from 
+				(select * from tbl_guestbook where 1=1
 		]]>
 		<if test="ch1=='guestbook_name'">
 		<![CDATA[
@@ -24,7 +26,9 @@
 		]]>
 		</if>
 		<![CDATA[
-		order by guestbook_idx
+			order by guestbook_idx ) k
+			where rownum <= #{end} ) q
+		where rnum >= #{start}
 		]]>
 	</select>
 	
