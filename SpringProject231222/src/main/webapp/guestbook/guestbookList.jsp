@@ -15,6 +15,23 @@ td:last-child {
 
 </style>
 
+<script>
+	function ck1() {
+		memo = f1.guestbook_memo.value;
+		name = f1.guestbook_name.value;
+		
+		if(memo == "") {
+			alert(memo + "메모를 입력해주세요");
+			return false;
+		}
+		if(name == "") {
+			alert(name + "이름를 입력해주세요");
+			return false;
+		}
+		
+	}
+</script>
+
 <section>
 	<br>
 	<div align=center>
@@ -28,6 +45,20 @@ td:last-child {
 		7.가로하단 시작 :${listStartPage}&emsp;&emsp;
 		8.가로 하단 마지막 : ${listEndPage}
 		
+		<form name=f1 action="guestbookWrite.do"  onSubmit="return ck1()">
+			<table border=1>
+				<tr>
+					<td>메모</td>
+					<td>이름</td>
+					<td>등록</td>
+				</tr>
+				<tr>
+					<td><input type="text" name="guestbook_memo"></td>
+					<td><input type="text" name="guestbook_name"></td>
+					<td align=center><input type=submit value="등록하기"></td>
+				</tr>
+			</table>
+		</form>
 		<table border=1>
 			<tr>
 				<td>rownum</td>

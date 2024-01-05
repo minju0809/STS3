@@ -1,5 +1,6 @@
 package com.springbook.view;
 
+import java.io.IOException;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.springbook.biz.guestbook.GuestbookService;
 import com.springbook.biz.guestbook.GuestbookVO;
 
-
 @Controller
 public class GuestbookController {
 
@@ -22,7 +22,6 @@ public class GuestbookController {
 	public String guestbookList(Model model, GuestbookVO vo) {
 		
 		int totalCount = service.getTotalCount(vo);
-		
 		
 		int start = 0;
 		int pageSize = 0;
@@ -72,6 +71,14 @@ public class GuestbookController {
 		return "/guestbook/guestbookList.jsp";
 	}
 	
+	@RequestMapping(value = "guestbookWrite.do", method = RequestMethod.GET)
+	public String guestbookWrite(GuestbookVO vo) {
+		
+		service.guestbookInsert(vo);
+		
+		return "guestbookList.do";
+	}
+	
 	@RequestMapping(value = "guestbookInsert.do", method=RequestMethod.GET)
 	public String guestbookInsert(GuestbookVO vo) {
 
@@ -100,5 +107,4 @@ public class GuestbookController {
 		
 		return "/guestbookList.do";
 	}
-	
 }

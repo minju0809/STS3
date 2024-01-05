@@ -14,12 +14,14 @@ td:last-child {
 }
 
 .product_container {
+	background-color: bisque;
 	display: inline-flex;
 	width: 140px;
+	align-content: center;
 	border: 1px solid black;
 }
 
-.product a {
+.product_container a {
 	text-decoration: none;
 }
 </style>
@@ -30,13 +32,11 @@ td:last-child {
 		<h3>상품목록보기2</h3>
 			<c:forEach items="${ li }" var="m" varStatus="status">
 				<div class="product_container">
-					<div class="product">
-						<a href="productOne.do?product_id=${ m.getProduct_id() }">
-							상품번호: ${ m.getProduct_id() }<br>
-							<img src="${ path }/shop/img/${ m.getProduct_img() }" width=50 height=50 /><br>
-							상품이름: ${ m.getProduct_name() }<br>
-							상품가격: ${ m.getProduct_price() }
-						</a>
+					<div>
+						상품번호: ${ m.getProduct_id() }<br>
+						<img src="${ path }/shop/img/${ m.getProduct_img() }" width=50 height=50 /><br>
+						상품이름: ${ m.getProduct_name() }<br>
+						상품가격: ${ m.getProduct_price() }
 					</div>
 				</div>
 			</c:forEach>

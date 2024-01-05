@@ -21,7 +21,7 @@ public class GuestbookDaoImpl implements GuestbookDao {
 	public int getTotalCount(GuestbookVO vo) {
 		return mybatis.selectOne("GuestbookDao.selectCount_sql", vo);
 	}
-
+	
 	@Override
 	public void guestbookInsert(GuestbookVO vo) {
 		mybatis.insert("GuestbookDao.insert_sql", vo);
@@ -31,4 +31,5 @@ public class GuestbookDaoImpl implements GuestbookDao {
 	public void guestbookDelete(GuestbookVO vo) {
 		mybatis.delete("GuestbookDao.delete_sql", vo);
 	}
+
 }
