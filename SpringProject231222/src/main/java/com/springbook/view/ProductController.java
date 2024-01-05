@@ -103,6 +103,14 @@ public class ProductController {
 		return "/shop/productOne.jsp";
 	}
 	
+	@RequestMapping(value="productList2.do")
+	public String getProductList2(Model model, ProductVO vo) {
+		
+		model.addAttribute("li", service.getProductList(vo));
+		
+		return "/shop/productList2.jsp";
+	}
+	
 	@RequestMapping(value="productUpdate.do")
 	public String update(@ModelAttribute("m") ProductVO vo) throws IOException  {
 		

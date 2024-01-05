@@ -38,16 +38,22 @@ td:last-child {
 				<td>날짜</td>
 				<td>삭제</td>
 			</tr>
-			<c:forEach items="${ li }" var="m">
-				<tr>
-					<td>${ m.rownum }</td>
-					<td>${ m.rnum }</td>
-					<td>${ m.guestbook_idx }</td>
-					<td>${ m.guestbook_name }</td>
-					<td width=300>${ m.guestbook_memo }</td>
-					<td>${ m.guestbook_today }</td>
-					<td><a href="guestbookDelete.do?guestbook_idx=${ m.guestbook_idx }&start=${ start }&ch1=${ch1}&ch2=${ch2}">삭제</a></td>
-				</tr>
+			<c:forEach items="${ li }" var="m" varStatus="status">
+				<c:if test="${ status.index % 2 == 0 }">
+					<c:set var="bgcolor" value="palegreen" />	
+				</c:if>
+				<c:if test="${ status.index % 2 == 1 }">
+					<c:set var="bgcolor" value="aquamarine" />
+				</c:if>
+					<tr bgcolor="${ bgcolor }">
+						<td>${ m.rownum }</td>
+						<td>${ m.rnum }</td>
+						<td>${ m.guestbook_idx }</td>
+						<td>${ m.guestbook_name }</td>
+						<td width=300>${ m.guestbook_memo }</td>
+						<td>${ m.guestbook_today }</td>
+						<td><a href="guestbookDelete.do?guestbook_idx=${ m.guestbook_idx }&start=${ start }&ch1=${ch1}&ch2=${ch2}">삭제</a></td>
+					</tr>
 			</c:forEach>
 		</table>
 		<a href="guestbookList.do?start=1&ch1=${ch1}&ch2=${ch2}">처음으로</a>
