@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+header {
+	background: #0000ff;
+	height: 90px;
+	line-height: 90px;
+	color: #ffffff;
+	font-size: 30px;
+	text-align: center;
+}
+
+nav {
+	background: #0088ff;
+	height: 35px;
+	line-height: 35px;
+	color: #ffffff;
+	font-size: 16px;
+	text-align: left;
+}
+
+nav a {
+	text-decoration: none;
+	color: #fff;
+}
+
+section {
+	background: #eaeaea;
+	min-height: 500px;
+	line-height: 25px;
+	color: #000000;
+	font-size: 16px;
+	text-align: left;
+}
+
+footer {
+	background: #0033dd;
+	height: 50px;
+	line-height: 50px;
+	color: #fff;
+	font-size: 16px;
+	text-align: center;
+}
