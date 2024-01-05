@@ -8,4 +8,6 @@ public interface GuestbookService {
 	
 	void guestbookInsert(GuestbookVO vo);
 	void guestbookDelete(GuestbookVO vo);
+	
+	void commentInsert(GuestbookVO vo);
 }

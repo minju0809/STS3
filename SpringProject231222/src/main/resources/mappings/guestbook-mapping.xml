@@ -26,7 +26,7 @@
 		]]>
 		</if>
 		<![CDATA[
-			order by guestbook_idx desc) k
+			order by ref desc, step) k
 			where rownum <= #{end} ) q
 		where rnum >= #{start}
 		]]>
@@ -57,13 +57,18 @@
 	</select>
 	
 	<insert id="insert_sql" parameterType="guestbook">
-		insert into tbl_guestbook (guestbook_idx, guestbook_name, guestbook_memo)
-		values (guestIdx.nextval, #{guestbook_name}, #{guestbook_memo})
+		insert into tbl_guestbook (guestbook_idx, guestbook_name, guestbook_memo, ref)
+		values (guestIdx.nextval, #{guestbook_name}, #{guestbook_memo}, comment_ref.nextval)
 	</insert>
 	
 	<delete id="delete_sql" parameterType="guestbook">
 		delete from tbl_guestbook where guestbook_idx = #{guestbook_idx}
 	</delete>
+	
+	<insert id="commentIsert_sql" parameterType="guestbook">
+		insert into tbl_guestbook (guestbook_idx, guestbook_name, guestbook_memo, ref, lv, step)
+		values (guestIdx.nextval, #{guestbook_name}, #{guestbook_memo}, ${ref}, ${lv}, ${step})
+	</insert>
 
 
 </mapper>

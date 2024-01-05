@@ -32,4 +32,9 @@ public class GuestbookDaoImpl implements GuestbookDao {
 		mybatis.delete("GuestbookDao.delete_sql", vo);
 	}
 
+	@Override
+	public void commentInsert(GuestbookVO vo) {
+		mybatis.insert("GuestbookDao.commentIsert_sql", vo);
+	}
+
 }

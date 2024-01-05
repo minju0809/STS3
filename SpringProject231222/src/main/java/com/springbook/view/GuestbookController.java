@@ -153,6 +153,18 @@ public class GuestbookController {
 		return "/guestbookList.do";
 	}
 	
+	@RequestMapping(value = "commentkInsert.do", method=RequestMethod.GET)
+	public String commentInsert(GuestbookVO vo) {
+		
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!" + vo);
+		vo.setLv(vo.getLv()+1);
+		vo.setStep(vo.getStep()+1);
+		System.out.println("2!!!!!!!!!!!!!!!!!!!!!!!" + vo);
+		service.commentInsert(vo);
+		
+		return "guestbookList2.do";
+	}
+	
 	@RequestMapping(value="guestbookDelete.do")
 	public String guestbookDelete(GuestbookVO vo) {
 		

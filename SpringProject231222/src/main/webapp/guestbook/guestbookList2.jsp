@@ -29,6 +29,17 @@ td:last-child {
 			return false;
 		}
 	}
+	
+	function toggleFormVisibility(guestbook_idx) {
+		var form = document.getElementById("commentForm_" + guestbook_idx);
+		
+		if (form.style.display === "none" || form.style.display === "") {
+		  form.style.display = "table-row";
+		} else {
+		  form.style.display = "none";
+		}
+	}
+
 </script>
 
 <section>
@@ -69,7 +80,6 @@ td:last-child {
 				<td>ref</td>
 				<td>lv</td>
 				<td>step</td>
-				<td>삭제</td>
 			</tr>
 			<c:forEach items="${ li }" var="m" varStatus="status">
 				<c:if test="${ status.index % 2 == 0 }">
@@ -81,14 +91,50 @@ td:last-child {
 					<tr bgcolor="${ bgcolor }">
 						<td>${ m.rownum }</td>
 						<td>${ m.rnum }</td>
-						<td>${ m.guestbook_idx }</td>
+						<td><input type=button onClick="toggleFormVisibility(${m.guestbook_idx})" value="${m.guestbook_idx}"></input></td>
 						<td>${ m.guestbook_name }</td>
-						<td>${ m.guestbook_memo }</td>
+						<td>
+							<c:if test="${m.lv == 2}">
+								<img src="${path}/guestbook/img/화살표.png" alt="a" width=15>
+							</c:if>
+							<c:if test="${m.lv == 3}">
+								&emsp;<img src="${path}/guestbook/img/화살표.png" alt="a" width=15>
+							</c:if>
+							${ m.guestbook_memo }
+						</td>
 						<td>${ m.guestbook_today }</td>
 						<td>${ m.ref }</td>
 						<td>${ m.lv }</td>
 						<td>${ m.step }</td>
-						<td><a href="guestbookDelete.do?guestbook_idx=${ m.guestbook_idx }&start=${ start }&ch1=${ch1}&ch2=${ch2}">삭제</a></td>
+					</tr>
+					<tr style="display: none;" id="commentForm_${m.guestbook_idx}">
+					    <td colspan="10">
+					    	<form action="commentkInsert.do">
+					    		<input type=hidden name="guestbook_idx" value="${ m.guestbook_idx }" />
+					    		<input type=hidden name="start" value="${ start }" />
+					    		<input type=hidden name="ch1" value="${ch1}" />
+					    		<input type=hidden name="ch2" value="${ch2}" />
+					    		<input type=hidden name="ref" value="${m.ref}" />
+					    		<input type=hidden name="lv" value="${m.lv}" />
+					    		<input type=hidden name="step" value="${m.step}" />
+						        <table border="1" style="width: 100%;">
+						        	<tr>
+						        		<td>순번</td>
+										<td>이름</td>
+										<td>메모</td>
+										<td>등록</td>
+						        	</tr>
+						            <tr>
+							            <td><input type="text" value="${m.guestbook_idx}" readonly></td>
+							            <td>
+							            	<input type="text" name="guestbook_memo">
+						            	</td>
+							            <td><input type="text" name="guestbook_name"></td>
+							            <td align="center"><input type="submit" value="등록하기"></td>
+						            </tr>
+						        </table>
+					        </form>
+					    </td>
 					</tr>
 			</c:forEach>
 		</table>

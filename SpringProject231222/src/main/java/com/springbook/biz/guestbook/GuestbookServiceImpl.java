@@ -31,4 +31,9 @@ public class GuestbookServiceImpl implements GuestbookService {
 		dao.guestbookDelete(vo);
 	}
 
+	@Override
+	public void commentInsert(GuestbookVO vo) {
+		dao.commentInsert(vo);
+	}
+
 }
