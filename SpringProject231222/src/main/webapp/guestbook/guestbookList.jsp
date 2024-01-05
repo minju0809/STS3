@@ -19,7 +19,14 @@ td:last-child {
 	<br>
 	<div align=center>
 		<h3>방명록  (레코드 수: ${totalCount})</h3>
-		현재페이지: ${ currentPage } / 전체페이지 ${ totalPage }
+		1.페이지 사이즈 : ${pageSize} &emsp;&emsp;
+		2.페이지 List사이즈(아래숫자갯수) : ${pageListSize}<br>
+		3.전체레코두 수 : ${totalCount}&emsp;&emsp;
+		4.총페이지수 : ${totalPage}  <br>
+		5.현재레코드 : ${start}&emsp;&emsp;
+		6.현재페이지 : ${currentPage}<br>
+		7.가로하단 시작 :${listStartPage}&emsp;&emsp;
+		8.가로 하단 마지막 : ${listEndPage}
 		
 		<table border=1>
 			<tr>
@@ -50,6 +57,14 @@ td:last-child {
 		<c:if test="${ start == 1 }">
 			이전
 		</c:if>
+		
+		<c:forEach var="i" begin="${listStartPage}"  end="${listEndPage}"  >
+			<c:set var="startVar"  value="${(i-1) * pageSize + 1}" />
+			<c:if test="${i <= totalPage}">
+				<a href="guestbookList.do?start=${startVar}&ch1=${ch1}&ch2=${ch2}">[${i}]</a>&nbsp;
+			</c:if>
+		</c:forEach>
+		
 		<c:if test="${ currentPage != totalPage }">
 			<a href="guestbookList.do?start=${ start + pageSize }&ch1=${ch1}&ch2=${ch2}">다음</a>
 		</c:if>

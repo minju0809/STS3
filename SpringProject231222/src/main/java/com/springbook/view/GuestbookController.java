@@ -26,6 +26,7 @@ public class GuestbookController {
 		
 		int start = 0;
 		int pageSize = 0;
+		int pageListSize = 10;
 		
 		if (vo.getStart() == 0) {
 			start = 1;
@@ -44,6 +45,9 @@ public class GuestbookController {
 		int currentPage = (start / pageSize) + 1;
 		int lastPage = (totalPage - 1) * pageSize + 1;  
 		
+	    int listStartPage = (currentPage - 1) / pageListSize * pageListSize + 1;
+	    int listEndPage = listStartPage + pageListSize - 1 ;
+		
 		vo.setStart(start);
 		vo.setPageSize(pageSize);
 		vo.setEnd(end);
@@ -55,6 +59,10 @@ public class GuestbookController {
 		model.addAttribute("totalPage", totalPage);
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("lastPage", lastPage);
+		
+		model.addAttribute("pageListSize", pageListSize);
+		model.addAttribute("listStartPage", listStartPage);
+		model.addAttribute("listEndPage", listEndPage);
 		
 		model.addAttribute("ch1", vo.getCh1());
 		model.addAttribute("ch2", vo.getCh2());
