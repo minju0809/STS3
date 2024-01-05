@@ -66,6 +66,9 @@ td:last-child {
 				<td>이름</td>
 				<td>메모</td>
 				<td>날짜</td>
+				<td>ref</td>
+				<td>lv</td>
+				<td>step</td>
 				<td>삭제</td>
 			</tr>
 			<c:forEach items="${ li }" var="m" varStatus="status">
@@ -80,8 +83,11 @@ td:last-child {
 						<td>${ m.rnum }</td>
 						<td>${ m.guestbook_idx }</td>
 						<td>${ m.guestbook_name }</td>
-						<td width=300>${ m.guestbook_memo }</td>
+						<td>${ m.guestbook_memo }</td>
 						<td>${ m.guestbook_today }</td>
+						<td>${ m.ref }</td>
+						<td>${ m.lv }</td>
+						<td>${ m.step }</td>
 						<td><a href="guestbookDelete.do?guestbook_idx=${ m.guestbook_idx }&start=${ start }&ch1=${ch1}&ch2=${ch2}">삭제</a></td>
 					</tr>
 			</c:forEach>

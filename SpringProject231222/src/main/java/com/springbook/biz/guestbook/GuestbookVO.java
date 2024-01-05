@@ -11,6 +11,10 @@ public class GuestbookVO {
 	private String guestbook_memo;
 	private String guestbook_today;
 	
+	private int ref;
+	private int step;
+	private int lv;
+	
 	private String ch1;
 	private String ch2;
 	

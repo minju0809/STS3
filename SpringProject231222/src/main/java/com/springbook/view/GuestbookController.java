@@ -71,6 +71,59 @@ public class GuestbookController {
 		return "/guestbook/guestbookList.jsp";
 	}
 	
+	@RequestMapping(value = "guestbookList2.do", method=RequestMethod.GET)
+	public String guestbookList2(Model model, GuestbookVO vo) {
+		
+		int totalCount = service.getTotalCount(vo);
+		
+		int start = 0;
+		int pageSize = 0;
+		int pageListSize = 10;
+		
+		if (vo.getStart() == 0) {
+			start = 1;
+		} else {
+			start = vo.getStart();
+		}
+		
+		if(vo.getCh2() == null || vo.getCh2() == "") {
+			pageSize = 15;
+		} else {
+			pageSize = 10;
+		}
+		
+		int end = start + pageSize - 1;
+		int totalPage = (totalCount / pageSize) + 1;
+		int currentPage = (start / pageSize) + 1;
+		int lastPage = (totalPage - 1) * pageSize + 1;  
+		
+	    int listStartPage = (currentPage - 1) / pageListSize * pageListSize + 1;
+	    int listEndPage = listStartPage + pageListSize - 1 ;
+		
+		vo.setStart(start);
+		vo.setPageSize(pageSize);
+		vo.setEnd(end);
+
+		model.addAttribute("totalCount", totalCount);
+		model.addAttribute("start", start);
+		model.addAttribute("pageSize", pageSize);
+		model.addAttribute("end", end);
+		model.addAttribute("totalPage", totalPage);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("lastPage", lastPage);
+		
+		model.addAttribute("pageListSize", pageListSize);
+		model.addAttribute("listStartPage", listStartPage);
+		model.addAttribute("listEndPage", listEndPage);
+		
+		model.addAttribute("ch1", vo.getCh1());
+		model.addAttribute("ch2", vo.getCh2());
+		
+		model.addAttribute("li", service.getGuestbookList(vo));
+
+		return "/guestbook/guestbookList2.jsp";
+	}
+	
 	@RequestMapping(value = "guestbookWrite.do", method = RequestMethod.GET)
 	public String guestbookWrite(GuestbookVO vo) {
 		
