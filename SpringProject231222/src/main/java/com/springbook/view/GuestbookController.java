@@ -156,10 +156,14 @@ public class GuestbookController {
 	@RequestMapping(value = "commentkInsert.do", method=RequestMethod.GET)
 	public String commentInsert(GuestbookVO vo) {
 		
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!" + vo);
+		String memo[] = {"아주 좋아요","좋아요","보통이에요","아주 열심히합니다.","멋져요"};
+		
+		Random random = new Random();
+		if (vo.getGuestbook_memo() == "") {
+			vo.setGuestbook_memo(memo[random.nextInt(5)]);
+		}
 		vo.setLv(vo.getLv()+1);
 		vo.setStep(vo.getStep()+1);
-		System.out.println("2!!!!!!!!!!!!!!!!!!!!!!!" + vo);
 		service.commentInsert(vo);
 		
 		return "guestbookList2.do";

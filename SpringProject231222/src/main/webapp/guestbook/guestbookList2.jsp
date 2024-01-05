@@ -6,11 +6,15 @@
 
 <style>
 tr:first-child {
-	background: skyblue;
+	background: moccasin;
 }
 
 td:last-child {
 	text-align: center;
+}
+
+input {
+	width:95%;
 }
 
 </style>
@@ -56,7 +60,7 @@ td:last-child {
 		8.가로 하단 마지막 : ${listEndPage}
 		
 		<form name=f1 action="guestbookWrite.do"  onSubmit="return ck1()">
-			<table border=1>
+			<table border=1 width=640>
 				<tr>
 					<td>메모</td>
 					<td>이름</td>
@@ -83,10 +87,10 @@ td:last-child {
 			</tr>
 			<c:forEach items="${ li }" var="m" varStatus="status">
 				<c:if test="${ status.index % 2 == 0 }">
-					<c:set var="bgcolor" value="palegreen" />	
+					<c:set var="bgcolor" value="lemonchiffon" />	
 				</c:if>
 				<c:if test="${ status.index % 2 == 1 }">
-					<c:set var="bgcolor" value="aquamarine" />
+					<c:set var="bgcolor" value="antiquewhite" />
 				</c:if>
 					<tr bgcolor="${ bgcolor }">
 						<td>${ m.rownum }</td>
@@ -120,8 +124,8 @@ td:last-child {
 						        <table border="1" style="width: 100%;">
 						        	<tr>
 						        		<td>순번</td>
-										<td>이름</td>
 										<td>메모</td>
+										<td>이름</td>
 										<td>등록</td>
 						        	</tr>
 						            <tr>
@@ -129,7 +133,7 @@ td:last-child {
 							            <td>
 							            	<input type="text" name="guestbook_memo">
 						            	</td>
-							            <td><input type="text" name="guestbook_name"></td>
+							            <td><input type="text" name="guestbook_name" value="${ login.getName() }"></td>
 							            <td align="center"><input type="submit" value="등록하기"></td>
 						            </tr>
 						        </table>
