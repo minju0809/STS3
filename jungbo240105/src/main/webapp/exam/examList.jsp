@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ page import="java.util.Random" %>
 
 <c:import url="/include/top.jsp" />
 
@@ -124,15 +125,21 @@ td:last-child {
     google.charts.load("current", {packages:['corechart']});
     google.charts.setOnLoadCallback(drawChart);
     
+    function getRandomColor() {
+        var color = ["silver", "gold", "palegoldenrod", "mediumslateblue", "mediumvioletred", "#e5e4e2", "#b87333", "#ffe4e2", "#e5ffe2", "#e5e4ff", "thistle", "honeydew", "cyan"];
+        var randomIndex = Math.floor(Math.random() * color.length);
+        return color[randomIndex];
+    }
+    
     function drawChart() {
-
+    	
       var data = google.visualization.arrayToDataTable([
         ["Element", "평균", { role: "style" } ],
         <c:forEach items="${li}" var="m">
 			<c:set var="sum" value="${ m.kor+m.eng+m.math+m.hist }" />
 			<c:set var="avg" value="${ sum/4 }" />
 			<c:set var="avgInt" value="${ Math.round(avg) }" />
-	      ["${m.sname}", ${avgInt}, "#b87333"],
+	      ["${m.sname}", ${avgInt}, getRandomColor()],
 		</c:forEach>
       ]);
       
