@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 header {
-	background: #0000ff;
+	background: tan;
 	height: 90px;
 	line-height: 90px;
 	color: #ffffff;
@@ -10,7 +10,7 @@ header {
 }
 
 nav {
-	background: #0088ff;
+	background: wheat;
 	height: 35px;
 	line-height: 35px;
 	color: #ffffff;
@@ -33,7 +33,7 @@ section {
 }
 
 footer {
-	background: #0033dd;
+	background: tan;
 	height: 50px;
 	line-height: 50px;
 	color: #fff;

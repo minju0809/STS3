@@ -6,13 +6,15 @@
 <configuration>
   <typeAliases>
 
-    <typeAlias alias="guestbook"   type="com.jungbo.biz.guestbook.GuestbookVO" />  
+    <typeAlias alias="guestbook"   type="com.jungbo.biz.guestbook.GuestbookVO" />
+    <typeAlias alias="exam"   type="com.jungbo.biz.exam.ExamVO" />  
 
   </typeAliases>
 
   <mappers>
 
     <mapper resource="mappings/guestbook-mapping.xml"  />
+    <mapper resource="mappings/exam-mapping.xml"  />
 
   </mappers>
 </configuration>

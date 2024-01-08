@@ -20,10 +20,15 @@ td:last-child {
 	<div align=center>
 		<table border=1>
 			<tr>
-				<td>순번</td>
+				<td>학번</td>
 				<td>이름</td>
-				<td>메모</td>
-				<td>날짜</td>
+				<td>국어</td>
+				<td>영어</td>
+				<td>수학</td>
+				<td>역사</td>
+				<td>합계</td>
+				<td>평균</td>
+				<td>등급</td>
 			</tr>
 			<c:forEach items="${ li }" var="m" varStatus="status">
 				<c:if test="${ status.index % 2 == 0 }">
@@ -33,10 +38,15 @@ td:last-child {
 					<c:set var="bgcolor" value="lemonchiffon" />
 				</c:if>
 					<tr bgcolor="${ bgcolor }">
-						<td>${ m.guestbook_idx }</td>
-						<td>${ m.guestbook_name }</td>
-						<td width=300>${ m.guestbook_memo }</td>
-						<td>${ m.guestbook_today }</td>
+						<td>${ m.sno }</td>
+						<td>${ m.sname }</td>
+						<td>${ m.kor }</td>
+						<td>${ m.eng }</td>
+						<td>${ m.math }</td>
+						<td>${ m.hist }</td>
+						<td>${ m.sum }</td>
+						<td>${ m.avg }</td>
+						<td>${ m.grade }</td>
 					</tr>
 			</c:forEach>
 		</table>
