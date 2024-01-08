@@ -2,6 +2,7 @@ package com.jungbo.view;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -23,10 +24,26 @@ public class ExamController {
 	
 	@RequestMapping(value = "/examList.do", method=RequestMethod.GET)
 	public String examList(Model model, ExamVO vo) {
-		
 		List<ExamVO> li = service.getExamList(vo);
+		List<ExamVO> newLi = new ArrayList<>();
 		
-		model.addAttribute("li", li);
+		
+		for (int i = 0; i < li.size(); i++) {
+			String color[] = {"silver", "gold", "palegoldenrod", "mediumslateblue", "mediumvioletred", "#e5e4e2", "#b87333", "#ffe4e2", "#e5ffe2", "#e5e4ff", "thistle", "honeydew", "cyan"};
+			int randomIndex = (int)Math.floor(Math.random() * color.length);
+
+			ExamVO m = li.get(i);
+			
+			int total = m.getKor() + m.getEng() + m.getMath() + m.getHist();
+			int totalVal = (int) Math.round(total / 4.0);
+			m.setSname(m.getSname());
+			m.setTotalVal(totalVal);
+			m.setColor(color[randomIndex]);
+			
+			newLi.add(m);
+		}
+		
+		model.addAttribute("li", newLi);
 
 		return "/exam/examList.jsp";
 	}

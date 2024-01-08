@@ -12,7 +12,7 @@ public class ExamVO {
 	private int eng;
 	private int math;
 	private int hist;
-	private int sum;
-	private double avg;
-	private String grade;
+	
+	private int totalVal;
+	private String color;
 }

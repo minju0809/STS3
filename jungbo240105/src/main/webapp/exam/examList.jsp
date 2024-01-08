@@ -21,7 +21,7 @@ td:last-child {
 <section>
 	<br>
 	<div align=center>
-		<div id="columnchart_values" style="width: 1000px; height: 500px;"></div>
+		<div id="columnchart_values" style="width: 600px; height: 500px;"></div>
 		<table border=1>
 			<tr>
 				<td>학번</td>
@@ -37,7 +37,6 @@ td:last-child {
 			<c:forEach items="${ li }" var="m" varStatus="status">
 				<c:set var="sum" value="${ m.kor+m.eng+m.math+m.hist }" />
 				<c:set var="avg" value="${ sum/4 }" />
-				<c:set var="avgInt" value="${ Math.round(avg) }" />
 				<c:set var="sumKor" value="${ sumKor+m.kor }" />
 				<c:set var="sumEng" value="${ sumEng+m.eng }" />
 				<c:set var="sumMath" value="${ sumMath+m.math }" />
@@ -125,21 +124,21 @@ td:last-child {
     google.charts.load("current", {packages:['corechart']});
     google.charts.setOnLoadCallback(drawChart);
     
-    function getRandomColor() {
-        var color = ["silver", "gold", "palegoldenrod", "mediumslateblue", "mediumvioletred", "#e5e4e2", "#b87333", "#ffe4e2", "#e5ffe2", "#e5e4ff", "thistle", "honeydew", "cyan"];
-        var randomIndex = Math.floor(Math.random() * color.length);
-        return color[randomIndex];
-    }
+//     function getRandomColor() {
+//         var color = ["silver", "gold", "palegoldenrod", "mediumslateblue", "mediumvioletred", "#e5e4e2", "#b87333", "#ffe4e2", "#e5ffe2", "#e5e4ff", "thistle", "honeydew", "cyan"];
+//         var randomIndex = Math.floor(Math.random() * color.length);
+//         return color[randomIndex];
+//     }
     
     function drawChart() {
     	
       var data = google.visualization.arrayToDataTable([
         ["Element", "평균", { role: "style" } ],
         <c:forEach items="${li}" var="m">
-			<c:set var="sum" value="${ m.kor+m.eng+m.math+m.hist }" />
-			<c:set var="avg" value="${ sum/4 }" />
-			<c:set var="avgInt" value="${ Math.round(avg) }" />
-	      ["${m.sname}", ${avgInt}, getRandomColor()],
+// 			<c:set var="sum" value="${ m.kor+m.eng+m.math+m.hist }" />
+// 			<c:set var="avg" value="${ sum/4 }" />
+// 			<c:set var="avgInt" value="${ Math.round(avg) }" />
+			["${m.sname}", ${m.totalVal}, "${m.color}"],
 		</c:forEach>
       ]);
       
@@ -153,7 +152,7 @@ td:last-child {
 
       var options = {
         title: " 성적 ",
-        width: 1000,
+        width: 600,
         height: 500,
         bar: {groupWidth: "85%"},
         legend: { position: "none" },
