@@ -31,6 +31,23 @@ td:last-child {
 				<td>등급</td>
 			</tr>
 			<c:forEach items="${ li }" var="m" varStatus="status">
+				<c:set var="sum" value="${ m.kor+m.eng+m.math+m.hist }" />
+				<c:set var="avg" value="${ sum/4 }" />
+				<c:choose>
+					<c:when test="${ avg >= 90 }">
+						<c:set var="grade" value="수" />
+					</c:when>
+					<c:when test="${ avg >= 80 }">
+						<c:set var="grade" value="우" />
+					</c:when>
+					<c:when test="${ avg >= 70 }">
+						<c:set var="grade" value="미" />
+					</c:when>
+					<c:otherwise>
+						<c:set var="grade" value="재시험" />
+					</c:otherwise>
+				</c:choose>
+				
 				<c:if test="${ status.index % 2 == 0 }">
 					<c:set var="bgcolor" value="moccasin" />	
 				</c:if>
@@ -44,9 +61,9 @@ td:last-child {
 						<td>${ m.eng }</td>
 						<td>${ m.math }</td>
 						<td>${ m.hist }</td>
-						<td>${ m.sum }</td>
-						<td>${ m.avg }</td>
-						<td>${ m.grade }</td>
+						<td>${ sum }</td>
+						<td>${ avg }</td>
+						<td>${ grade }</td>
 					</tr>
 			</c:forEach>
 		</table>
