@@ -21,4 +21,9 @@ public class ExamDaoImpl implements ExamDao {
 	public void ExamInsert(ExamVO vo) {
 		mybatis.insert("ExamDao.insert_sql", vo);
 	}
+
+	@Override
+	public int snoCk(ExamVO vo) {
+		return mybatis.selectOne("ExamDao.selectSnoCk_sql", vo);
+	}
 }

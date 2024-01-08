@@ -20,5 +20,10 @@ public class ExamServiceImpl implements ExamService {
 	public void ExamInsert(ExamVO vo) {
 		dao.ExamInsert(vo);
 	}
+
+	@Override
+	public int snoCk(ExamVO vo) {
+		return dao.snoCk(vo);
+	}
 	
 }

@@ -12,5 +12,9 @@
 		insert into examtbl (sno, sname, kor, eng, math, hist) 
 		values (#{sno},#{sname},#{kor},#{eng},#{math},#{hist})
 	</insert>
+	
+	<select id="selectSnoCk_sql" parameterType="exam" resultType="int">
+		select count(*) from examtbl where sno = #{sno}
+	</select>
 
 </mapper>
