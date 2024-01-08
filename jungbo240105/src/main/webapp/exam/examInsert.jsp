@@ -18,7 +18,7 @@ td:first-child {
 	
 	$(document).ready(function () {
 		$("#snoBtn").click(function () {
-			var snoVal = $("#sno").val();
+			var snoVal = $("#sno").val().trim();
 			var data = {sno: snoVal};
 			
 			$.ajax({
@@ -32,6 +32,26 @@ td:first-child {
 						alert("이미 있는 학번입니다.")
 						$("#sno").val("");
 						$("#sno").focus();
+					}
+				}
+			})
+		})
+		
+		$("#snameBtn").click(function () {
+			var snameVal = $("#sname").val().trim();
+			var data = {sname: snameVal};
+				
+			$.ajax({
+				type : "GET",
+				url : path+"/snameCk.do",
+				data : data,
+				success : function (data) {
+					if (data == "T") {
+						alert(snameVal + "는(은) 사용 가능한 이름입니다.")
+					} else {
+						alert(snameVal + "는(은) 이미 있는 이름입니다.")
+						$("#sname").val("");
+						$("#sname").focus();
 					}
 				}
 			})
@@ -65,7 +85,7 @@ td:first-child {
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td><input type="text" name="sname"></td>
+					<td><input type="text" name="sname" id="sname"><input type=button value="중복체크" id="snameBtn" /></td>
 				</tr>
 				<tr>
 					<td>국어</td>

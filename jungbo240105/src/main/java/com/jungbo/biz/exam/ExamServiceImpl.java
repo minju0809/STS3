@@ -25,5 +25,10 @@ public class ExamServiceImpl implements ExamService {
 	public int snoCk(ExamVO vo) {
 		return dao.snoCk(vo);
 	}
+
+	@Override
+	public int snameCk(ExamVO vo) {
+		return dao.snameCk(vo);
+	}
 	
 }

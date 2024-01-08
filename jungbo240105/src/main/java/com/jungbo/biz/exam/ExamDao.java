@@ -6,5 +6,7 @@ public interface ExamDao {
 	List<ExamVO> getExamList(ExamVO vo); 
 	
 	void ExamInsert(ExamVO vo);
+	
 	int snoCk(ExamVO vo);
+	int snameCk(ExamVO vo);
 }

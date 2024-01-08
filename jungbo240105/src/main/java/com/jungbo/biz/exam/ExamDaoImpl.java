@@ -26,4 +26,9 @@ public class ExamDaoImpl implements ExamDao {
 	public int snoCk(ExamVO vo) {
 		return mybatis.selectOne("ExamDao.selectSnoCk_sql", vo);
 	}
+
+	@Override
+	public int snameCk(ExamVO vo) {
+		return mybatis.selectOne("ExamDao.selectSnameCk_sql", vo);
+	}
 }

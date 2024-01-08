@@ -61,6 +61,20 @@ public class ExamController {
 		}
 	}
 	
-	
+	@RequestMapping(value = "/snameCk.do")
+	public void snameCk(ExamVO vo, HttpServletResponse response) throws Exception {
+		
+		PrintWriter out = response.getWriter();
+		
+		int sname = service.snameCk(vo);
+		System.out.println("@@@@@@@@@@@@@sname:" + sname);
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!vo" + vo);
+		
+		if (sname == 1) {
+			out.print("F");
+		} else {
+			out.print("T");
+		}
+	}
 	
 }

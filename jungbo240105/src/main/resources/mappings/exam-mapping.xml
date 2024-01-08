@@ -16,5 +16,10 @@
 	<select id="selectSnoCk_sql" parameterType="exam" resultType="int">
 		select count(*) from examtbl where sno = #{sno}
 	</select>
+	
+	<select id="selectSnameCk_sql" parameterType="exam" resultType="int">
+		select count(*) from examtbl where sname = #{sname}
+	</select>
+	
 
 </mapper>
