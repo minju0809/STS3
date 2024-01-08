@@ -19,5 +19,6 @@
 	<nav>
 		&emsp;<a href="index.do">홈으로</a>
 		&emsp;<a href="examList.do">성적목록보기</a>
+		&emsp;<a href="examInsert.do">성적추가</a>
 		&emsp;<a href="guestbookList.do">방명록</a>
 	</nav>

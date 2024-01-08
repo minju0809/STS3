@@ -4,4 +4,6 @@ import java.util.List;
 
 public interface ExamDao {
 	List<ExamVO> getExamList(ExamVO vo); 
+	
+	void ExamInsert(ExamVO vo);
 }

@@ -16,4 +16,9 @@ public class ExamDaoImpl implements ExamDao {
 	public List<ExamVO> getExamList(ExamVO vo) {
 		return mybatis.selectList("ExamDao.select_sql", vo);
 	}
+
+	@Override
+	public void ExamInsert(ExamVO vo) {
+		mybatis.insert("ExamDao.insert_sql", vo);
+	}
 }

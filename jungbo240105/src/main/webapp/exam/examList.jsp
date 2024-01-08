@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <c:import url="/include/top.jsp" />
 
@@ -33,6 +34,25 @@ td:last-child {
 			<c:forEach items="${ li }" var="m" varStatus="status">
 				<c:set var="sum" value="${ m.kor+m.eng+m.math+m.hist }" />
 				<c:set var="avg" value="${ sum/4 }" />
+				<c:set var="sumKor" value="${ sumKor+m.kor }" />
+				<c:set var="sumEng" value="${ sumEng+m.eng }" />
+				<c:set var="sumMath" value="${ sumMath+m.math }" />
+				<c:set var="sumHist" value="${ sumHist+m.hist }" />
+				<c:set var="sumTotal" value="${ sumTotal+sum }" />
+				<c:set var="avgTotal" value="${ avgTotal+avg }" />
+				<fmt:formatNumber var="formattedAvgKor" value="${sumKor/status.count}" pattern="#,##0.00" />
+				<c:set var="avgKor" value="${ formattedAvgKor }" />
+				<fmt:formatNumber var="formattedAvgEng" value="${sumEng/status.count}" pattern="#,##0.00" />
+				<c:set var="avgEng" value="${ formattedAvgEng }" />
+				<fmt:formatNumber var="formattedAvgMath" value="${sumMath/status.count}" pattern="#,##0.00" />
+				<c:set var="avgMath" value="${ formattedAvgMath }" />
+				<fmt:formatNumber var="formattedAvgHist" value="${sumHist/status.count}" pattern="#,##0.00" />
+				<c:set var="avgHist" value="${ formattedAvgHist }" />
+				<fmt:formatNumber var="formattedSumTotalAvg" value="${sumTotal/status.count}" pattern="#,##0.00" />
+				<c:set var="sumTotalAvg" value="${ formattedSumTotalAvg }" />
+				<fmt:formatNumber var="formattedAvgTotalAvg" value="${ avgTotal/status.count }" pattern="#,##0.00" />
+				<c:set var="avgTotalAvg" value="${ formattedAvgTotalAvg }" />
+				
 				<c:choose>
 					<c:when test="${ avg >= 90 }">
 						<c:set var="grade" value="수" />
@@ -66,6 +86,24 @@ td:last-child {
 						<td>${ grade }</td>
 					</tr>
 			</c:forEach>
+			<tr>
+				<td colspan="2">누적합</td>
+				<td>${ sumKor }</td>
+				<td>${ sumEng }</td>
+				<td>${ sumMath }</td>
+				<td>${ sumHist }</td>
+				<td>${ sumTotal }</td>
+				<td>${ avgTotal }</td>
+			</tr>
+			<tr>
+				<td colspan="2">누적평균</td>
+				<td>${ avgKor }</td>
+				<td>${ avgEng }</td>
+				<td>${ avgMath }</td>
+				<td>${ avgHist }</td>
+				<td>${ sumTotalAvg }</td>
+				<td>${ avgTotalAvg }</td>
+			</tr>
 		</table>
 	</div>
 	<br>

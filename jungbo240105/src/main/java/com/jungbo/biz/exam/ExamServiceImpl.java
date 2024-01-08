@@ -15,5 +15,10 @@ public class ExamServiceImpl implements ExamService {
 	public List<ExamVO> getExamList(ExamVO vo) {
 		return dao.getExamList(vo);
 	}
+
+	@Override
+	public void ExamInsert(ExamVO vo) {
+		dao.ExamInsert(vo);
+	}
 	
 }

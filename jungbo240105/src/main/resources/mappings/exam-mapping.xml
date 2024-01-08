@@ -7,5 +7,10 @@
 	<select id="select_sql" parameterType="exam" resultType="exam">
 		select * from examtbl
 	</select>
+	
+	<insert id="insert_sql" parameterType="exam">
+		insert into examtbl (sno, sname, kor, eng, math, hist) 
+		values (#{sno},#{sname},#{kor},#{eng},#{math},#{hist})
+	</insert>
 
 </mapper>
