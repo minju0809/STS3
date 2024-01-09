@@ -2,12 +2,10 @@
 
 <script>
   // function 사용 하기
-  let x = myFunction(3, 4)
-
-  function myFunction(a, b) {
+  const myFunction = (a, b) => {
     return a + b
   }
-
+  let x = myFunction(3, 4)
   console.log(x);
 
   // Object 사용 하기
@@ -18,30 +16,45 @@
       return this.firstName + " " + this.lastName
     }
   }
-
   console.log(person.firstName);
   console.log(person.lastName);
   console.log(person.fullName());
 
-  function hello0() {
-    return "Hello World!"
+  const hello = (a, b) => {
+    let z = a + b
+    return z
   }
+  document.write("hello: " + hello(7, 8) + "<br>")
 
-  hello1 = function () {
-    return "Hello World!"
+  const hello1 = (a, b) => {
+    let z = a + b
+    document.write("hello1: " + z + "<br>")
   }
+  hello1(1, 2);
 
-  hello2 = () => "Hello World!"
+  const hello2 = (a, b) => a + " : " + b;
+  document.write(hello2(10, 20) + "<br>");
 
-  hello3 = k => k + " Hello World!"
+  const q1 = ["Jan", "Feb", "Mar"];
+  const q2 = ["Apr", "May", "Jun"];
+  const q3 = ["Jul", "Aug", "Sep"];
+  const q4 = ["Oct", "Nov", "May"];
 
-  hello4 = (str1, str2) => str1 + "와 " + str2
+  const year = [...q1, ...q2, ...q3, ...q4];
+  console.log(year);
+  document.write(year + " <br>");
 
-  console.log("hello0: " + hello0());
-  console.log("hello1: " + hello1());
-  console.log("hello2: " + hello2());
-  console.log("hello3: " + hello3("둘리"));
-  console.log("hello4: " + hello4("둘리", "영심이"));
+  for(i = 0; i < year.length; i++) {
+    console.log(year[i]);
+    document.write(year[i] + " ");
+  }
+  document.write("<br>");
+
+  for(let i of year) {
+    console.log(i)
+    document.write(i + " ");
+  }
+  document.write("<br>");
 
 </script>
 
