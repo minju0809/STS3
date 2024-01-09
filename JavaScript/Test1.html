@@ -1,65 +1,5 @@
 <!DOCTYPE html>
-
-<script>
-  // function 사용 하기
-  const myFunction = (a, b) => {
-    return a + b
-  }
-  let x = myFunction(3, 4)
-  console.log(x);
-
-  // Object 사용 하기
-  const person = {
-    firstName: "Minju",
-    lastName: "Kang",
-    fullName: function () {
-      return this.firstName + " " + this.lastName
-    }
-  }
-  console.log(person.firstName);
-  console.log(person.lastName);
-  console.log(person.fullName());
-
-  const hello = (a, b) => {
-    let z = a + b
-    return z
-  }
-  document.write("hello: " + hello(7, 8) + "<br>")
-
-  const hello1 = (a, b) => {
-    let z = a + b
-    document.write("hello1: " + z + "<br>")
-  }
-  hello1(1, 2);
-
-  const hello2 = (a, b) => a + " : " + b;
-  document.write(hello2(10, 20) + "<br>");
-
-  const q1 = ["Jan", "Feb", "Mar"];
-  const q2 = ["Apr", "May", "Jun"];
-  const q3 = ["Jul", "Aug", "Sep"];
-  const q4 = ["Oct", "Nov", "May"];
-
-  const year = [...q1, ...q2, ...q3, ...q4];
-  console.log(year);
-  document.write(year + " <br>");
-
-  for(i = 0; i < year.length; i++) {
-    console.log(year[i]);
-    document.write(year[i] + " ");
-  }
-  document.write("<br>");
-
-  for(let i of year) {
-    console.log(i)
-    document.write(i + " ");
-  }
-  document.write("<br>");
-
-</script>
-
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -67,7 +7,53 @@
 </head>
 
 <body>
-  자바스크립트 연습
+  <h2>자바스크립트 연습</h2>
+
+  <form name="f1">
+    이름: 
+    <input type="text" name="name" id="name" class="name" value="">
+    <!-- <input type="text" name="name" id="name" class="name" value=""> -->
+    <!-- <input type="text" name="name" id="name" class="name" value=""> -->
+    <input type="button" value="확인" onClick="k()">
+    <input type="button" value="확인" onClick="k1(100)">
+    <input type="button" value="확인" onClick="k2(200)">
+    <input type="button" value="확인" onClick="k3(300)">
+    <button onClick="k4(400)">확인</button>
+  </form>
 </body>
+
+<script>
+  const cars = ["BMW", "Volvo", "Mini"];
+  let text = "";
+
+  for (let x of cars) {
+    text += x + " ";
+    console.log(text);
+    document.write(text + "<br>");
+  }
+
+  document.getElementById("name").value = "가나다";
+  // document.getElementsByName("name")[1].value = "강민주";
+  // document.getElementsByClassName("name")[2].value = "홍길동";
+
+  const k = () => {
+    let name = f1.name.value;
+    // let name = document.getElementsByName("name")[0].value = "강민주";
+    // let name = document.getElementsByClassName("name")[0].value = "홍길동";
+    alert("name: " + name)
+  }
+
+  const k1 = (a) => {
+    alert(a)
+  }
+
+  const k2 = a => {
+    alert(a)
+  }
+
+  const k3 = a => alert(a)
+
+  const k4 = a => alert(a)
+</script>
 
 </html>
