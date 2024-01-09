@@ -1,15 +1,48 @@
 <!DOCTYPE html>
 
 <script>
-  {
-    var a = 10
-  }
-  console.log(a);
+  // function 사용 하기
+  let x = myFunction(3, 4)
 
-  {
-    let b = 10
+  function myFunction(a, b) {
+    return a + b
   }
-  console.log(b);
+
+  console.log(x);
+
+  // Object 사용 하기
+  const person = {
+    firstName: "Minju",
+    lastName: "Kang",
+    fullName: function () {
+      return this.firstName + " " + this.lastName
+    }
+  }
+
+  console.log(person.firstName);
+  console.log(person.lastName);
+  console.log(person.fullName());
+
+  function hello0() {
+    return "Hello World!"
+  }
+
+  hello1 = function () {
+    return "Hello World!"
+  }
+
+  hello2 = () => "Hello World!"
+
+  hello3 = k => k + " Hello World!"
+
+  hello4 = (str1, str2) => str1 + "와 " + str2
+
+  console.log("hello0: " + hello0());
+  console.log("hello1: " + hello1());
+  console.log("hello2: " + hello2());
+  console.log("hello3: " + hello3("둘리"));
+  console.log("hello4: " + hello4("둘리", "영심이"));
+
 </script>
 
 <html lang="en">
