@@ -12,4 +12,12 @@
 		select * from gangwonTbl where idx=#{idx}
 	</select>
 
+	<select id="selectMemo_sql" parameterType="electric" resultType="electric">
+		select * from gangwonMemo where gangwonIdx=#{idx}
+	</select>
+	
+	<insert id="insert_sql" parameterType="electric">
+		insert into gangwonMemo (idx, gangwonIdx, memo, name)
+		values (memoSeq.nextval, #{gangwonIdx}, #{memo}, #{name})
+	</insert>
 </mapper>

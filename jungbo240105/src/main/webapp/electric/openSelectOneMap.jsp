@@ -31,7 +31,7 @@ td:last-child {
 				<td>메모</td>
 			</tr>
 			<tr>
-				<td width=300px>
+				<td width=250px>
 					<div id="map" style="width:100%;height:150px;"></div>
 				</td>
 				<td>
@@ -78,13 +78,20 @@ td:last-child {
 				</td>
 			</tr>
 		</table>
-		<table border=1 class="table1">
+		<table border=1 class="table1" width=715>
 			<tr>
 				<td>idx</td><td>memo</td><td>name</td><td>today</td>
 			</tr>
-			<tr>
-				<td>${m.idx}</td><td>${m.memo}</td><td>${m.name}</td><td>${m.today}</td>
-			</tr>
+			<c:forEach items="${ memo }" var="m">
+				<c:if test="${!empty m.idx }">
+					<tr>
+						<td>${m.idx}</td>
+						<td>${m.memo}</td>
+						<td>${m.name}</td>
+						<td>${m.today}</td>
+					</tr>
+				</c:if>
+				</c:forEach>
 		</table>
 		<br>
 		<a href="electricList.do">목록</a>

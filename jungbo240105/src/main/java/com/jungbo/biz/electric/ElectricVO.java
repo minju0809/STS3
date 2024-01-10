@@ -10,7 +10,7 @@ public class ElectricVO {
 	private String longitude; // 경도
 	private String latitude; // 위도
 	
-	private int ganwonIdx;
+	private int gangwonIdx;
 	private String memo;
 	private String name;
 	private String today;

@@ -21,4 +21,15 @@ public class ElectricServiceImpl implements ElectricService {
 		return dao.getElectricOne(vo);
 	}
 
+	@Override
+	public void insert(ElectricVO vo) {
+		dao.insert(vo);
+	}
+
+	@Override
+	public List<ElectricVO> getMemoList(ElectricVO vo) {
+		return dao.getMemoList(vo);
+	}
+
+
 }

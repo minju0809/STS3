@@ -39,8 +39,17 @@ public class ElectricController {
 		
 		model.addAttribute("keyValue", "5fd42cdd845577dc157f2510c3e96a73");
 		model.addAttribute("m", service.getElectricOne(vo));
+		model.addAttribute("memo", service.getMemoList(vo));
 		
 		return "/electric/openSelectOneMap.jsp";
+	}
+	
+	@RequestMapping(value = "/memoInsert.do")
+	public String electricInsert(ElectricVO vo) {
+		
+		service.insert(vo);
+
+		return "/OpenSelectOneMap.do?idx=" + vo.getGangwonIdx();
 	}
 	
 }
