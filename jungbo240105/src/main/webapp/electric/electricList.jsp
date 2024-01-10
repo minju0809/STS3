@@ -21,9 +21,10 @@ td:last-child {
 		<table border=1>
 			<tr>
 				<td>순번</td>
-				<td>충전소 이름</td>
-				<td>메모</td>
-				<td>날짜</td>
+				<td>지역</td>
+				<td>이름</td>
+				<td>경도</td>
+				<td>위도</td>
 			</tr>
 			<c:forEach items="${ li }" var="m" varStatus="status">
 				<c:if test="${ status.index % 2 == 0 }">
@@ -33,10 +34,11 @@ td:last-child {
 					<c:set var="bgcolor" value="lemonchiffon" />
 				</c:if>
 					<tr bgcolor="${ bgcolor }">
-						<td>${ m.guestbook_idx }</td>
-						<td>${ m.guestbook_name }</td>
-						<td width=300>${ m.guestbook_memo }</td>
-						<td>${ m.guestbook_today }</td>
+						<td>${ m.idx }</td>
+						<td>${ m.region }</td>
+						<td>${ m.station }</td>
+						<td>${ m.longitude }</td>
+						<td>${ m.latitude }</td>
 					</tr>
 			</c:forEach>
 		</table>
