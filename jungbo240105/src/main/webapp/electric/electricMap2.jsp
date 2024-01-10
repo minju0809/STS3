@@ -19,7 +19,7 @@ td:last-child {
 <section>
 	<br>
 	<div align=center>
-		<div id="map" style="width:100%;height:350px;"></div>
+		<div id="map" style="width:100%;height:500px;"></div>
 	</div>
 	<br>
 </section>
@@ -43,7 +43,10 @@ var locations = [
     { address: '서울 마포구 와우산로19길 26', name: '위키드찜닭' },
     { address: '서울 중구 명동10길 29', name: '명동교자 본점' },
     { address: '서울 강남구 테헤란로1길 19', name: '장인닭갈비 강남점' },
-    { address: '서울 종로구 청계천로 201', name: '아베베베이커리 서울' }
+    { address: '서울 종로구 청계천로 201', name: '아베베베이커리 서울' },
+    { address: '서울 관악구 남부순환로226길 31', name: '와인창고잡' },
+    { address: '서울 관악구 관악로12길 5', name: '소불돼불' },
+    { address: ' 서울 관악구 봉천로 467', name: '봉천동그집돼지' }
 ];
 
 for (var i = 0; i < locations.length; i++) {
