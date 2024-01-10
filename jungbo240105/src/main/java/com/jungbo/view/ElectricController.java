@@ -52,5 +52,14 @@ public class ElectricController {
 		return "/OpenSelectOneMap.do?idx=" + vo.getGangwonIdx();
 	}
 	
+	@RequestMapping(value = "/electricMap2.do", method=RequestMethod.GET)
+	public String electricMap2(Model model, ElectricVO vo) {
+		
+		model.addAttribute("keyValue", "5fd42cdd845577dc157f2510c3e96a73");
+		model.addAttribute("li", service.getElectricList(vo));
+
+		return "/electric/electricMap2.jsp";
+	}
+	
 }
 

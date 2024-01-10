@@ -7,6 +7,11 @@
 <style>
 .table1 tr:first-child {
 	background: tan;
+
+}
+
+.table1 input {
+	width: 95%;
 }
 
 .table2 td:first-child {
@@ -26,13 +31,12 @@ td:last-child {
 		
 		<table border=1 class="table1">
 			<tr>
-				<td>지도확인</td>
+				<td width=450px>지도확인</td>
 				<td>상세보기</td>
-				<td>메모</td>
 			</tr>
 			<tr>
-				<td width=250px>
-					<div id="map" style="width:100%;height:150px;"></div>
+				<td>
+					<div id="map" style="width:100%;height:200px;"></div>
 				</td>
 				<td>
 					<table border=1 class="table2">
@@ -58,32 +62,29 @@ td:last-child {
 						</tr>
 					</table>
 				</td>
-				<td>
-					<form action="memoInsert.do">
-						<input type=hidden name=gangwonIdx value="${m.idx}" />
-						<table border=1 class="table2">
-							<tr>
-								<td>작성자</td>
-								<td><input type=text name=name ></td>
-							</tr>
-							<tr>
-								<td>메모</td>
-								<td><input type=text name=memo ></td>
-							</tr>
-							<tr>
-								<td colspan=2><input type=submit value="메모저장" ></td>
-							</tr>
-						</table>
-					</form>
-				</td>
 			</tr>
 		</table>
-		<table border=1 class="table1" width=715>
-			<tr>
+		<form action="memoInsert.do">
+			<input type=hidden name=gangwonIdx value="${m.idx}" />
+			<table border=1 class="table1" width=680>
+				<tr>
+					<td>메모</td>
+					<td>작성자</td>
+					<td>저장</td>
+				</tr>
+				<tr>
+					<td><input type=text name=memo ></td>
+					<td><input type=text name=name ></td>
+					<td colspan=2><input type=submit value="메모저장" ></td>
+				</tr>
+			</table>
+		</form>
+		<table border=1 class="table1" width=680>
+			<tr> 
 				<td>idx</td><td>memo</td><td>name</td><td>today</td>
 			</tr>
 			<c:forEach items="${ memo }" var="m">
-				<c:if test="${!empty m.idx }">
+				<c:if test="${ memo.size() != 0 }">
 					<tr>
 						<td>${m.idx}</td>
 						<td>${m.memo}</td>
@@ -91,7 +92,14 @@ td:last-child {
 						<td>${m.today}</td>
 					</tr>
 				</c:if>
-				</c:forEach>
+			</c:forEach>
+			<c:if test="${ memo.size() == 0 }">
+				<table border=1 width=680>
+					<tr>
+						<td align="center" colspan=4> 입력된 내용이 없습니다.!! </td>
+					</tr>
+				</table>
+			</c:if>
 		</table>
 		<br>
 		<a href="electricList.do">목록</a>
@@ -105,7 +113,7 @@ td:last-child {
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
         center: new kakao.maps.LatLng(${m.latitude}, ${m.longitude}), // 지도의 중심좌표
-        level: 5 // 지도의 확대 레벨
+        level: 3 // 지도의 확대 레벨
     };
 
 var map = new kakao.maps.Map(mapContainer, mapOption);
