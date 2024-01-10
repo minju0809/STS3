@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jungbo.biz.electric.ElectricService;
 import com.jungbo.biz.electric.ElectricVO;
 
@@ -17,7 +16,7 @@ public class ElectricController {
 	private ElectricService service;
 
 	@RequestMapping(value = "/electricList.do", method=RequestMethod.GET)
-	public String guestbookList(Model model, ElectricVO vo) {
+	public String electricList(Model model, ElectricVO vo) {
 		
 		model.addAttribute("li", service.getElectricList(vo));
 		
@@ -26,7 +25,7 @@ public class ElectricController {
 	}
 	
 	@RequestMapping(value = "/electricMap1.do", method=RequestMethod.GET)
-	public String guestbookMap1(Model model, ElectricVO vo) {
+	public String electricMap1(Model model, ElectricVO vo) {
 		
 		
 		model.addAttribute("keyValue", "5fd42cdd845577dc157f2510c3e96a73");
@@ -35,21 +34,14 @@ public class ElectricController {
 		return "/electric/electricMap1.jsp";
 	}
 	
-	@RequestMapping(value = "/electricMap2.do", method=RequestMethod.GET)
-	public String guestbookMap2(Model model, ElectricVO vo) {
+	@RequestMapping(value = "/OpenSelectOneMap.do", method=RequestMethod.GET)
+	public String OpenSelectOneMap(Model model, ElectricVO vo) {
 		
-		model.addAttribute("keyValue", "5fd42cdd845577dc157f2510c3e96a73");
-		
-	    ObjectMapper objectMapper = new ObjectMapper();
-	    try {
-	        String electricListJson = objectMapper.writeValueAsString(service.getElectricList(vo));
-	        model.addAttribute("li", electricListJson);
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
-		model.addAttribute("li", service.getElectricList(vo));
+//		model.addAttribute("li", service.getElectricList(vo));
 
-		return "/electric/electricMap2.jsp";
+		return "/electric/openSelectOneMap.jsp";
 	}
 	
+	
 }
+

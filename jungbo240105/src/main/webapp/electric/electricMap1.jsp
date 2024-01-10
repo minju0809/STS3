@@ -41,10 +41,9 @@ var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니
 var positions = [];
 	
 <c:forEach items="${ li }" var="m" varStatus="status">
-	
     var position = {
-        content: '<div>${m.station}</div>', 
-        latlng: new kakao.maps.LatLng(${m.longitude}, ${m.latitude})
+        content: '<div><a href=${path}/OpenSelectOneMap.do?idx=${m.idx}&region=${m.region}&station=${m.station}&latitude=${m.latitude}&longitude=${m.longitude}>${m.station}</a></div>', 
+        latlng: new kakao.maps.LatLng(${m.latitude}, ${m.longitude})
     };
 	
 	positions.push(position);
@@ -77,10 +76,11 @@ function makeOverListener(map, marker, infowindow) {
     };
 }
 
+
 // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
 function makeOutListener(infowindow) {
     return function() {
-        infowindow.close();
+//         infowindow.close();
     };
 }
 </script>
