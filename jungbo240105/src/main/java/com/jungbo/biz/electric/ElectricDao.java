@@ -4,4 +4,5 @@ import java.util.List;
 
 public interface ElectricDao {
 	List<ElectricVO> getElectricList(ElectricVO vo);
+	ElectricVO getElectricOne(ElectricVO vo);
 }

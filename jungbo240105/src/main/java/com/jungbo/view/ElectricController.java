@@ -37,11 +37,11 @@ public class ElectricController {
 	@RequestMapping(value = "/OpenSelectOneMap.do", method=RequestMethod.GET)
 	public String OpenSelectOneMap(Model model, ElectricVO vo) {
 		
-//		model.addAttribute("li", service.getElectricList(vo));
-
+		model.addAttribute("keyValue", "5fd42cdd845577dc157f2510c3e96a73");
+		model.addAttribute("m", service.getElectricOne(vo));
+		
 		return "/electric/openSelectOneMap.jsp";
 	}
-	
 	
 }
 

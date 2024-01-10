@@ -16,4 +16,9 @@ public class ElectricServiceImpl implements ElectricService {
 		return dao.getElectricList(vo);
 	}
 
+	@Override
+	public ElectricVO getElectricOne(ElectricVO vo) {
+		return dao.getElectricOne(vo);
+	}
+
 }

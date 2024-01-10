@@ -7,5 +7,9 @@
 	<select id="select_sql" parameterType="electric" resultType="electric">
 		select * from gangwonTbl
 	</select>
+	
+	<select id="selectOne_sql" parameterType="electric" resultType="electric">
+		select * from gangwonTbl where idx=#{idx}
+	</select>
 
 </mapper>

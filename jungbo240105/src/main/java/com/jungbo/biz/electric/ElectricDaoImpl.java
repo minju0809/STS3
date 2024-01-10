@@ -16,5 +16,10 @@ public class ElectricDaoImpl implements ElectricDao {
 	public List<ElectricVO> getElectricList(ElectricVO vo) {
 		return mybatis.selectList("ElectricDao.select_sql", vo);
 	}
+
+	@Override
+	public ElectricVO getElectricOne(ElectricVO vo) {
+		return mybatis.selectOne("ElectricDao.selectOne_sql", vo);
+	}
 	
 }

@@ -18,11 +18,6 @@ td:last-child {
 	<br>
 	<div align=center>
 		<div id="map" style="width: 100%; height: 350px;"></div>
-		<p>
-			<button onclick="hideMarkers()">마커 감추기</button>
-			<button onclick="showMarkers()">마커 보이기</button>
-		</p>
-		<em>클릭한 위치에 마커가 표시됩니다!</em>
 	</div>
 	<br>
 </section>
@@ -42,7 +37,7 @@ var positions = [];
 	
 <c:forEach items="${ li }" var="m" varStatus="status">
     var position = {
-        content: '<div><a href=${path}/OpenSelectOneMap.do?idx=${m.idx}&region=${m.region}&station=${m.station}&latitude=${m.latitude}&longitude=${m.longitude}>${m.station}</a></div>', 
+        content: '<div><a href=${path}/OpenSelectOneMap.do?idx=${m.idx}>${m.station}</a></div>', 
         latlng: new kakao.maps.LatLng(${m.latitude}, ${m.longitude})
     };
 	
@@ -50,7 +45,6 @@ var positions = [];
 </c:forEach>
 
 for (var i = 0; i < positions.length; i ++) {
-	console.log(positions[i].latlng)
     // 마커를 생성합니다
     var marker = new kakao.maps.Marker({
         map: map, // 마커를 표시할 지도
