@@ -28,7 +28,7 @@ td:last-child {
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
-        center: new kakao.maps.LatLng(37.51541335, 127.7297758), // 지도의 중심좌표
+        center: new kakao.maps.LatLng(37.5591088, 126.97089395), // 지도의 중심좌표
         level: 4 // 지도의 확대 레벨
     };  
 
@@ -38,30 +38,44 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
 
+var locations = [
+    { address: '서울 중구 퇴계로 210-14', name: '바로 파스타마켓' },
+    { address: '서울 마포구 와우산로19길 26', name: '위키드찜닭' },
+    { address: '서울 중구 명동10길 29', name: '명동교자 본점' },
+    { address: '서울 강남구 테헤란로1길 19', name: '장인닭갈비 강남점' },
+    { address: '서울 종로구 청계천로 201', name: '아베베베이커리 서울' }
+];
+
+for (var i = 0; i < locations.length; i++) {
+    searchAddress(locations[i]);
+}
+
+function searchAddress(location) {
 // 주소로 좌표를 검색합니다
-geocoder.addressSearch('서울특별시 영등포구 경인로 846 (영등포동 618-496)', function(result, status) {
-
-    // 정상적으로 검색이 완료됐으면 
-     if (status === kakao.maps.services.Status.OK) {
-
-        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-        // 결과값으로 받은 위치를 마커로 표시합니다
-        var marker = new kakao.maps.Marker({
-            map: map,
-            position: coords
-        });
-
-        // 인포윈도우로 장소에 대한 설명을 표시합니다
-        var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">영등포역</div>'
-        });
-        infowindow.open(map, marker);
-
-        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-        map.setCenter(coords);
-    } 
-});    
+	geocoder.addressSearch(location.address, function(result, status) {
+	
+	    // 정상적으로 검색이 완료됐으면 
+	     if (status === kakao.maps.services.Status.OK) {
+	
+	        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+	
+	        // 결과값으로 받은 위치를 마커로 표시합니다
+	        var marker = new kakao.maps.Marker({
+	            map: map,
+	            position: coords
+	        });
+	
+	        // 인포윈도우로 장소에 대한 설명을 표시합니다
+	        var infowindow = new kakao.maps.InfoWindow({
+	            content: '<div style="width:150px;text-align:center;padding:6px 0;">' + location.name + '</div>'
+	        });
+	        infowindow.open(map, marker);
+	
+	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+	        map.setCenter(coords);
+	    } 
+	}); 
+}
 </script>
 
 <c:import url="/include/bottom.jsp" />
