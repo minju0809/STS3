@@ -50,7 +50,7 @@ var positions = [];
 </c:forEach>
 
 for (var i = 0; i < positions.length; i ++) {
-	
+	console.log(positions[i].latlng)
     // 마커를 생성합니다
     var marker = new kakao.maps.Marker({
         map: map, // 마커를 표시할 지도
@@ -80,7 +80,9 @@ function makeOverListener(map, marker, infowindow) {
 // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
 function makeOutListener(infowindow) {
     return function() {
-//         infowindow.close();
+        setTimeout(function() {
+            infowindow.close();
+        }, 1000);
     };
 }
 </script>
