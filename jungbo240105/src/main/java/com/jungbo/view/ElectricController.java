@@ -19,14 +19,12 @@ public class ElectricController {
 	public String electricList(Model model, ElectricVO vo) {
 		
 		model.addAttribute("li", service.getElectricList(vo));
-		
 
 		return "/electric/electricList.jsp";
 	}
 	
 	@RequestMapping(value = "/electricMap1.do", method=RequestMethod.GET)
 	public String electricMap1(Model model, ElectricVO vo) {
-		
 		
 		model.addAttribute("keyValue", "5fd42cdd845577dc157f2510c3e96a73");
 		model.addAttribute("li", service.getElectricList(vo));

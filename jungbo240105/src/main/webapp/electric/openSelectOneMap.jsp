@@ -129,7 +129,7 @@ var marker = new kakao.maps.Marker({
 // 마커가 지도 위에 표시되도록 설정합니다
 marker.setMap(map);
 
-var iwContent = '<div style="padding:5px;">${param.station}<br><a href="https://map.kakao.com/link/map/${param.station},${param.latitude},${param.longitude}" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/${param.station},${param.latitude},${param.longitude}" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+var iwContent = '<div style="padding:5px;">${m.station}<br><a href="https://map.kakao.com/link/map/${m.station},${m.latitude},${m.longitude}" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/${m.station},${m.latitude},${m.longitude}" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
     iwPosition = new kakao.maps.LatLng(${m.latitude}, ${m.longitude}); //인포윈도우 표시 위치입니다
 
 // 인포윈도우를 생성합니다

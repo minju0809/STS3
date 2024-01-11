@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 
-
 <c:import url="/include/top.jsp" />
 
 <style>
@@ -20,6 +19,28 @@ td:last-child {
 	<br>
 	<div align=center>
 		<div id="map" style="width:100%;height:500px;"></div>
+		<table border=1>
+			<tr>
+				<td>순번</td>
+				<td>캠핑장이름</td>
+				<td>주소</td>
+				<td>번호</td>
+			</tr>
+			<c:forEach items="${ li }" var="m" varStatus="status">
+				<c:if test="${ status.index % 2 == 0 }">
+					<c:set var="bgcolor" value="moccasin" />	
+				</c:if>
+				<c:if test="${ status.index % 2 == 1 }">
+					<c:set var="bgcolor" value="lemonchiffon" />
+				</c:if>
+					<tr bgcolor="${ bgcolor }">
+						<td>${ m.idx }</td>
+						<td><a href="${path}/campsiteOne.do?idx=${m.idx}">${ m.campsite }</a></td>
+						<td>${ m.address }</td>
+						<td>${ m.tel }</td>
+					</tr>
+			</c:forEach>
+		</table>
 	</div>
 	<br>
 </section>
@@ -39,14 +60,10 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 var geocoder = new kakao.maps.services.Geocoder();
 
 var locations = [
-    { address: '서울 중구 퇴계로 210-14', name: '바로 파스타마켓' },
-    { address: '서울 마포구 와우산로19길 26', name: '위키드찜닭' },
-    { address: '서울 중구 명동10길 29', name: '명동교자 본점' },
-    { address: '서울 강남구 테헤란로1길 19', name: '장인닭갈비 강남점' },
-    { address: '서울 종로구 청계천로 201', name: '아베베베이커리 서울' },
-    { address: '서울 관악구 남부순환로226길 31', name: '와인창고잡' },
-    { address: '서울 관악구 관악로12길 5', name: '소불돼불' },
-    { address: '서울 관악구 봉천로 467', name: '봉천동그집돼지' },
+    <c:forEach items="${li}" var="m" varStatus="status">
+        { address: '<c:out value="${m.address}" />', name: '<c:out value="${m.campsite}" />' }
+        <c:if test="${!status.last}">,</c:if>
+    </c:forEach>
 ];
 
 for (var i = 0; i < locations.length; i++) {
