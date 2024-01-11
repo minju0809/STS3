@@ -27,6 +27,7 @@ public class CampsiteController {
 	@RequestMapping(value = "/campsiteOne.do", method=RequestMethod.GET)
 	public String campsiteOne(Model model, CampsiteVO vo) {
 		
+		model.addAttribute("keyValue", "5fd42cdd845577dc157f2510c3e96a73");
 		model.addAttribute("m", service.getCampsiteOne(vo));
 
 		return "/campsite/campsiteOne.jsp";

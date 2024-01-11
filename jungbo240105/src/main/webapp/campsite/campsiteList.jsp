@@ -62,7 +62,7 @@ var geocoder = new kakao.maps.services.Geocoder();
 var locations = [
     <c:forEach items="${li}" var="m" varStatus="status">
         { address: '<c:out value="${m.address}" />', 
-        	name: '<c:out value="${m.campsite}" />' }
+        	name: '<div style="width:150px;text-align:center;padding:6px 0;"><a href=${path}/campsiteOne.do?idx=${m.idx}>${m.campsite}</a></div>'}
         <c:if test="${!status.last}">,</c:if>
     </c:forEach>
 ];
@@ -88,7 +88,7 @@ function searchAddress(location) {
 	
 	        // 인포윈도우로 장소에 대한 설명을 표시합니다
 	        var infowindow = new kakao.maps.InfoWindow({
-	            content: '<div style="width:150px;text-align:center;padding:6px 0;">' + location.name + '</div>'
+	            content: location.name
 	        });
 // 	        infowindow.open(map, marker);
 	

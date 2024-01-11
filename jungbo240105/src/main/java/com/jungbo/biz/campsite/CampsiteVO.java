@@ -8,7 +8,7 @@ public class CampsiteVO {
 	private String campsite;
 	private String address;
 	private String tel;
-	private String hoempage;
+	private String homepage;
 	private String people;
 	private String area;
 	private String parking;
