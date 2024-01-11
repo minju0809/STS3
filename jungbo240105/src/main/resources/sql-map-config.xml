@@ -9,7 +9,8 @@
     <typeAlias alias="guestbook"   type="com.jungbo.biz.guestbook.GuestbookVO" />
     <typeAlias alias="exam"   type="com.jungbo.biz.exam.ExamVO" /> 
     <typeAlias alias="electric"   type="com.jungbo.biz.electric.ElectricVO" />
-    <typeAlias alias="campsite"   type="com.jungbo.biz.campsite.CampsiteVO" />  
+    <typeAlias alias="campsite"   type="com.jungbo.biz.campsite.CampsiteVO" />
+    <typeAlias alias="company"   type="com.jungbo.biz.company.CompanyVO" />  
 
   </typeAliases>
 
@@ -19,6 +20,7 @@
     <mapper resource="mappings/exam-mapping.xml"  />
     <mapper resource="mappings/electric-mapping.xml"  />
     <mapper resource="mappings/campsite-mapping.xml"  />
+    <mapper resource="mappings/company-mapping.xml"  />
 
   </mappers>
 </configuration>

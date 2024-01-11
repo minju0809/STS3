@@ -9,7 +9,7 @@
 	</select>
 	
 	<select id="selectOne_sql" parameterType="campsite" resultType="campsite">
-		select * from campsiteTbl where idx like '%'|| #{idx} ||'%' 
+		select * from campsiteTbl where idx like '%'|| #{idx} ||'%'
 	</select>
 
 </mapper>

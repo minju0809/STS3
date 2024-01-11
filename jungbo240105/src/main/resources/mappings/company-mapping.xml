@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CompanyDao">
+
+	<insert id="insert_sql" parameterType="company">
+		insert into company(SEQ, rdnmadr, logitude, entrprsNm, rprsntvNm, latitude, mainGoods)
+		  values(#{SEQ}, #{rdnmadr}, #{logitude}, #{entrprsNm}, #{rprsntvNm}, #{latitude}, #{mainGoods})
+	</insert>
+	
+	<select id="select_sql" parameterType="company" resultType="company">
+		select * from company
+	</select>
+
+</mapper>
