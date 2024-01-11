@@ -18,8 +18,8 @@
 	</header>
 	<nav>
 		&emsp;<a href="index.do">홈으로</a>
-		&emsp;<a href="company.do">충전소추가</a>
-		&emsp;<a href="companyList.do">충전소</a>
+		&emsp;<a href="company.do">배열우수기업</a>
+		&emsp;<a href="companyList.do">DB우수기업</a>
 		&emsp;<a href="campsiteList.do">캠핑장</a>
 		&emsp;<a href="electricList.do">강원충전소</a>
 		&emsp;<a href="electricMap1.do">강원충전소Map1</a>

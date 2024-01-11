@@ -31,10 +31,9 @@ public class CompanyController {
 	private CompanyService service;
 	
 	@RequestMapping("/company.do")
-	public  String   insert(Model model) throws Exception {
+	public String insert(Model model) throws Exception {
 		
 		List<CompanyVO> companyList = new ArrayList<>();
-		
 		
         StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/6480000/gyeongnamgoodemploycompany/gyeongnamgoodemploycompanylist"); /*URL*/
         urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=Rlv%2FLwLil1lc5xKQg7CBwm%2BcvuksrkTpcQuQozGJvXsRYmOryjgMjlL4ou%2BfxTjfI%2F%2BJAO7uBo1vVrIWnAhSmQ%3D%3D"); /*Service Key (일반인증키)*/
@@ -101,12 +100,12 @@ public class CompanyController {
 	        	String strData5 = data5.getChildNodes().item(0).getNodeValue();
 	        	String strData6 = data6.getChildNodes().item(0).getNodeValue();
 	        	
+	        	company.setRdnmadr(strData1);
+	        	company.setLogitude(strData2);
 	        	company.setEntrprsNm(strData3);
-	            company.setRdnmadr(strData1);
 	            company.setRprsntvNm(strData4);
-	            company.setMainGoods(strData6);
 	            company.setLatitude(strData5);
-	            company.setLogitude(strData2);
+	            company.setMainGoods(strData6);
 
 	            companyList.add(company);
 	            
