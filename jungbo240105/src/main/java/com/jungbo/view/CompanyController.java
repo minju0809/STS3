@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -21,8 +23,6 @@ import org.w3c.dom.Node;
 
 import com.jungbo.biz.company.CompanyService;
 import com.jungbo.biz.company.CompanyVO;
-import com.jungbo.biz.guestbook.GuestbookVO;
-
 
 @Controller
 public class CompanyController {
@@ -31,7 +31,11 @@ public class CompanyController {
 	private CompanyService service;
 	
 	@RequestMapping("/company.do")
-	public  String   insert() throws Exception {
+	public  String   insert(Model model) throws Exception {
+		
+		List<CompanyVO> companyList = new ArrayList<>();
+		
+		
         StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/6480000/gyeongnamgoodemploycompany/gyeongnamgoodemploycompanylist"); /*URL*/
         urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=Rlv%2FLwLil1lc5xKQg7CBwm%2BcvuksrkTpcQuQozGJvXsRYmOryjgMjlL4ou%2BfxTjfI%2F%2BJAO7uBo1vVrIWnAhSmQ%3D%3D"); /*Service Key (일반인증키)*/
         urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지 번호*/
@@ -79,6 +83,8 @@ public class CompanyController {
         	Element items =(Element) body.getElementsByTagName("items").item(0);
         	
         	for(int i=0 ; i<10; i++ ) {
+        		CompanyVO company = new CompanyVO();
+        		
 	        	Element item =(Element) items.getElementsByTagName("item").item(i);
 	        	
 	        	data1 = item.getElementsByTagName("rdnmadr").item(0);  // 필요한 데이터 값 추출하기 
@@ -95,22 +101,24 @@ public class CompanyController {
 	        	String strData5 = data5.getChildNodes().item(0).getNodeValue();
 	        	String strData6 = data6.getChildNodes().item(0).getNodeValue();
 	        	
+	        	company.setEntrprsNm(strData3);
+	            company.setRdnmadr(strData1);
+	            company.setRprsntvNm(strData4);
+	            company.setMainGoods(strData6);
+	            company.setLatitude(strData5);
+	            company.setLogitude(strData2);
+
+	            companyList.add(company);
+	            
+	            model.addAttribute("li", companyList);
+	        	
 	        	System.out.println("@@@@@" + strData1+" "+strData2+" "+strData3+" "+strData4+" "+strData5+" "+strData6);
-	        	CompanyVO vo = new CompanyVO();
-	        	vo.setSEQ(i);
-	        	vo.setRdnmadr(strData1);
-	        	vo.setLogitude(strData2);
-	        	vo.setEntrprsNm(strData3);
-	        	vo.setRprsntvNm(strData4);
-	        	vo.setLatitude(strData5);
-	        	vo.setMainGoods(strData6);
-	        	System.out.println("번 데이터 입력" + vo);
-	        	service.companyInsert(vo);
+
         	}        	
         } catch (Exception e) {
         	e.printStackTrace();
         }
-		return "/company/company.jsp";        
+		return "/company/companyList.jsp";        
     }
 	
 	@RequestMapping(value = "/companyList.do", method=RequestMethod.GET)
