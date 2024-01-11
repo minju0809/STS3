@@ -17,4 +17,5 @@ public class CampsiteVO {
 	private String close;
 	private String pet;
 	private String reservation;
+	private String imgStr;
 }

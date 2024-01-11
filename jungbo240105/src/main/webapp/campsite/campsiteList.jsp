@@ -50,7 +50,7 @@ td:last-child {
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new kakao.maps.LatLng(37.5591088, 126.97089395), // 지도의 중심좌표
-        level: 4 // 지도의 확대 레벨
+        level: 10 // 지도의 확대 레벨
     };  
 
 // 지도를 생성합니다    
@@ -62,7 +62,7 @@ var geocoder = new kakao.maps.services.Geocoder();
 var locations = [
     <c:forEach items="${li}" var="m" varStatus="status">
         { address: '<c:out value="${m.address}" />', 
-        	name: '<div style="width:150px;text-align:center;padding:6px 0;"><a href=${path}/campsiteOne.do?idx=${m.idx}>${m.campsite}</a></div>'}
+        	name: '<div style="width:150px;text-align:center;padding:6px 0;"><a href=${path}/campsiteOne.do?idx=${m.idx}>${m.campsite}</a></div><img src="${path}/campsite/img/${m.imgStr}" alt="img" width=50>'}
         <c:if test="${!status.last}">,</c:if>
     </c:forEach>
 ];
