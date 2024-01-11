@@ -61,7 +61,8 @@ var geocoder = new kakao.maps.services.Geocoder();
 
 var locations = [
     <c:forEach items="${li}" var="m" varStatus="status">
-        { address: '<c:out value="${m.address}" />', name: '<c:out value="${m.campsite}" />' }
+        { address: '<c:out value="${m.address}" />', 
+        	name: '<c:out value="${m.campsite}" />' }
         <c:if test="${!status.last}">,</c:if>
     </c:forEach>
 ];
@@ -89,12 +90,32 @@ function searchAddress(location) {
 	        var infowindow = new kakao.maps.InfoWindow({
 	            content: '<div style="width:150px;text-align:center;padding:6px 0;">' + location.name + '</div>'
 	        });
-	        infowindow.open(map, marker);
+// 	        infowindow.open(map, marker);
 	
 	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 	        map.setCenter(coords);
+	        
+	        kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+	        kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
 	    } 
 	}); 
+}
+
+//인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+function makeOverListener(map, marker, infowindow) {
+    return function() {
+        infowindow.open(map, marker);
+    };
+}
+
+
+// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+function makeOutListener(infowindow) {
+    return function() {
+        setTimeout(function() {
+            infowindow.close();
+        }, 1000);
+    };
 }
 </script>
 
