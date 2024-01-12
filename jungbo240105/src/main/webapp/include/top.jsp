@@ -19,6 +19,7 @@
 	<nav>
 		&emsp;<a href="index.do">홈으로</a>
 		&emsp;<a href="companyJSON.do">축제</a>
+		&emsp;<a href="companyJSON2.do">대학</a>
 		&emsp;<a href="companyXml.do">배열우수기업</a>
 		&emsp;<a href="companyList.do">DB우수기업</a>
 		&emsp;<a href="campsiteList.do">캠핑장</a>
