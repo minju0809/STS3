@@ -38,7 +38,7 @@ td:last-child {
 					<c:set var="bgcolor" value="lemonchiffon" />
 				</c:if>
 					<tr bgcolor="${ bgcolor }">
-						<td>${ status.index }</td>
+						<td>${ status.count }</td>
 						<td>${ m.name }</td>
 						<td>${ m.english }</td>
 						<td>${ m.region }</td>

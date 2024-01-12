@@ -124,7 +124,7 @@ public class JsonController {
 		urlBuilder.append("&" + URLEncoder.encode("page", "UTF-8") + "="
 				+ URLEncoder.encode("1", "UTF-8"));
 		urlBuilder.append("&" + URLEncoder.encode("perPage", "UTF-8") + "="
-				+ URLEncoder.encode("10", "UTF-8")); 
+				+ URLEncoder.encode("135", "UTF-8")); 
 		urlBuilder.append("&" + URLEncoder.encode("returnType", "UTF-8") + "="
 				+ URLEncoder.encode("json", "UTF-8")); 
 		URL url = new URL(urlBuilder.toString());
