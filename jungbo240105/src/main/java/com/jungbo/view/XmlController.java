@@ -25,12 +25,12 @@ import com.jungbo.biz.company.CompanyService;
 import com.jungbo.biz.company.CompanyVO;
 
 @Controller
-public class CompanyController {
+public class XmlController {
 
 	@Autowired
 	private CompanyService service;
 	
-	@RequestMapping("/company.do")
+	@RequestMapping("/companyXml.do")
 	public String insert(Model model) throws Exception {
 		
 		List<CompanyVO> companyList = new ArrayList<>();
